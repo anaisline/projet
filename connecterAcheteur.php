@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // récupérer les informations envoyées depuis le formulaire 
 $mail=isset($_POST['mail'])?$_POST['mail']:"";
 $mdp=isset($_POST['mdp'])?$_POST['mdp']:"";
@@ -64,22 +64,24 @@ if ($db_found) {
             }
             $result = mysqli_query($db_handle, $sql);
              if (mysqli_num_rows($result) == 0) {
-                echo "connexion échouée";
+                header('Location: connexionAcheteur.php?erreur=1');
              }
              else
              {
                header('Location: accueilVendeur.html');
+               exit();
              }
 
         }
         else {
             header('Location: accueilAdmin.html');
+            exit();
 
         }
 
     } else {
         header('Location: accueilAcheteur.html');
-  exit();
+        exit();
     }
 }else
 {
