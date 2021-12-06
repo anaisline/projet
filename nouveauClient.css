@@ -162,7 +162,7 @@ form {
 
 }
 
-input[type=text], input[type=password],input[type=email],select {
+input[type=text], input[type=password],input[type=email],input[type=int],select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -170,7 +170,6 @@ input[type=text], input[type=password],input[type=email],select {
     border: 1px solid #ccc;
     box-sizing: border-box;
     text-align: center;
-
 }
 
 /* Set a style for all buttons */

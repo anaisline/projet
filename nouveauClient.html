@@ -45,7 +45,7 @@
  		<h2>Nouveau client ? Creer votre compte</h2>
  		
 
-		<form action="connecterAcheteur.php" method="post">
+		<form action="creerCompte.php" method="post">
 			<table>
     			<tr>
     			 <td><label>Nom <span class="required">*</span></label></td>
@@ -67,13 +67,19 @@
 
    				 <tr>
    				 <td><label>Email <span class="required">*</span></label></td>
-        		<td><input type="email" name="email" class="field-long" placeholder="Entrer votre adresse mail" />
+        		<td><input type="email" name="mail" class="field-long" placeholder="Entrer votre adresse mail" />
+   				 </td>
+   				</tr>
+
+   				<tr>
+   				 <td><label>Telephone <span class="required">*</span></label></td>
+        		<td><input type="int" name="tel" class="field-long" placeholder="Entrer votre numero" />
    				 </td>
    				</tr>
 
    				<tr> 
    				 <td><label>Mot de passe <span class="required">*</span></label></td>
-        		<td><input type="password" name="motDePasse" class="field-long" placeholder="Entrer votre mot de passe" />
+        		<td><input type="password" name="mdp" class="field-long" placeholder="Entrer votre mot de passe" />
    				 </td>
    				</tr>
    
@@ -88,7 +94,7 @@
 			
 			<tr>
 				<td colspan="2" align="center">
-				<input type="checkbox" name="clause">You agree to our Terms and Policy.<span class="required">*</span>
+				<input type="checkbox" name="clause" value="oui">You agree to our Terms and Policy.<span class="required">*</span>
 				<input type="submit" name="connexion" value="Creer son compte">
 			 </td>
 
