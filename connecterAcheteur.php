@@ -80,7 +80,7 @@ if ($db_found) {
         }
 
     } else {
-        header('Location: accueilAcheteur.html');
+        header('Location: accueilAcheteur.php');
         exit();
     }
 }else

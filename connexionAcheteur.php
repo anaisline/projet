@@ -11,6 +11,7 @@
 	<title>Fray Her</title>
 </head>
 <body>
+
 	<div id="wrapper">
 		<div id="header">
 			<p>
@@ -49,6 +50,7 @@
 
 			</ul>
 		</div>
+
 
 		<div id="section" align=center>
 			<h2>Déjà client Fray Her ?</h2>
