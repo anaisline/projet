@@ -1,27 +1,93 @@
 <?php
-
+session_start();
 // récupérer les informations envoyées depuis le formulaire 
-$email=isset($_POST['email'])?$_POST['email']:"";
-$motDePasse=isset($_POST['motDePasse'])?$_POST['motDePasse']:"";
+$mail=isset($_POST['mail'])?$_POST['mail']:"";
+$mdp=isset($_POST['mdp'])?$_POST['mdp']:"";
+
+//identifier BDD
+$database = "shopping";
+//connectez-vous dans BDD
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
 
 //Vérifier que tous les champs sont bien remplis. Dans le cas contraire, afficher un message d’erreur indiquant quel champ est vide.
 $erreur = "";
-if ($email == "") {
-$erreur .= "Le champ email est vide. <br>";
+if ($mail == "") {
+    $erreur .= "Le champ email est vide. <br>";
 }
-if ($motDePasse == "") {
-$erreur .= "Le champ mot de passe est vide. <br>";
+if ($mdp == "") {
+    $erreur .= "Le champ mot de passe est vide. <br>";
 }
 //blindage sur quelconque erreur sur le remplissage du formulaire
 if ($erreur == "") {
-echo "Bienvenue " .$email;
 } else {
-echo "Erreur: <br>" . $erreur;
+    echo "Erreur: <br>" . $erreur;
 }
 
 //verifier que si tous les champs sont remplies email+mdp = a un compte contenu dans la BDD
+if ($db_found) {
 
-                        
+
+    $sql = "SELECT * FROM acheteur";
+    if ($mail != "") {
+        //on cherche l'email
+        $sql .= " WHERE mail LIKE '%$mail%'";
+//et le mdp
+        if ($mdp != "") {
+            $sql .= " AND mdp LIKE '%$mdp%'";
+        }
+    }
+    $result = mysqli_query($db_handle, $sql);
+//regarder s'il y a des resultats  : si pas de resultats
+    if (mysqli_num_rows($result) == 0) {
+        //on regarde pr les admin
+        $sql = "SELECT * FROM administrateur";
+        if ($mail != "") {
+        //on cherche l'email
+            $sql .= " WHERE mail LIKE '%$mail%'";
+//et le mdp
+            if ($mdp != "") {
+                $sql .= " AND mdp LIKE '%$mdp%'";
+            }
+        }
+        $result = mysqli_query($db_handle, $sql);
+        if (mysqli_num_rows($result) == 0) {
+            //on regarde chez les vendeurs
+            $sql = "SELECT * FROM vendeur";
+            if ($mail != "") {
+                //on cherche l'email
+                $sql .= " WHERE mail LIKE '%$mail%'";
+                //et le mdp
+                if ($mdp != "") {
+                    $sql .= " AND mdp LIKE '%$mdp%'";
+                }
+            }
+            $result = mysqli_query($db_handle, $sql);
+             if (mysqli_num_rows($result) == 0) {
+                header('Location: connexionAcheteur.php?erreur=1');
+             }
+             else
+             {
+               header('Location: accueilVendeur.html');
+               exit();
+             }
+
+        }
+        else {
+            header('Location: accueilAdmin.html');
+            exit();
+
+        }
+
+    } else {
+        header('Location: accueilAcheteur.html');
+        exit();
+    }
+}else
+{
+    echo "BDD ne fonctionne pas ";
+}
+
 
 
 ?>
