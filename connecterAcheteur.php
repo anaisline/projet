@@ -68,18 +68,18 @@ if ($db_found) {
              }
              else
              {
-               echo "connexion reussie vendeur."; 
+               header('Location: accueilVendeur.html');
              }
 
         }
         else {
-            echo "connexion reussie admin.";
+            header('Location: accueilAdmin.html');
 
         }
 
     } else {
-        echo "connexion reussie acheteur.";
-
+        header('Location: accueilAcheteur.html');
+  exit();
     }
 }else
 {
