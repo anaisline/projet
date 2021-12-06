@@ -16,7 +16,7 @@
 		<div id="header">
 			<p>
 				<font>
-					Fray Her 
+					Fray Her
 				</font>
 			</p>
 		</div>
