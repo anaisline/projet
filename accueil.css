@@ -1,19 +1,19 @@
-body { background-color: white;
+body { background-color: black;
   
 }
 
 #wrapper { width: 1200px;
  height: 570px;
  margin: 0 auto;
- background-color: grey;
+ background-color: black;
 
 }
 
 #header{
     width: 1200px;
-    height: 50px;
-    text-align: center;
-    background-color: lightpink;
+    height: 100px;
+    text-align: left;
+    background-color: black;
     margin: 0 auto;
 font-family: Montserrat, sans-serif;
 }
@@ -32,7 +32,7 @@ font-family: Montserrat, sans-serif;
   margin: 0px;
   padding: 0px;
   font-family: Montserrat, sans-serif;
-  background-color: white;
+  background-color: lightgrey;
 }
 
 #nav > ul {
@@ -47,7 +47,7 @@ font-family: Montserrat, sans-serif;
 }
 
 #nav > ul > li {
-  background-color: white;
+  background-color: lightgrey;
   position: relative;
   height: 100%;
   flex: 1;
@@ -63,6 +63,18 @@ font-family: Montserrat, sans-serif;
 li a {
   text-decoration: none;
   color: black;
+}
+
+li div a{
+  color: white;
+}
+
+h2{
+  color: white;
+}
+
+p{
+  color: white;
 }
 
 .menu-deroulant > a:after{
@@ -140,7 +152,7 @@ li a {
 #section{
     width: 1200px;
     height: 350px;
-    background-color: seagreen;
+    background-color: black;
     margin-bottom: 0 px;
    font-family: Montserrat, sans-serif;
 }
@@ -169,4 +181,11 @@ li a {
 
 
 
-
+.carousel-items {
+    display: flex;
+    overflow-x: scroll;
+    padding: 1rem 0;
+}
+.carousel-item {
+    margin-left: 1rem;
+}
