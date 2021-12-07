@@ -100,7 +100,7 @@
 
 					<tr>
 						<td><label>Telephone <span class="required">*</span></label></td>
-						<td><input type="int" name="tel" class="field-long" placeholder="Entrer votre numero" />
+						<td><input type="text" name="tel" class="field-long" placeholder="Entrer votre numero" />
 						</td>
 					</tr>
 
