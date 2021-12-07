@@ -66,7 +66,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 						}
 						else
 						{
-								echo "Les informations que vous avez rentré correspondent a aucun de vos articles";
+								echo "Les informations que vous avez rentré ne correspondent a aucun de vos articles";
 							
 						}
 				}
