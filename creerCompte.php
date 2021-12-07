@@ -45,6 +45,7 @@ if (isset($_POST["connexion"])) {
 	if ($erreur == "") {
 		echo "Formulaire valide.";//a voir pour remplacer
 		if ($db_found) {
+<<<<<<< Updated upstream
 		//on cherche si un compte avec cet email existe deja parmi les acheteurs
 		$sql = "SELECT * FROM acheteur";
 		//avec son email
@@ -74,6 +75,38 @@ if (isset($_POST["connexion"])) {
 		if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
 		echo "<p>Cet email possede deja un compte.</p>";
 			}
+=======
+			//on cherche si un compte avec cet email existe deja parmi les acheteurs
+			$sql = "SELECT * FROM acheteur";
+			//avec son email
+			if ($mail != "") {
+				$sql .= " WHERE mail LIKE '%$mail%'";
+			}
+			$resultAcheteur = mysqli_query($db_handle, $sql);
+			//regarder s'il y a de resultat
+
+			//on cherche si un compte avec cet email existe deja parmi les vendeurs
+			$sql = "SELECT * FROM vendeur";
+			//avec son email
+			if ($mail != "") {
+				$sql .= " WHERE mail LIKE '%$mail%'";
+			}
+			$resultVendeur = mysqli_query($db_handle, $sql);
+			//regarder s'il y a de resultat
+
+			//on cherche si un compte avec cet email existe deja parmi les admin
+			$sql = "SELECT * FROM administrateur";
+			//avec son email
+			if ($mail != "") {
+				$sql .= " WHERE mail LIKE '%$mail%'";
+			}
+			$resultAdmin = mysqli_query($db_handle, $sql);
+			//regarder s'il y a de resultat
+			if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
+			echo "<p>Cet email possede deja un compte.</p>";
+			}
+		}
+>>>>>>> Stashed changes
 		else
 			{
 			echo "nouvel email";
@@ -99,6 +132,7 @@ if (isset($_POST["connexion"])) {
 
 				}while(mysqli_num_rows($resultAcheteur) != 0);*/
 
+<<<<<<< Updated upstream
 				$id_acheteur=1;
 				$nom="line";
 				$prenom="anais";
@@ -113,14 +147,65 @@ if (isset($_POST["connexion"])) {
 				//le pb vient d ici
 				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb)VALUES('$id_acheteur', '$nom', '$prenom', '$mail', '$tel', '$mdp','$id_adresse','$id_cb')";
 				echo "cc";
+=======
+				$id_acheteur="2";
+				$nom="richard";
+				$prenom="marine";
+				$tel="0345670894";
+				$mail="anais.line@gmail.com";
+				$mdp="azerty";
+
+				//le pb vient d ici
+				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','1','1')";
+>>>>>>> Stashed changes
 				$result =mysqli_query($db_handle, $sql);
 				echo "<p>Add successful.</p>";
 			}
+			
+			/*if($typeCompte=="Vendeur")
+			{
+				//on defini l id du vendeur
+				$nb=1;
+				$id_acheteur=$nb;
+				do{
+				
+				$sql = "SELECT * FROM vendeur";
+				//ID
+				if ($id_vendeur != " ") {
+					$sql .= " WHERE id_vendeur LIKE '%$id_vendeur%'";
+				}
+				$resultVendeur = mysqli_query($db_handle, $sql);
 
+<<<<<<< Updated upstream
 	}} else {
 	echo "Erreur: <br>" . $erreur;
 		}
 		
+=======
+				if (mysqli_num_rows($resultVendeur) != 0)
+				{
+					$nb++;
+					$id_vendeur=$nb;
+				}
+
+				}while(mysqli_num_rows($resultVendeur) != 0);
+
+
+				//le pb vient d ici
+				$sql = "INSERT INTO vendeur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb)VALUES('$id_acheteur', '$nom', '$prenom', '$mail', '$tel', '$mdp','1','1')";
+				$result =mysqli_query($db_handle, $sql);
+				echo "<p>Add successful.</p>";
+			}*/
+
+		}
+	} 
+	else {
+		echo "Erreur: <br>" . $erreur;
+	}
+	
+			
+			
+>>>>>>> Stashed changes
 			//on affiche le nouveau livre ajouté
 			/*$sql = "SELECT * FROM book";
 			if ($titre != "") {
@@ -147,9 +232,14 @@ if (isset($_POST["connexion"])) {
 			echo "<td>" . $data['ID'] . "</td>";
 			echo "<td>" . $data['Titre'] . "</td>"
 			}*/
+<<<<<<< Updated upstream
 	
 	}
 
+=======
+		
+}
+>>>>>>> Stashed changes
 
 
 ?>
