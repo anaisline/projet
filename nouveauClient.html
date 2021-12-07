@@ -3,134 +3,175 @@
 <head>
 	<meta charset="utf-8">
 	<link href="nouveauClient.css" rel="stylesheet" type="text/css"/>
-	<title>Paris Shopping</title>
+	<title>Fray Her</title>
 </head>
 <body>
-	<div id="header">
-		<!--<img src="logo.gif" alt="Paris Shopping" width="650" height="100"/> -->
- 		<h1> Paris Shopping </h1>
- 	</div>
-	
-	<div id="nav">
- 		<ul>
- 			<li><a href="accueil.html">Accueil</a></li>
+	<div id="wrapper">
 
- 			<li class="menu-deroulant">
- 			<a href="parcourir.html">Parcourir les categories</a>
- 			<ul class="sous-menu">
- 				<li><a href="#">Poupees</a></li>
- 				<li><a href="#">Jeux</a></li>
- 				<li><a href="#">Insolite</a></li>
- 				<li><a href="#">Tout parcourir</a></li>
- 			</ul>
- 			</li>
+		<div id="header">
+			<p>
+				<font>
+					Fray Her
+				</font>
+			</p>
+		</div>
 
- 			
- 			<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
+		<div id="nav">
+			<ul>
+				<li><a href="accueil.html">Accueil</a></li>
 
- 			<li><a href="panierSansConnexion.html">Panier</a></li>
+				<li class="menu-deroulant">
+					<a href="parcourir.html">Parcourir les categories</a>
+					<ul class="sous-menu">
+						<li><a href="#">Poupees</a></li>
+						<li><a href="#">Jeux</a></li>
+						<li><a href="#">Insolite</a></li>
+						<li><a href="#">Tout parcourir</a></li>
+					</ul>
+				</li>
 
- 			<li class="menu-deroulant">
- 			<a href="#">Mon compte</a>
- 			<ul class="sous-menu">
- 				<li><a href="connexionAcheteur.php">Se connecter</a></li>
- 				<li><a href="#">Creer son compte</a></li>
- 			</ul>	
- 			</li>
- 		
- 		</ul>
- 	</div>
 
- 	<div id="section">
- 		<h2>Nouveau client ? Creer votre compte</h2>
- 		
+				<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
 
-		<form action="creerCompte.php" method="post">
-			<table>
-    			<tr>
-    			 <td><label>Nom <span class="required">*</span></label></td>
-        		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer votre nom de famille" />
-   				 </td>
-   				</tr>
-    			
-    			<tr>
-    			 <td><label>Prenom <span class="required">*</span></label></td>
-        		 <td><input type="text" name="prenom" class="field-long" placeholder="Entrer votre prenom" />
-   				 </td>
-   				</tr>
+				<li><a href="panierSansConnexion.html">Panier</a></li>
 
-    			 <tr>
-    			 <td><label>Adresse <span class="required">*</span></label></td>
-        		 <td><input type="text" name="adresse_l1" class="field-long" placeholder="Entrer votre adresse" />
-   				 </td>
-   				</tr>
+				<li class="menu-deroulant">
+					<a href="#">Mon compte</a>
+					<ul class="sous-menu">
+						<li><a href="connexionAcheteur.php">Se connecter</a></li>
+						<li><a href="#">Creer son compte</a></li>
+					</ul>	
+				</li>
 
-   				<tr>
-    			 <td><label>Ville <span class="required">*</span></label></td>
-        		 <td><input type="text" name="ville" class="field-long" placeholder="Entrer votre ville" />
-   				 </td>
-   				</tr>
+			</ul>
+		</div>
 
-   				<tr>
-    			 <td><label>Code postal <span class="required">*</span></label></td>
-        		 <td><input type="text" name="code_postal" class="field-long" placeholder="Entrer votre code postal" />
-   				 </td>
-   				</tr>
+		<div id="section" align=center>
+			<h2>Nouveau client ? <br>Créez votre compte :</h2>
 
-   				 <tr>
-   				 <td><label>Email <span class="required">*</span></label></td>
-        		<td><input type="email" name="mail" class="field-long" placeholder="Entrer votre adresse mail" />
-   				 </td>
-   				</tr>
 
-   				<tr>
-   				 <td><label>Telephone <span class="required">*</span></label></td>
-        		<td><input type="int" name="tel" class="field-long" placeholder="Entrer votre numero" />
-   				 </td>
-   				</tr>
+			<form action="creerCompte.php" method="post">
+				<table>
+					<tr>
+						<td><label>Nom <span class="required">*</span></label></td>
+						<td><input type="text" name="nom" class="field-long" placeholder="Entrer votre nom de famille" />
+						</td>
+					</tr>
 
-   				<tr> 
-   				 <td><label>Mot de passe <span class="required">*</span></label></td>
-        		<td><input type="password" name="mdp" class="field-long" placeholder="Entrer votre mot de passe" />
-   				 </td>
-   				</tr>
-   
-   				<tr> 
-   				 <td><label>Type de compte<span class="required">*</span></label></td>
-      			  <td><select name="typeCompte" class="field-select" >
-      			  <option value="Acheteur">Acheteur</option>
-      			  <option value="Vendeur">Vendeur</option>
-      			  </select>
-   				 </td>
-   				</tr>
-			
-			<tr>
-				<td colspan="2" align="center">
-				<input type="checkbox" name="clause" value="oui">You agree to our Terms and Policy.<span class="required">*</span>
-				<input type="submit" name="connexion" value="Creer son compte">
-			 </td>
+					<tr>
+						<td><label>Prenom <span class="required">*</span></label></td>
+						<td><input type="text" name="prenom" class="field-long" placeholder="Entrer votre prenom" />
+						</td>
+					</tr>
 
-			</tr>
+					<tr>
+						<td><label>Adresse <span class="required">*</span></label></td>
+						<td><input type="text" name="adresse_l1" class="field-long" placeholder="Entrer votre adresse" />
+						</td>
+					</tr>
 
-			
-		</table>
-		</form>
+					<tr>
+						<td><label>Ville <span class="required">*</span></label></td>
+						<td><input type="text" name="ville" class="field-long" placeholder="Entrer votre ville" />
+						</td>
+					</tr>
 
-		<p>Deja client? Identifiez-vous <a href="connexionAcheteur.php">ici</a>.</p>
+					<tr>
+						<td><label>Code postal <span class="required">*</span></label></td>
+						<td><input type="text" name="code_postal" class="field-long" placeholder="Entrer votre code postal" />
+						</td>
+					</tr>
 
- 	</div>
+					<tr>
+						<td><label>Email <span class="required">*</span></label></td>
+						<td><input type="email" name="mail" class="field-long" placeholder="Entrer votre adresse mail" />
+						</td>
+					</tr>
 
- 	<div id="footer">
+					<tr>
+						<td><label>Telephone <span class="required">*</span></label></td>
+						<td><input type="int" name="tel" class="field-long" placeholder="Entrer votre numero" />
+						</td>
+					</tr>
+
+					<tr> 
+						<td><label>Mot de passe <span class="required">*</span></label></td>
+						<td><input type="password" name="mdp" class="field-long" placeholder="Entrer votre mot de passe" />
+						</td>
+					</tr>
+
+					<tr> 
+						<td><label>Type de compte<span class="required">*</span></label></td>
+						<td>
+							<select name="typeCompte" class="field-select" >
+								<option value="Acheteur">Acheteur</option>
+								<option value="Vendeur">Vendeur</option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td align="left">
+							<input type="checkbox" name="clause" value="oui">
+						</td>
+						<td>
+							You agree to our Terms and Policy.<span class="required">*</span>
+						</td>
+
+						
+					</tr>
+
+					<tr>
+						<td colspan="2" align=center>
+							<input type="submit" name="connexion" value="Creer son compte">
+						</td>
+
+					</tr>
+
+
+				</table>
+			</form>
+
+			<p>Deja client? Identifiez-vous <a href="connexionAcheteur.php">ici</a>.</p>
+
+		</div>
+
+		<div id="footer">
  		<!--Copyright &copy; 2021 Prime Properties<br> -->
 
- 		<p class="contact">Nous contacter: <br><br>
- 			<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
- 			67 avenue Henri Martin 75016 PARIS<br>
- 			02 37 60 03 10<br>
- 		
- 		</p>
-<!--contact mail, tel , ...-->
+ 		<dd>
+ 			<ul>
+ 				<li>
+ 					<p align=left>
+ 						Qui sommes-nous ?<br><br>
+ 						Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
+ 						Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
+ 						<p align=right>
+ 							Alors nous voila !
+ 						</p>
+ 					</p>
+ 				</li>
+ 				<li>
+ 					<p class="contact">Nous contacter: <br><br>
+ 						<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
+ 						67 avenue Henri Martin 75016 PARIS<br>
+ 						02 37 60 03 10<br>
+
+ 					</p>
+
+ 				</li>
+ 				<li>
+ 					<p>
+ 						Instagram des auteurs :<br>
+ 						<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
+ 						<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
+ 						<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
+ 					</p>
+ 				</li>
+ 			</ul>
+ 		</dd>
  	</div>
+	</div>
 
 </body>
 </html>
