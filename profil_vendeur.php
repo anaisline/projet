@@ -12,6 +12,8 @@ $db_found = mysqli_select_db($db_handle, $database);
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 	<meta charset="utf-8">
 	<link href="profil_vendeur.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
@@ -28,7 +30,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				</font>
 			</p>
 		</div>
-
+<br>
 		<div id="nav">
 			<ul>
 				<li><a href="accueilVendeur.php">Accueil</a></li>
@@ -54,14 +56,6 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</div>
 
 
-
-
-
-		<div >
-
-
-			<h2>Profil</h2> 
-			<p>
 				<?php 
 				$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
 				$result = mysqli_query($db_handle, $sql);
@@ -69,46 +63,39 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 				$data = mysqli_fetch_assoc($result);
 				$image = $data['photo'];
-
-				if($data['photo']!="")
-				{
-					echo "<img src='$image' height='120' width='100'>" . "<br>";
-				}
-				else
-				{
-					echo "<img src='photos/avatar.jpg' height='120' width='100'>" . "<br>";
-				}
-
-				echo "<th>" . "Nom : " ;
-				echo $data['nom'] . "<br>";
-				echo "<th>" . "Prenom : " ;
-				echo $data['prenom'] . "<br>";
-				echo "<th>" . "Description : " ;
-				echo $data['description'] . "<br>";
-
 				?>
-				<a href="modifProfil.php">Modifier mes infos profil</a>		
-			</p>
-			<br> <br>
-			<h2>Sécurité</h2>
-			<p>
-				<?php
 
-				$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
-				$result = mysqli_query($db_handle, $sql);
-				$data = mysqli_fetch_assoc($result);
-
-				echo "Mail : " . $data['mail'] . "<br>";
-				echo "Mot de passe : " . $data['mdp'] . "<br>";
-				echo "Telephone : " . $data['tel'] . "<br>";
-
-				?>
-				<a href="modifSecu.php">Modifier mes infos sécurité</a>
-			</p>
-
-
+		<div class="container rounded bg-black mt-8 mb-8">
+			<div class="row">
+				<div class="col-md-5 ">
+					<div class="d-flex flex-column align-items-center text-center p-3 py-5">
+						<img class="rounded-circle mt-5" width="150px" src= "<?php echo $image; ?>"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+				</div>
+				<div class="col-md-5 ">
+					<div class="p-3 py-5">
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<h4 class="text-right">Paramètres du profil</h4>
+						</div>
+						<div class="row mt-2">
+							<div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+							<div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-md-6"><label class="labels">URL photo de profil</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+							<div class="col-md-6"><label class="labels">Téléphone</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+						</div>
+						<div class="row mt-2">
+							<div class="col-md-6"><label class="labels">Mail</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+							<div class="col-md-6"><label class="labels">Mot de passe</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+						</div>
+						 <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Description</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+						</div>
+						<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+					</div>
+				</div>
+			</div>
 		</div>
-
 
 
 		<div id="footer">

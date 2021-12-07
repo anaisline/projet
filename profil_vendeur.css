@@ -65,8 +65,8 @@ font-family: Montserrat, sans-serif;
 }
 
 img{
-  width: 500px;
-  height: 300px;
+  width: 250px;
+  height: 200px;
 }
 
 li a {
@@ -84,6 +84,11 @@ h2{
 
 p{
   color: white;
+}
+
+div
+{
+  color :white;
 }
 
 font{
@@ -104,6 +109,11 @@ td > input[type=submit]{
 
 input[type=text]{
   color: white;
+}
+
+div
+{
+  color : white
 }
 
 td{
@@ -268,4 +278,42 @@ php{
 .carousel-item {
     margin-left: 1rem;
 }
+
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: black
+}
+
+.profile-button {
+    background: maroon;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: red
+}
+
+.profile-button:focus {
+    background: maroon;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: maroon;
+    box-shadow: none
+}
+
+.back:hover {
+    color: black;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+
+
 
