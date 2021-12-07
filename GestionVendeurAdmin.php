@@ -46,8 +46,39 @@
 
 
 		<div id="section" align=center>
-			<h2>Ajouter ou supprimer un vendeur</h2>
 
+			<h2>Gestion des vendeurs</h2>
+
+			<p>Voici la liste des vendeurs du site : <br></p>
+
+			<?php
+
+			$mysqli = new mysqli("localhost", "root", "", "shopping");
+			$mysqli -> set_charset("utf8");
+			$requete = "SELECT * from vendeur";
+			$resultat = $mysqli -> query($requete);
+			echo "<table border='1'>";
+			echo "<tr>";
+			echo "<th>" . "Nom" . "</th>";
+			echo "<th>" . "Prénom" . "</th>";
+			echo "<th>" . "Mail" . "</th>";
+			echo "<th>" . "Descripition" . "</th>";
+			echo "<th>" . "Photo" . "</th>";
+			echo "<th>" . "Tel" . "</th>";
+				//afficher le resultat
+			while ($ligne = $resultat -> fetch_assoc()) {
+				echo "<tr>";
+				echo "<td>" . $ligne['nom'] . "</td>";
+				echo "<td>" . $ligne['prenom'] . "</td>";
+				echo "<td>" . $ligne['mail'] . "</td>";
+				echo "<td>" . $ligne['description'] . "</td>";
+				echo "<td>" . $ligne['photo'] . "</td>";
+				echo "<td>" . $ligne['tel'] . "</td>";
+				echo "</tr>";
+			}
+			$mysqli -> close();
+
+			?>
 
 			<form action="GérerVendeursAdmin.php"  method="post">
 				<table>
@@ -75,12 +106,13 @@
 			</form>
 
 			<?php
-				if(isset($_GET['erreur'])){
-					$err = $_GET['erreur'];
-					if($err==1 || $err==2 || $err==3)
+			if(isset($_GET['erreur'])){
+				$err = $_GET['erreur'];
+				if($err==1 || $err==2 || $err==3)
 					echo "<p style='color:red'>Utilisateur, prénom ou nom incorrect</p>";
-				}
+			}
 			?>
+			<br>
 		</div>
 
 		<div id="footer">
