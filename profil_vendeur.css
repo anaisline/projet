@@ -319,6 +319,11 @@ php{
     font-size: 11px
 }
 
+div>p
+{
+color : black;
+}
+
 input[type=text]
 {
   color: black;

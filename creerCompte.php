@@ -68,7 +68,7 @@ if (isset($_POST["connexion"])) {
 			$resultAdmin = mysqli_query($db_handle, $sql);
 
 		//regarder s'il y a de resultat
-			if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
+			if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultAdmin) != 0) {
 
 				header('Location: nouveauClient.php?erreur=3');
 
@@ -148,7 +148,7 @@ if (isset($_POST["connexion"])) {
 					echo "<p>Add successful cb acheteur.</p>";
 
 
-					$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_adresse','$id_cb')";
+					$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb,photo) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_adresse','$id_cb',NULL)";
 
 					$result =mysqli_query($db_handle, $sql);
 					header('Location: connexionAcheteur.php?');
