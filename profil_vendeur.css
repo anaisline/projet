@@ -121,6 +121,11 @@ td{
   font-size: 50%;
 }
 
+div > input
+{
+  color: black;
+}
+
 td > input{
   margin-left: 10px;
 }
@@ -313,6 +318,12 @@ php{
 .labels {
     font-size: 11px
 }
+
+input[type=text]
+{
+  color: black;
+}
+
 
 
 
