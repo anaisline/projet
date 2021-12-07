@@ -11,18 +11,15 @@ $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
 //Vérifier que tous les champs sont bien remplis. Dans le cas contraire, afficher un message d’erreur indiquant quel champ est vide.
-$erreur = "";
+
 if ($mail == "") {
-    $erreur .= "Le champ email est vide. <br>";
+    header('Location: connexionAcheteur.php?erreur=1');
 }
-if ($mdp == "") {
-    $erreur .= "Le champ mot de passe est vide. <br>";
+else if ($mdp == "") {
+    header('Location: connexionAcheteur.php?erreur=1');
 }
-//blindage sur quelconque erreur sur le remplissage du formulaire
-if ($erreur == "") {
-} else {
-    echo "Erreur: <br>" . $erreur;
-}
+else
+{
 
 //verifier que si tous les champs sont remplies email+mdp = a un compte contenu dans la BDD
 if ($db_found) {
@@ -98,6 +95,9 @@ if ($db_found) {
 }else
 {
     echo "BDD ne fonctionne pas ";
+}
+
+ 
 }
 
 

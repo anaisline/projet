@@ -41,7 +41,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
             <a href="#">Mon compte</a>
             <ul class="sous-menu">
 
-               <li><a href="profil.php">Mon profil</a></li>
+               <li><a href="profil_vendeur.php">Mon profil</a></li>
                <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
            </ul>	
        </li>
