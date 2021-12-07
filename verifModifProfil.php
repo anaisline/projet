@@ -55,7 +55,7 @@ if (isset($_POST["bouton1"])){
         if($mail!="")
         {
         $//on cherche si un compte avec cet email existe deja parmi les acheteurs
-        $sql = "SELECT * FROM acheteur WHERE  mail LIKE '%$mail%'  ";
+        $sql = "SELECT * FROM acheteur WHERE  (mail LIKE '%$mail%')  ";
         $resultAcheteur = mysqli_query($db_handle, $sql);
         //regarder s'il y a de resultat
 
@@ -65,17 +65,18 @@ if (isset($_POST["bouton1"])){
         //regarder s'il y a de resultat
 
         //on cherche si un compte avec cet email existe deja parmi les admin
-        $sql = "SELECT * FROM administrateur WHERE  mail LIKE '%$mail%' ";
+        $sql = "SELECT * FROM administrateur WHERE  (mail LIKE '%$mail%') ";
         $resultAdmin = mysqli_query($db_handle, $sql);
 
         //regarder s'il y a de resultat
-        if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
+        if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultAdmin) != 0) {
             $erreur=1;
         }
         else
         {
             $erreur=0;
-            $sql="UPDATE vendeur SET mail='$mail' WHERE id_vendeur='$mail' ";
+            $sql="UPDATE vendeur SET mail='$mail' WHERE id_vendeur='$id_vendeur' ";
+            $result = mysqli_query($db_handle,$sql);
         }
 
     }
