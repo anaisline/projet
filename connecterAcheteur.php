@@ -74,7 +74,7 @@ if ($db_found) {
                 $data = mysqli_fetch_array($result);
                 $id=$data['ida'];
 
-                header('Location: accueilVendeur.html?number='.$id);
+                header('Location: accueilVendeur.php?number='.$id);
                 exit();
             }
 
@@ -84,7 +84,7 @@ if ($db_found) {
             $result = mysqli_query($db_handle, $sql);
             $data = mysqli_fetch_array($result);
             $id=$data['ida'];
-            header('Location: accueilAdmin.html?number='.$id);
+            header('Location: accueilAdmin.php?number='.$id);
             exit();
 
         }
