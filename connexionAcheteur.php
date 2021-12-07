@@ -44,7 +44,7 @@
 					<a href="#">Mon compte</a>
 					<ul class="sous-menu">
 						<li><a href="connexionAcheteur.php">Se connecter</a></li>
-						<li><a href="nouveauClient.html">Creer son compte</a></li>
+						<li><a href="nouveauClient.php">Creer son compte</a></li>
 					</ul>	
 				</li>
 
@@ -84,7 +84,7 @@
 			?>
 
 
-			<p>Nouveau client? Creer son compte <a href="nouveauClient.html">ici</a>.</p>
+			<p>Nouveau client? Creer son compte <a href="nouveauClient.php">ici</a>.</p>
 
 		</div>
 

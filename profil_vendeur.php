@@ -54,100 +54,100 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</div>
 
 
-		
 
-		<div>
 
-		
+
+		<div >
+
+
 			<h2>Profil</h2> 
 			<p>
-			<?php 
-			$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
-			$result = mysqli_query($db_handle, $sql);
+				<?php 
+				$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
+				$result = mysqli_query($db_handle, $sql);
 
 
-			$data = mysqli_fetch_assoc($result);
-			$image = $data['photo'];
+				$data = mysqli_fetch_assoc($result);
+				$image = $data['photo'];
 
-			echo "Photo "."<br>" ;
-			if($data['photo']!="")
-			{
-				echo "<img src='$image' height='120' width='100'>" . "<br>";
-			}
-			else
-			{
-				echo "<img src='photos/avatar.jpg' height='120' width='100'>" . "<br>";
-			}
-			
-			echo "<th>" . "Nom : " ;
-			echo $data['nom'] . "<br>";
-			echo "<th>" . "Prenom : " ;
-			echo $data['prenom'] . "<br>";
-			echo "<th>" . "Description : " ;
-			echo $data['description'] . "<br>";
+				if($data['photo']!="")
+				{
+					echo "<img src='$image' height='120' width='100'>" . "<br>";
+				}
+				else
+				{
+					echo "<img src='photos/avatar.jpg' height='120' width='100'>" . "<br>";
+				}
 
-?>
-<a href="modifProfil.php">Modifier mes infos profil</a>		
-</p>
-		<br> <br>
-		<h2>Sécurité</h2>
-		<p>
-		<?php
+				echo "<th>" . "Nom : " ;
+				echo $data['nom'] . "<br>";
+				echo "<th>" . "Prenom : " ;
+				echo $data['prenom'] . "<br>";
+				echo "<th>" . "Description : " ;
+				echo $data['description'] . "<br>";
 
-		$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
-		$result = mysqli_query($db_handle, $sql);
-		$data = mysqli_fetch_assoc($result);
+				?>
+				<a href="modifProfil.php">Modifier mes infos profil</a>		
+			</p>
+			<br> <br>
+			<h2>Sécurité</h2>
+			<p>
+				<?php
 
-		echo "Mail : " . $data['mail'] . "<br>";
-		echo "Mot de passe : " . $data['mdp'] . "<br>";
-		echo "Telephone : " . $data['tel'] . "<br>";
+				$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
+				$result = mysqli_query($db_handle, $sql);
+				$data = mysqli_fetch_assoc($result);
 
-		?>
-		<a href="modifSecu.php">Modifier mes infos sécurité</a>
-		</p>
+				echo "Mail : " . $data['mail'] . "<br>";
+				echo "Mot de passe : " . $data['mdp'] . "<br>";
+				echo "Telephone : " . $data['tel'] . "<br>";
 
-
-	</div>
+				?>
+				<a href="modifSecu.php">Modifier mes infos sécurité</a>
+			</p>
 
 
+		</div>
 
-	<div id="footer">
-		<!--Copyright &copy; 2021 Prime Properties<br> -->
 
-		<dd>
-			<ul>
-				<li>
-					<p align=left>
-						Qui sommes-nous ?<br><br>
-						Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
-						Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
-						<p align=right>
-							Alors nous voila !
+
+		<div id="footer">
+			<!--Copyright &copy; 2021 Prime Properties<br> -->
+
+			<dd>
+				<ul>
+					<li>
+						<p align=left>
+							Qui sommes-nous ?<br><br>
+							Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
+							Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
+							<p align=right>
+								Alors nous voila !
+							</p>
 						</p>
-					</p>
-				</li>
-				<li>
-					<p class="contact">Nous contacter: <br><br>
-						<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
-						67 avenue Henri Martin 75016 PARIS<br>
-						02 37 60 03 10<br>
+					</li>
+					<li>
+						<p class="contact">Nous contacter: <br><br>
+							<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
+							67 avenue Henri Martin 75016 PARIS<br>
+							02 37 60 03 10<br>
 
-					</p>
+						</p>
 
-				</li>
-				<li>
-					<p>
-						Instagram des auteurs :<br>
-						<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
-						<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
-						<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
-					</p>
-				</li>
-			</ul>
-		</dd>
+					</li>
+					<li>
+						<p>
+							Instagram des auteurs :<br>
+							<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
+							<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
+							<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
+						</p>
+					</li>
+				</ul>
+			</dd>
+		</div>
+
 	</div>
-
-</div>
 
 </body>
 </html>
