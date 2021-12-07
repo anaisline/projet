@@ -57,6 +57,14 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 
 		<?php 
+
+		$sql = "SELECT * from adresse WHERE id_adresse=(select id_adresse from acheteur where id_acheteur='$id_acheteur')";
+		$result = mysqli_query($db_handle, $sql);
+		$data= mysqli_fetch_assoc($result);
+		$ville = $data['ville'];
+		$code = $data['code_postal'];
+		$adresse = $data['adresse_l1'];
+
 		$sql = "SELECT * from acheteur WHERE (id_acheteur = '$id_acheteur')";
 		$result = mysqli_query($db_handle, $sql);
 
@@ -67,6 +75,9 @@ $db_found = mysqli_select_db($db_handle, $database);
 		{
 			$image="photos/avatar.jpg";
 		}
+
+		
+
 		?>
 
 		<div class="container rounded bg-black mt-8 mb-8">
@@ -98,6 +109,15 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 								<div class="col-md-6"><label class="labels">Mot de passe</label><input type="text" class="form-control"  name="mdp" value="<?php echo $data['mdp']; ?>"></div>
 							</div>
+							<div class="row mt-2">
+								<div class="col-md-6"><label class="labels">Adresse</label><input type="text" class="form-control"  name="adresse" value="<?php echo $adresse; ?> "></div>
+
+								<div class="col-md-6"><label class="labels">Code Postal</label><input type="text" class="form-control"  name="codepostal" value="<?php echo $code; ?>"></div>
+							</div>
+							<div class="row mt-2">
+								<div class="col-md-6"><label class="labels">Ville</label><input type="text" class="form-control"  name="ville" value="<?php echo $ville; ?>"></div>
+
+							</div>
 							
 							</div>
 							<?php
@@ -108,7 +128,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 			}
 			?>
 
-							<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
+							<div class="mt-1 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
 
 						</div>
 					</div>
@@ -116,7 +136,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</div>
 		</form>
 		</div>
-
+<br><br><br>
 
 
 

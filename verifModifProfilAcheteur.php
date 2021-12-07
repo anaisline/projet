@@ -8,6 +8,9 @@ $prenom=isset($_POST['prenom'])?$_POST['prenom']:"";
 $mail=isset($_POST['mail'])?$_POST['mail']:"";
 $mdp=isset($_POST['mdp'])?$_POST['mdp']:"";
 $tel=isset($_POST['tel'])?$_POST['tel']:"";
+$ville=isset($_POST['ville'])?$_POST['ville']:"";
+$code=isset($_POST['codepostal'])?$_POST['codepostal']:"";
+$adresse=isset($_POST['adresse'])?$_POST['adresse']:"";
 
 //identifier BDD
 $database = "shopping";
@@ -24,6 +27,21 @@ if (isset($_POST["bouton1"])){
         if($photo!="")
         {
             $sql="UPDATE acheteur SET photo='$photo' WHERE id_acheteur='$id_acheteur' ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($ville!="")
+        {
+            $sql="UPDATE adresse SET ville='$ville' WHERE id_adresse=(select id_adresse from acheteur where id_acheteur='$id_acheteur') ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($code!="")
+        {
+            $sql="UPDATE adresse SET code_postal='$code' WHERE id_adresse=(select id_adresse from acheteur where id_acheteur='$id_acheteur') ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($adresse!="")
+        {
+            $sql="UPDATE adresse SET adresse_l1='$adresse' WHERE id_adresse=(select id_adresse from acheteur where id_acheteur='$id_acheteur') ";
             $result = mysqli_query($db_handle,$sql);
         }
         if($nom!="")
