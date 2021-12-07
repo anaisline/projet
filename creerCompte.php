@@ -16,7 +16,6 @@ $mdp=isset($_POST['mdp'])?$_POST['mdp']:"";
 $typeCompte=isset($_POST['typeCompte'])?$_POST['typeCompte']:"";
 $check = isset($_POST['clause']) ? "checked" : "unchecked";
 
-
 if (isset($_POST["connexion"])) {
 	//Vérifier que tous les champs sont bien remplis. Dans le cas contraire, afficher un message d’erreur indiquant quel champ est vide.//blindage
 	$erreur = "";
@@ -51,7 +50,7 @@ if (isset($_POST["connexion"])) {
 		//avec son email
 		if ($mail != "") {
 			$sql .= " WHERE mail LIKE '%$mail%'";
-		}
+			}
 		$resultAcheteur = mysqli_query($db_handle, $sql);
 		//regarder s'il y a de resultat
 
@@ -60,7 +59,7 @@ if (isset($_POST["connexion"])) {
 		//avec son email
 		if ($mail != "") {
 			$sql .= " WHERE mail LIKE '%$mail%'";
-		}
+			}
 		$resultVendeur = mysqli_query($db_handle, $sql);
 		//regarder s'il y a de resultat
 
@@ -69,16 +68,16 @@ if (isset($_POST["connexion"])) {
 		//avec son email
 		if ($mail != "") {
 			$sql .= " WHERE mail LIKE '%$mail%'";
-		}
+			}
 		$resultAdmin = mysqli_query($db_handle, $sql);
 		//regarder s'il y a de resultat
 		if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
 		echo "<p>Cet email possede deja un compte.</p>";
-		}
+			}
 		else
-		{
+			{
 			echo "nouvel email";
-			if($typeCompte=="Acheteur")
+			/*if($typeCompte=="Acheteur")
 			{
 				//on defini l id de l acheteur
 				$nb=1;
@@ -98,24 +97,30 @@ if (isset($_POST["connexion"])) {
 					$id_acheteur=$nb;
 				}
 
-				}while(mysqli_num_rows($resultAcheteur) != 0);
+				}while(mysqli_num_rows($resultAcheteur) != 0);*/
 
+				$id_acheteur=1;
+				$nom="line";
+				$prenom="anais";
+				$mail="anais.linegmail.com";
+				$tel="0607212345";
+				$mdp="anais";
+				$id_adresse=1;
+				$id_cb=1;
+
+				
 
 				//le pb vient d ici
-				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb)VALUES('$id_acheteur', '$nom', '$prenom', '$mail', '$tel', '$mdp','1','1')";
+				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb)VALUES('$id_acheteur', '$nom', '$prenom', '$mail', '$tel', '$mdp','$id_adresse','$id_cb')";
+				echo "cc";
 				$result =mysqli_query($db_handle, $sql);
 				echo "<p>Add successful.</p>";
 			}
 
-	} else {
+	}} else {
 	echo "Erreur: <br>" . $erreur;
-	}
-	
+		}
 		
-
-
- 			
-			
 			//on affiche le nouveau livre ajouté
 			/*$sql = "SELECT * FROM book";
 			if ($titre != "") {
@@ -142,9 +147,9 @@ if (isset($_POST["connexion"])) {
 			echo "<td>" . $data['ID'] . "</td>";
 			echo "<td>" . $data['Titre'] . "</td>"
 			}*/
-		}
+	
 	}
-}
+
 
 
 ?>
