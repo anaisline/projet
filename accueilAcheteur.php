@@ -31,26 +31,23 @@
 
     <li class="menu-deroulant">
 
-        <a href="parcourir.php">Parcourir les categories</a>
+        <a href="parcourir.html">Parcourir les categories</a>
         <ul class="sous-menu">
          <li><a href="#">Poupees</a></li>
-         <?php
-         echo $id_acheteur;
-         ?>
          <li><a href="#">Jeux</a></li>
          <li><a href="#">Insolite</a></li>
          <li><a href="#">Tout parcourir</a></li>
      </ul>
  </li>
 
-<li><a href="">Messagerie</a></li>
+<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
 
-<li><a href="">Panier</a></li>
+<li><a href="panierSansConnexion.html">Panier</a></li>
 
 <li class="menu-deroulant">
     <a href="#">Mon compte</a>
     <ul class="sous-menu">
-     <li><a href="">Ma page</a></li>
+     <li><a href="connexionAcheteur.php">Ma page</a></li>
      <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
  </ul>	
 </li>
