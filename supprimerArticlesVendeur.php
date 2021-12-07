@@ -50,7 +50,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
  	<div id="section" align=center>
 
- 		<form action="ajouterArticlesVendeur_2.php" method="post">
+ 		<h2>Entrer les informations de l article que vous voulez supprimer</h2> 
+
+ 		<form action="supprimerArticlesVendeur_2.php" method="post">
 			<table>
 
 				<tr>
@@ -59,19 +61,6 @@ $id_vendeur=$_SESSION['id_vendeur'];
    				 </td>
    				</tr>
     			
-    			<tr>
-    			 <td><label>Description <span class="required">*</span></label></td>
-        		 <td><input type="text" name="description" class="field-long" placeholder="Entrer une description" />
-   				 </td>
-   				</tr>
-
-
-   				<tr>
-    			 <td><label>Prix <span class="required">*</span></label></td>
-        		 <td><input type="int" name="prix" class="field-long" placeholder="Entrer le prix" />
-   				 </td>
-   				</tr>
-
    				<tr> 
    				 <td><label>Categorie <span class="required">*</span></label></td>
       			  <td><select name="categorie_type" class="field-select" >
@@ -92,16 +81,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
    				 </td>
    				</tr>
 
-   				<tr>
-    			 <td><label>Date <span class="required">*</span></label></td>
-        		 <td><input type="date" name="date" class="field-long" placeholder="Entrer la date" />
-   				 </td>
-   				</tr>
-
-
 				<tr>
 				<td colspan="2" align="center">
-				<input type="submit" name="ajouter" value="ajouter">
+				<input type="submit" name="supprimer" value="supprimer">
 			 	</td>
 
 				</tr>

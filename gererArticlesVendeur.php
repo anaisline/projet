@@ -56,7 +56,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 				<td colspan="2" align="center">
 				<a href="ajouterArticlesVendeur.php"><input type="submit" name="ajouter" value="ajouter"></a>
 				<a href="#"><input type="submit" name="modifier" value="modifier"></a>
-				<a href="#"><input type="submit" name="supprimer" value="supprimer"></a>
+				<a href="supprimerArticlesVendeur.php"><input type="submit" name="supprimer" value="supprimer"></a>
 			 	</td>
 
 				</tr>

@@ -44,32 +44,48 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 					if ($db_found) {
 
-						//on defini l id de l acheteur
-						$nb=1;
-						$id_article=$nb;
-						do{
-				
-							$sql = "SELECT * FROM article_vendeur";
-							//ID
-							if ($id_article != " ") {
-							$sql .= " WHERE id_article LIKE '%$id_article%'";
+						//on cherche si un compte avec cet email existe deja parmi les acheteurs
+						$sql = "SELECT * FROM article_vendeur";
+						//avec son nom
+						if ($nom != "") {
+							$nom .= " WHERE nom LIKE '%$nom%'";
 						}
 						$resultArticle = mysqli_query($db_handle, $sql);
-
-						if (mysqli_num_rows($resultArticle) != 0)
-						{
-							$nb++;
-							$id_article=$nb;
+						//regarder s'il y a de resultat
+						if (mysqli_num_rows($resultArticle) != 0 ) {
+							echo "<p>Vous possedez deja un article qui possede ce nom</p>";
 						}
+						else
+						{
+							//on defini l id de l acheteur
+							$nb=1;
+							$id_article=$nb;
+							do{
+				
+								$sql = "SELECT * FROM article_vendeur";
+								//ID
+								if ($id_article != " ") {
+								$sql .= " WHERE id_article LIKE '%$id_article%'";
+								}
+								$resultArticle = mysqli_query($db_handle, $sql);
 
-						}while(mysqli_num_rows($resultArticle) != 0);
+								if (mysqli_num_rows($resultArticle) != 0)
+								{
+									$nb++;
+									$id_article=$nb;
+								}
+
+							}while(mysqli_num_rows($resultArticle) != 0);
 
 
-						$sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
+							$sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
 
-						$result =mysqli_query($db_handle, $sql);
+							$result =mysqli_query($db_handle, $sql);
 							echo "<p>Add successful article.</p>";
 
+						}
+
+						
 					}
 
 				}
