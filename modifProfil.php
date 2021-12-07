@@ -52,61 +52,58 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</ul>
 
 		</div>
+
 		<div>
+			<h2 align=center> Modifier le profil<h2>
+				
 
-		
-			<h2>Profil</h2> 
-			<p>
-			<?php 
-			$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
-			$result = mysqli_query($db_handle, $sql);
+			<form action="verifModifProfil.php" method="post" align=center>
+				<table align=center>
+
+					<tr>
+						<td><label>Photo de profil <span class="required"></span></label></td>
+						<?php
+						$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
+						$result = mysqli_query($db_handle, $sql);
+						$data = mysqli_fetch_assoc($result);
+						?>
+
+						 <!--"<td>"."<input type="text" name="photo" class="field-long" value ="" />";-->
+						 	<td><input type = "text" name ="photo" value = "<?php echo $data['photo']; ?>" >
+						</td>
+					</tr>
+
+					<tr>
+						<td><label>Nom <span class="required"></span></label></td>
+						<td><input type="text" name="nom" class="field-long" value="<?php echo $data['nom']; ?>" />
+						</td>
+					</tr>
+					<tr>
+						<td><label>Prenom <span class="required"></span></label></td>
+						<td><input type="text" name="prenom" class="field-long" value="<?php echo $data['prenom']; ?>" />
+						</td>
+					</tr>
+
+					<td><label>Description <span class="required"></span></label></td>
+					<td><input type="text" name="description" class="field-long" value="<?php echo $data['description']; ?>" />
+					</td>
+				</tr>
 
 
-			$data = mysqli_fetch_assoc($result);
-			$image = $data['photo'];
 
-			echo "Photo "."<br>" ;
-			if($data['photo']!="")
-			{
-				echo "<img src='$image' height='120' width='100'>" . "<br>";
-			}
-			else
-			{
-				echo "<img src='photos/avatar.jpg' height='120' width='100'>" . "<br>";
-			}
-			
-			echo "<th>" . "Nom : " ;
-			echo $data['nom'] . "<br>";
-			echo "<th>" . "Prenom : " ;
-			echo $data['prenom'] . "<br>";
-			echo "<th>" . "Description : " ;
-			echo $data['description'] . "<br>";
 
-?>
-<a href="modifProfil.php">Modifier mes infos profil</a>		
-</p>
-		<br> <br>
-		<h2>Sécurité</h2>
-		<p>
-		<?php
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" name="Enregistrer" value="Enregistrer">
+					</td>
 
-		$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
-		$result = mysqli_query($db_handle, $sql);
-		$data = mysqli_fetch_assoc($result);
+				</tr>
 
-		echo "Mail : " . $data['mail'] . "<br>";
-		echo "Mot de passe : " . $data['mdp'] . "<br>";
-		echo "Telephone : " . $data['tel'] . "<br>";
-
-		?>
-		<a href="modifSecu.php">Modifier mes infos sécurité</a>
-		</p>
-
+			</table>
+		</form>
+	
 
 	</div>
-
-
-
 	<div id="footer">
 		<!--Copyright &copy; 2021 Prime Properties<br> -->
 
