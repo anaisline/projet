@@ -181,7 +181,7 @@ font{
 
 #footer>p>a
 { 
-  
+  color: white;
 }
 
 #footer>dd>ul{
@@ -201,7 +201,7 @@ font{
     width: 100%;
     height: auto;
     text-align: center;
-    
+    color: white;
     margin-top: 100px;
     border-top: 10px;
     font-size: 90%;
@@ -217,3 +217,4 @@ font{
 .carousel-item {
     margin-left: 1rem;
 }
+

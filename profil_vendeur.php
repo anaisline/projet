@@ -44,7 +44,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				<li class="menu-deroulant">
 					<a href="#">Mon compte</a>
 					<ul class="sous-menu">
-						<li><a href="#">Mon profil</a></li>
+						<li><a href="profil_vendeur.php">Mon profil</a></li>
 						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
 					</ul>	
 				</li>
@@ -52,6 +52,10 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</ul>
 
 		</div>
+
+
+		
+
 		<div>
 
 		
