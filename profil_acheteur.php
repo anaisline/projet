@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_admin=$_SESSION['id_admin'];
+$id_acheteur=$_SESSION['id_acheteur'];
 
 $database = "shopping";
 //connectez-vous dans BDD
@@ -33,7 +33,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 		<br>
 		<div id="nav">
 			<ul>
-				<li><a href="accueilAdmin.php">Accueil</a></li>
+				<li><a href="accueilAcheteur.php">Accueil</a></li>
 
 				<li >
 					<a href="parcourir.html">Gerer mes articles</a>
@@ -46,7 +46,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				<li class="menu-deroulant">
 					<a href="#">Mon compte</a>
 					<ul class="sous-menu">
-						<li><a href="profil_admin.php">Mon profil</a></li>
+						<li><a href="profil_acheteur.php">Mon profil</a></li>
 						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
 					</ul>	
 				</li>
@@ -57,7 +57,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 
 		<?php 
-		$sql = "SELECT * from administrateur WHERE (id_admin = '$id_admin')";
+		$sql = "SELECT * from acheteur WHERE (id_acheteur = '$id_acheteur')";
 		$result = mysqli_query($db_handle, $sql);
 
 
@@ -70,18 +70,18 @@ $db_found = mysqli_select_db($db_handle, $database);
 		?>
 
 		<div class="container rounded bg-black mt-8 mb-8">
-			<form action="verifModifProfilAdmin.php" method="post">
+			<form action="verifModifProfilAcheteur.php" method="post">
 			<div class="row">
 				<div class="col-md-5 ">
 					<div class="d-flex flex-column align-items-center text-center p-3 py-5">
-							<img class="rounded-circle mt-5" width="150px" src= "<?php echo $image; ?>">
-						<span class="font-weight-bold"><?php echo $data['prenom']." ".$data['nom']; ?></span><span class="text-black-50"><?php echo $data['description']; ?></span><span> </span></div>
+						<img class="rounded-circle mt-5" width="150px" src= "<?php echo $image; ?>">
+						<span class="font-weight-bold"><?php echo $data['prenom']." ".$data['nom']; ?></span><span> </span></div>
 						<div class="mt-20 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton3">Supprimer la photo</button></div>
 					</div>
 					<div class="col-md-5 ">
 						<div class="p-3 py-5">
 							<div class="d-flex justify-content-between align-items-center mb-3">
-								<h4 class="text-right">Paramètres du profil admin</h4>
+								<h4 class="text-right">Paramètres du profil vendeur</h4>
 							</div>
 							<div class="row mt-2">
 								<div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control"  name="prenom" value="<?php echo $data['prenom']; ?>"></div>
@@ -98,10 +98,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 								<div class="col-md-6"><label class="labels">Mot de passe</label><input type="text" class="form-control"  name="mdp" value="<?php echo $data['mdp']; ?>"></div>
 							</div>
-							<div class="row mt-3">
-								<div class="col-md-12"><label class="labels">Description</label>
-									<input type="text" class="form-control" name="description" value="<?php echo $data['description']; ?>">
-								</div>
+							
 							</div>
 							<?php
 			if(isset($_GET['erreur'])){
@@ -111,8 +108,8 @@ $db_found = mysqli_select_db($db_handle, $database);
 			}
 			?>
 
-							<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton2">Enregistrer les modifications</button></div>
-							
+							<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
+
 						</div>
 					</div>
 				</div>

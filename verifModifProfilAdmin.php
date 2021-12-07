@@ -4,7 +4,7 @@ $id_admin=$_SESSION['id_admin'];
 // récupérer les informations envoyées depuis le formulaire 
 $photo=isset($_POST['photo'])?$_POST['photo']:"";
 $nom=isset($_POST['nom'])?$_POST['nom']:"";
-$prenom=isset($_POST['nom'])?$_POST['nom']:"";
+$prenom=isset($_POST['prenom'])?$_POST['prenom']:"";
 $description=isset($_POST['description'])?$_POST['description']:"";
 $mail=isset($_POST['mail'])?$_POST['mail']:"";
 $mdp=isset($_POST['mdp'])?$_POST['mdp']:"";
