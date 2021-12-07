@@ -49,7 +49,17 @@
 		<div id="section" align=center>
 			<h2>Nouveau client ? <br>Créez votre compte :</h2>
 
-
+			<?php
+			if(isset($_GET['erreur'])){
+				$err = $_GET['erreur'];
+				if($err==1)
+					echo "<p style='color:red'>Un des champs est vide.</p>";
+				if($err==2)
+					echo "<p style='color:red'>Veuillez accepter les termes et les conditions.</p>";
+				if($err==3)
+					echo "<p style='color:red'>Il existe déjà un compte avec cet email.</p>";
+			}
+			?>
 			<form action="creerCompte.php" method="post">
 				<table>
 					<tr>
@@ -131,6 +141,8 @@
 
 				</table>
 			</form>
+
+			
 
 			<p>Deja client? Identifiez-vous <a href="connexionAcheteur.php">ici</a>.</p>
 

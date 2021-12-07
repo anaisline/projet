@@ -22,206 +22,206 @@ if (isset($_POST["connexion"])) {
 	//Vérifier que tous les champs sont bien remplis. Dans le cas contraire, afficher un message d’erreur indiquant quel champ est vide.//blindage
 	$erreur = "";
 	if ($nom == "") {
-		$erreur .= "Le champ nom est vide. <br>";
+		$erreur = "1";
 	}
 	if ($prenom == "") {
-		$erreur .= "Le champ prenom est vide. <br>";
+		$erreur = "1";
 	}
 	if ($adresse_l1 == "") {
-		$erreur .= "Le champ adresse est vide. <br>";
+		$erreur = "1";
 	}
 	if ($ville == "") {
-		$erreur .= "Le champ ville est vide. <br>";
+		$erreur = "1";
 	}
 	if ($code_postal == "") {
-		$erreur .= "Le champ code postal est vide. <br>";
+		$erreur = "1";
 	}
 	if ($mail == "") {
-		$erreur .= "Le champ mail est vide. <br>";
+		$erreur = "1";
 	}
 	if ($tel == "") {
-		$erreur .= "Le champ telephone est vide. <br>";
+		$erreur = "1";
 	}
 	if ($mdp == "") {
-		$erreur .= "Le champ mot de passe est vide. <br>";
+		$erreur = "1";
 	}
 	if($check=="unchecked")
 	{
-		$erreur .= "Le champ clause est vide. <br>";
+		$erreur = "2";
 	}
 	//blindage sur quelconque erreur sur le remplissage du formulaire
 	if ($erreur == "") {
 		echo "Formulaire valide.";//a voir pour remplacer
 		if ($db_found) {
 		//on cherche si un compte avec cet email existe deja parmi les acheteurs
-		$sql = "SELECT * FROM acheteur";
-		//avec son email
-		if ($mail != "") {
-			$sql .= " WHERE mail LIKE '%$mail%'";
-			}
-		$resultAcheteur = mysqli_query($db_handle, $sql);
+			$sql = "SELECT * FROM acheteur WHERE mail LIKE '%$mail%'";
+			$resultAcheteur = mysqli_query($db_handle, $sql);
 		//regarder s'il y a de resultat
 
 		//on cherche si un compte avec cet email existe deja parmi les vendeurs
-		$sql = "SELECT * FROM vendeur";
-		//avec son email
-		if ($mail != "") {
-			$sql .= " WHERE mail LIKE '%$mail%'";
-			}
-		$resultVendeur = mysqli_query($db_handle, $sql);
+			$sql = "SELECT * FROM vendeur WHERE mail LIKE '%$mail%'";
+			$resultVendeur = mysqli_query($db_handle, $sql);
 		//regarder s'il y a de resultat
 
 		//on cherche si un compte avec cet email existe deja parmi les admin
-		$sql = "SELECT * FROM administrateur";
-		//avec son email
-		if ($mail != "") {
-			$sql .= " WHERE mail LIKE '%$mail%'";
-			}
-		$resultAdmin = mysqli_query($db_handle, $sql);
+			$sql = "SELECT * FROM administrateur WHERE mail LIKE '%$mail%'";
+			$resultAdmin = mysqli_query($db_handle, $sql);
+
 		//regarder s'il y a de resultat
-		if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
-		echo "<p>Cet email possede deja un compte.</p>";
+			if (mysqli_num_rows($resultAcheteur) != 0 || mysqli_num_rows($resultVendeur) != 0 || mysqli_num_rows($resultVendeur) != 0) {
+
+				header('Location: nouveauClient.php?erreur=3');
+
 			}
-		else{
-			
-			if($typeCompte=="Acheteur")
-			{
-				//on defini l id de l acheteur
-				$nb=1;
-				$id_acheteur=$nb;
-				do{
-				
-				$sql = "SELECT * FROM acheteur";
-				//ID
-				if ($id_acheteur != " ") {
-					$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";
-				}
-				$resultAcheteur = mysqli_query($db_handle, $sql);
+			else{
 
-				if (mysqli_num_rows($resultAcheteur) != 0)
+				if($typeCompte=="Acheteur")
 				{
-					$nb++;
+				//on defini l id de l acheteur
+					$nb=1;
 					$id_acheteur=$nb;
-				}
+					do{
 
-				}while(mysqli_num_rows($resultAcheteur) != 0);
+						$sql = "SELECT * FROM acheteur";
+				//ID
+						if ($id_acheteur != " ") {
+							$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";
+						}
+						$resultAcheteur = mysqli_query($db_handle, $sql);
+
+						if (mysqli_num_rows($resultAcheteur) != 0)
+						{
+							$nb++;
+							$id_acheteur=$nb;
+						}
+
+					}while(mysqli_num_rows($resultAcheteur) != 0);
 
 
 				//on defini l id adresse de l acheteur (attention a ce qu il soit different de ceux deja ajouter)
-				$nb2=1;
-				$id_adresse=$nb2;
-				do{
-				
-				$sql = "SELECT * FROM adresse";
-				//ID
-				if ($id_adresse != " ") {
-					$sql .= " WHERE id_adresse LIKE '%$id_adresse%'";
-				}
-				$resultAdresse = mysqli_query($db_handle, $sql);
-
-				if (mysqli_num_rows($resultAdresse) != 0)
-				{
-					$nb2++;
+					$nb2=1;
 					$id_adresse=$nb2;
-				}
+					do{
 
-				}while(mysqli_num_rows($resultAdresse) != 0);
+						$sql = "SELECT * FROM adresse";
+				//ID
+						if ($id_adresse != " ") {
+							$sql .= " WHERE id_adresse LIKE '%$id_adresse%'";
+						}
+						$resultAdresse = mysqli_query($db_handle, $sql);
 
-				$sql="INSERT INTO adresse (id_adresse, adresse_l1, adresse_l2, code_postal, ville) VALUES ('$id_adresse', '$adresse_l1', NULL, '$code_postal' , 'ville')";
-				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Add successful adresse acheteur.</p>";
-				
+						if (mysqli_num_rows($resultAdresse) != 0)
+						{
+							$nb2++;
+							$id_adresse=$nb2;
+						}
+
+					}while(mysqli_num_rows($resultAdresse) != 0);
+
+					$sql="INSERT INTO adresse (id_adresse, adresse_l1, adresse_l2, code_postal, ville) VALUES ('$id_adresse', '$adresse_l1', NULL, '$code_postal' , 'ville')";
+					$result =mysqli_query($db_handle, $sql);
+					echo "<p>Add successful adresse acheteur.</p>";
+
 
 				//on defini l id cb de l acheteur
-				$nb3=1;
-				$id_cb=$nb3;
-				do{
-				
-				$sql = "SELECT * FROM cb";
-				//ID
-				if ($id_cb != " ") {
-					$sql .= " WHERE id_cb LIKE '%$id_cb%'";
-				}
-				$resultCB = mysqli_query($db_handle, $sql);
-
-				if (mysqli_num_rows($resultCB) != 0)
-				{
-					$nb3++;
+					$nb3=1;
 					$id_cb=$nb3;
-				}
+					do{
 
-				}while(mysqli_num_rows($resultCB) != 0);
-
-				$sql = "INSERT INTO cb (id_cb, numero_cb, code_secu, type, nom, id_acheteur) VALUES ('$id_cb', NULL, NULL, NULL, NULL, '$id_acheteur') ";
-				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Add successful cb acheteur.</p>";
-
-
-				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_adresse','$id_cb')";
-
-				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Add successful acheteur.</p>";
-			}
-			if($typeCompte=="Vendeur")
-			{
-				//on defini l id de l acheteur
-				$nb1=1;
-				$id_vendeur=$nb1;
-				do{
-				
-				$sql = "SELECT * FROM vendeur";
+						$sql = "SELECT * FROM cb";
 				//ID
-				if ($id_vendeur != " ") {
-					$sql .= " WHERE id_vendeur LIKE '%$id_vendeur%'";
-				}
-				$resultVendeur = mysqli_query($db_handle, $sql);
+						if ($id_cb != " ") {
+							$sql .= " WHERE id_cb LIKE '%$id_cb%'";
+						}
+						$resultCB = mysqli_query($db_handle, $sql);
 
-				if (mysqli_num_rows($resultVendeur) != 0)
+						if (mysqli_num_rows($resultCB) != 0)
+						{
+							$nb3++;
+							$id_cb=$nb3;
+						}
+
+					}while(mysqli_num_rows($resultCB) != 0);
+
+					$sql = "INSERT INTO cb (id_cb, numero_cb, code_secu, type, nom, id_acheteur) VALUES ('$id_cb', NULL, NULL, NULL, NULL, '$id_acheteur') ";
+					$result =mysqli_query($db_handle, $sql);
+					echo "<p>Add successful cb acheteur.</p>";
+
+
+					$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_adresse','$id_cb')";
+
+					$result =mysqli_query($db_handle, $sql);
+					header('Location: connexionAcheteur.php?');
+				}
+				if($typeCompte=="Vendeur")
 				{
-					$nb1++;
+				//on defini l id de l acheteur
+					$nb1=1;
 					$id_vendeur=$nb1;
-				}
+					do{
 
-				}while(mysqli_num_rows($resultVendeur) != 0);
+						$sql = "SELECT * FROM vendeur";
+				//ID
+						if ($id_vendeur != " ") {
+							$sql .= " WHERE id_vendeur LIKE '%$id_vendeur%'";
+						}
+						$resultVendeur = mysqli_query($db_handle, $sql);
+
+						if (mysqli_num_rows($resultVendeur) != 0)
+						{
+							$nb1++;
+							$id_vendeur=$nb1;
+						}
+
+					}while(mysqli_num_rows($resultVendeur) != 0);
 
 				//on defini l id adresse de l acheteur (attention a ce qu il soit different de ceux deja ajouter)
-				$nb2=1;
-				$id_adresse=$nb2;
-				do{
-				
-				$sql = "SELECT * FROM adresse";
-				//ID
-				if ($id_adresse != " ") {
-					$sql .= " WHERE id_adresse LIKE '%$id_adresse%'";
-				}
-				$resultAdresse = mysqli_query($db_handle, $sql);
-
-				if (mysqli_num_rows($resultAdresse) != 0)
-				{
-					$nb2++;
+					$nb2=1;
 					$id_adresse=$nb2;
-				}
+					do{
 
-				}while(mysqli_num_rows($resultAdresse) != 0);
+						$sql = "SELECT * FROM adresse";
+				//ID
+						if ($id_adresse != " ") {
+							$sql .= " WHERE id_adresse LIKE '%$id_adresse%'";
+						}
+						$resultAdresse = mysqli_query($db_handle, $sql);
 
-				$sql="INSERT INTO adresse (id_adresse, adresse_l1, adresse_l2, code_postal, ville) VALUES ('$id_adresse', '$adresse_l1', NULL, '$code_postal' , 'ville')";
-				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Add successful adresse vendeur.</p>";
-				
+						if (mysqli_num_rows($resultAdresse) != 0)
+						{
+							$nb2++;
+							$id_adresse=$nb2;
+						}
+
+					}while(mysqli_num_rows($resultAdresse) != 0);
+
+					$sql="INSERT INTO adresse (id_adresse, adresse_l1, adresse_l2, code_postal, ville) VALUES ('$id_adresse', '$adresse_l1', NULL, '$code_postal' , 'ville')";
+					$result =mysqli_query($db_handle, $sql);
+					echo "<p>Add successful adresse vendeur.</p>";
+
 
 				//le pb vient d ici
-				$sql = "INSERT INTO vendeur (id_vendeur, mail, mdp, description, photo, nom, prenom, id_adresse, tel) VALUES ('$id_vendeur', '$mail', '$mdp', ' ', ' ', '$nom', '$prenom', '$id_adresse', ' $tel') ";
-				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Add successful vendeur.</p>";
-			}
-		}
+					$sql = "INSERT INTO vendeur (id_vendeur, mail, mdp, description, photo, nom, prenom, id_adresse, tel) VALUES ('$id_vendeur', '$mail', '$mdp', ' ', ' ', '$nom', '$prenom', '$id_adresse', ' $tel') ";
+					$result =mysqli_query($db_handle, $sql);
+					header('Location: connexionAcheteur.php?');
 
-			}}else {
-				echo "Erreur: <br>" . $erreur;
-			
-	
+				}
 			}
-}
+
+		}}else {
+			if($erreur==1)
+			{
+				header('Location: nouveauClient.php?erreur=1');
+			}
+			else
+			{
+				header('Location: nouveauClient.php?erreur=2');
+			}
+
+			
+
+		}
+	}
 
 
 
