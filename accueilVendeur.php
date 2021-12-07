@@ -28,9 +28,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
     <div id="nav">
      <ul>
         
-        <li><a href="accueilVendeur.html">Accueil</a></li>
+        <li><a href="accueilVendeur.php">Accueil</a></li>
         <li >
-            <a href="parcourir.html">Gerer mes articles</a>
+            <a href="gererArticlesVendeur.php">Gerer mes articles</a>
         </li>
 
 
