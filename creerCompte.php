@@ -100,10 +100,38 @@ if (isset($_POST["connexion"])) {
 
 				
 				//le pb vient d ici
-				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','1','1')";
+				$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_acheteur','$id_acheteur')";
 
 				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Add successful.</p>";
+				echo "<p>Add successful acheteur.</p>";
+			}
+			if($typeCompte=="Vendeur")
+			{
+				//on defini l id de l acheteur
+				$nb1=1;
+				$id_vendeur=$nb1;
+				do{
+				
+				$sql = "SELECT * FROM vendeur";
+				//ID
+				if ($id_vendeur != " ") {
+					$sql .= " WHERE id_vendeur LIKE '%$id_vendeur%'";
+				}
+				$resultVendeur = mysqli_query($db_handle, $sql);
+
+				if (mysqli_num_rows($resultVendeur) != 0)
+				{
+					$nb1++;
+					$id_vendeur=$nb1;
+				}
+
+				}while(mysqli_num_rows($resultVendeur) != 0);
+
+				
+				//le pb vient d ici
+				$sql = "INSERT INTO vendeur (id_vendeur, mail, mdp, description, photo, nom, prenom, id_adresse, tel) VALUES ('$id_vendeur', '$mail', '$mdp', ' ', ' ', '$nom', '$prenom', '1', ' $tel') ";
+				$result =mysqli_query($db_handle, $sql);
+				echo "<p>Add successful vendeur.</p>";
 			}
 		}
 
