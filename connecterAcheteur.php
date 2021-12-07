@@ -63,25 +63,38 @@ if ($db_found) {
                 }
             }
             $result = mysqli_query($db_handle, $sql);
-             if (mysqli_num_rows($result) == 0) {
+            if (mysqli_num_rows($result) == 0) {
+
                 header('Location: connexionAcheteur.php?erreur=1');
-             }
-             else
-             {
-               header('Location: accueilVendeur.html');
-               exit();
-             }
+            }
+            else
+            {
+                $sql = "SELECT id_vendeur as ida FROM vendeur WHERE (mdp='$mdp' and mail='$mail') ";
+                $result = mysqli_query($db_handle, $sql);
+                $data = mysqli_fetch_array($result);
+                $id=$data['ida'];
+
+                header('Location: accueilVendeur.html?number='.$id);
+                exit();
+            }
 
         }
         else {
-            header('Location: accueilAdmin.html');
+            $sql = "SELECT id_admin as ida FROM administrateur WHERE (mdp='$mdp' and mail='$mail') ";
+            $result = mysqli_query($db_handle, $sql);
+            $data = mysqli_fetch_array($result);
+            $id=$data['ida'];
+            header('Location: accueilAdmin.html?number='.$id);
             exit();
 
         }
 
     } else {
-        header('Location: accueilAcheteur.php');
-        exit();
+        $sql = "SELECT id_acheteur as ida FROM acheteur WHERE (mdp='$mdp' and mail='$mail') ";
+        $result = mysqli_query($db_handle, $sql);
+        $data = mysqli_fetch_array($result);
+        $id=$data['ida'];
+        header('Location: accueilAcheteur.php?number='.$id );
     }
 }else
 {
