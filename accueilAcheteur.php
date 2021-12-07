@@ -1,8 +1,6 @@
 <?php
     session_start();
-    if(isset($_GET['number'])){
-        $id_acheteur = $_GET['number'];}
-    $_SESSION['id_acheteur']=$id_acheteur ;
+    $id_acheteur=$_SESSION['id_acheteur'];
 
     ?>
 
@@ -36,6 +34,9 @@
         <a href="parcourir.html">Parcourir les categories</a>
         <ul class="sous-menu">
          <li><a href="#">Poupees</a></li>
+         <?php
+         echo $id_acheteur;
+         ?>
          <li><a href="#">Jeux</a></li>
          <li><a href="#">Insolite</a></li>
          <li><a href="#">Tout parcourir</a></li>

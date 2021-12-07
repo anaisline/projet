@@ -72,9 +72,8 @@ if ($db_found) {
                 $sql = "SELECT id_vendeur as ida FROM vendeur WHERE (mdp='$mdp' and mail='$mail') ";
                 $result = mysqli_query($db_handle, $sql);
                 $data = mysqli_fetch_array($result);
-                $id=$data['ida'];
-
-                header('Location: accueilVendeur.php?number='.$id);
+                $_SESSION['id_vendeur']=$data['ida'];
+                header('Location: accueilVendeur.php?');
                 exit();
             }
 
@@ -83,8 +82,8 @@ if ($db_found) {
             $sql = "SELECT id_admin as ida FROM administrateur WHERE (mdp='$mdp' and mail='$mail') ";
             $result = mysqli_query($db_handle, $sql);
             $data = mysqli_fetch_array($result);
-            $id=$data['ida'];
-            header('Location: accueilAdmin.php?number='.$id);
+            $_SESSION['id_admin']=$data['ida'];
+            header('Location: accueilAdmin.php?');
             exit();
 
         }
@@ -93,8 +92,8 @@ if ($db_found) {
         $sql = "SELECT id_acheteur as ida FROM acheteur WHERE (mdp='$mdp' and mail='$mail') ";
         $result = mysqli_query($db_handle, $sql);
         $data = mysqli_fetch_array($result);
-        $id=$data['ida'];
-        header('Location: accueilAcheteur.php?number='.$id );
+        $_SESSION['id_acheteur']=$data['ida'];
+        header('Location: accueilAcheteur.php?' );
     }
 }else
 {
