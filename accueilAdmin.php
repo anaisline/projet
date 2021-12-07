@@ -1,16 +1,16 @@
-
 <?php
     session_start();
     if(isset($_GET['number'])){
-        $id_vendeur = $_GET['number'];}
-    $_SESSION['id_vendeur']=$id_vendeur ;
+        $id_admin = $_GET['number'];}
+    $_SESSION['id_admin']=$id_admin ;
 
     ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="accueilVendeur.css" rel="stylesheet" type="text/css"/>
+	<link href="accueil.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -28,21 +28,24 @@
  
  	<div id="nav">
  		<ul>
- 			<li><a href="accueilVendeur.php">Accueil</a></li>
+ 			<li><a href="accueilAdmin.php">Accueil</a></li>
 
- 			<li >
- 			<a href="parcourir.html">Gerer mes articles</a>
+ 			<li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="#">Mes articles</a></li>
+ 			</ul>
  			</li>
 
  			
- 			<li><a href="#">Messagerie</a></li>
-
+ 			<li><a href="messagerieAdmin.html">Messagerie</a></li>
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil.php">Mon profil</a></li>
- 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+ 				<li><a href="#">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
  			</ul>	
  			</li>
  		
