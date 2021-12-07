@@ -97,6 +97,14 @@ $db_found = mysqli_select_db($db_handle, $database);
 									<input type="text" class="form-control" name="description" value="<?php echo $data['description']; ?>">
 								</div>
 							</div>
+							<?php
+			if(isset($_GET['erreur'])){
+				$err = $_GET['erreur'];
+				if($err==1)
+					echo "<p style='color:red'>Ce mail existe deja.</p>";
+			}
+			?>
+
 							<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
 						</div>
 					</div>
