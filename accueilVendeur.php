@@ -1,3 +1,11 @@
+
+<?php
+    session_start();
+    if(isset($_GET['number'])){
+        $id_vendeur = $_GET['number'];}
+    $_SESSION['id_acheteur']=$id_vendeur ;
+
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
