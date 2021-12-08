@@ -8,9 +8,16 @@ $prenom=isset($_POST['prenom'])?$_POST['prenom']:"";
 $mail=isset($_POST['mail'])?$_POST['mail']:"";
 $mdp=isset($_POST['mdp'])?$_POST['mdp']:"";
 $tel=isset($_POST['tel'])?$_POST['tel']:"";
+
 $ville=isset($_POST['ville'])?$_POST['ville']:"";
 $code=isset($_POST['codepostal'])?$_POST['codepostal']:"";
 $adresse=isset($_POST['adresse'])?$_POST['adresse']:"";
+
+$codeCarte=isset($_POST['codeCarte'])?$_POST['codeCarte']:"";
+$numCB=isset($_POST['numCB'])?$_POST['numCB']:"";
+$carteType=isset($_POST['carteType'])?$_POST['carteType']:"";
+$carteNom=isset($_POST['carteNom'])?$_POST['carteNom']:"";
+$dateExp=isset($_POST['dateExp'])?$_POST['dateExp']:"";
 
 //identifier BDD
 $database = "shopping";
@@ -28,6 +35,35 @@ if (isset($_POST["bouton1"])){
         {
             $sql="UPDATE acheteur SET photo='$photo' WHERE id_acheteur='$id_acheteur' ";
             $result = mysqli_query($db_handle,$sql);
+        }
+        if($codeCarte!="")
+        {
+            $sql="UPDATE cb SET code_secu='$codeCarte' WHERE id_cb=(select id_cb from acheteur where id_acheteur='$id_acheteur') ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($numCB!="")
+        {
+            $sql="UPDATE cb SET numero_cb='$numCB' WHERE id_cb=(select id_cb from acheteur where id_acheteur='$id_acheteur') ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($carteNom!="")
+        {
+            $sql="UPDATE cb SET nom='$carteNom' WHERE id_cb=(select id_cb from acheteur where id_acheteur='$id_acheteur') ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($dateExp!="")
+        {
+            $sql="UPDATE cb SET dateExp='$dateExp' WHERE id_cb=(select id_cb from acheteur where id_acheteur='$id_acheteur') ";
+            $result = mysqli_query($db_handle,$sql);
+        }
+        if($carteType!="")
+        {
+            if($carteType=="visa" || $carteType=="mastercard" || $carteType=="american express" || $carteType=="paypal" ||$carteType=="Visa" || $carteType=="VISA" || $carteType=="Mastercard" || $carteType=="MASTERCARD" ||  $carteType=="American express" ||  $carteType=="American Express" ||  $carteType=="AMERICAN EXPRESS" ||  $carteType=="PAYPAL" || $carteType=="Paypal")
+            {
+                $sql="UPDATE cb SET type='$carteType' WHERE id_cb=(select id_cb from acheteur where id_acheteur='$id_acheteur') ";
+                $result = mysqli_query($db_handle,$sql);
+            }
+            
         }
         if($ville!="")
         {
@@ -98,10 +134,10 @@ if (isset($_POST["bouton1"])){
     }
     else
     {
-         header('Location: profil_acheteur.php?erreur=1');
-    }
-    
-    
+       header('Location: profil_acheteur.php?erreur=1');
+   }
+
+
 }
 
 
@@ -114,6 +150,15 @@ if (isset($_POST["bouton3"])){
     if ($db_found) {
 
         $sql="UPDATE acheteur SET photo='' WHERE id_acheteur='$id_acheteur' ";
+        $result = mysqli_query($db_handle,$sql);
+        header('Location: profil_acheteur.php?');
+    }
+}
+
+if (isset($_POST["bouton4"])){
+
+    if ($db_found) {
+        $sql="UPDATE cb SET nom=NULL,code_secu=NULL,numero_cb=NULL,type=NULL,dateExp=NULL WHERE id_cb=(select id_cb from acheteur where id_acheteur='$id_acheteur') ";
         $result = mysqli_query($db_handle,$sql);
         header('Location: profil_acheteur.php?');
     }

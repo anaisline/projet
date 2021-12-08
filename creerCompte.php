@@ -143,7 +143,7 @@ if (isset($_POST["connexion"])) {
 
 					}while(mysqli_num_rows($resultCB) != 0);
 
-					$sql = "INSERT INTO cb (id_cb, numero_cb, code_secu, type, nom, id_acheteur) VALUES ('$id_cb', NULL, NULL, NULL, NULL, '$id_acheteur') ";
+					$sql = "INSERT INTO cb (id_cb, numero_cb, code_secu, type, nom, id_acheteur) VALUES ('$id_cb', NULL, NULL, NULL, NULL, '$id_acheteur',NULL) ";
 					$result =mysqli_query($db_handle, $sql);
 					echo "<p>Add successful cb acheteur.</p>";
 
