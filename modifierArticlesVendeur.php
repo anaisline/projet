@@ -58,7 +58,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
  		<h2>Entrer les informations de l article que vous voulez modifier</h2> 
 
- 		<form action="supprimerArticlesVendeur_2.php" method="post">
+ 		<form action="regarderArticle.php" method="post">
 			<table>
 				<?php
 
@@ -73,32 +73,6 @@ $db_found = mysqli_select_db($db_handle, $database);
 				<tr>
     			 <td><label>Nom <span class="required">*</span></label></td>
         		 <td><input type="text" name="nom" class="field-long" value="<?php echo $data['nom']; ?>" />
-   				 </td>
-   				</tr>
-
-   				
-   				<tr>
-    			 <td><label>Photo 1 <span class="required">*</span></label></td>
-        		 <td><input type="text" name="photo1" class="field-long" value = "a voir" />
-   				 </td>
-   				</tr>
-
-   				<tr>
-    			 <td><label>Photo 2</label></td>
-        		 <td><input type="text" name="photo2" class="field-long" placeholder="Entrer le lien" />
-   				 </td>
-   				</tr>
-
-   				<tr>
-    			 <td><label>Description <span class="required">*</span></label></td>
-        		 <td><input type="text" name="description" class="field-long" value="<?php echo $data['description']; ?>" />
-   				 </td>
-   				</tr>
-
-
-   				<tr>
-    			 <td><label>Prix <span class="required">*</span></label></td>
-        		 <td><input type="int" name="prix" class="field-long" value="<?php echo $data['prix'];?>" />
    				 </td>
    				</tr>
 
@@ -123,9 +97,19 @@ $db_found = mysqli_select_db($db_handle, $database);
    				 </td>
    				</tr>
 
+   				<?php
+   				if(isset($_GET['erreur'])){
+				$err = $_GET['erreur'];
+				if($err==1)
+					echo "<p style='color:red'>Cet article n'existe pas.</p>";
+			}
+			?>
+
 				<tr>
 				<td colspan="2" align="center">
+
 				<input type="submit" name="modifier" value="modifier">
+
 			 	</td>
 
 				</tr>
@@ -134,6 +118,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</form>
  		
 	</div>
+	<br><br>
 
 	<div id="footer">
 

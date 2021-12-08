@@ -39,6 +39,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
+
  				<li><a href="profil_vendeur.php">Mon profil</a></li>
  				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
  			</ul>	
@@ -55,7 +56,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 				<tr>
 				<td colspan="2" align="center">
 				<a href="ajouterArticlesVendeur.php"><input type="submit" name="ajouter" value="ajouter"></a>
-				<a href="#"><input type="submit" name="modifier" value="modifier"></a>
+				<a href="modifierArticlesVendeur.php"><input type="submit" name="modifier" value="modifier"></a>
 				<a href="supprimerArticlesVendeur.php"><input type="submit" name="supprimer" value="supprimer"></a>
 			 	</td>
 
