@@ -110,12 +110,12 @@ $id_vendeur=$_SESSION['id_vendeur'];
 							}
 							
 							$result =mysqli_query($db_handle, $sql);
-							echo "<p>Suppression de l article successfull.</p>";
+							header('Location: gererArticlesVendeur.php?');
 
 						}
 						else
 						{
-								echo "Les informations que vous avez rentré ne correspondent a aucun de vos articles";
+								header('Location: supprimerArticlesVendeur.php?erreur=1');
 							
 						}
 				}
@@ -124,7 +124,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 		
 			else
 			{
-				echo "Erreur: <br>" . $erreur;
+				header('Location: supprimerArticlesVendeur.php?erreur=1');
 			}
 
 	
