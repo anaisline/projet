@@ -70,10 +70,10 @@ $id_vendeur=$_SESSION['id_vendeur'];
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_name">Photo 1 </label> <input id="form_name" type="text" name="name" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
+                                        <div class="form-group"> <label for="form_name">Photo 1 </label> <input id="form_name" type="text" name="photo1" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_lastname">Photo 2</label> <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="" > </div>
+                                        <div class="form-group"> <label for="form_lastname">Photo 2</label> <input id="form_lastname" type="text" name="photo2" class="form-control" placeholder="" > </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -105,8 +105,10 @@ $id_vendeur=$_SESSION['id_vendeur'];
 											<?php
 											if(isset($_GET['erreur'])){
 												$err = $_GET['erreur'];
-												if($err==1)
-													echo "<p style='color:red'>Cet article n'existe pas.</p>";
+												if($err==3)
+													echo "<p style='color:red'> Cet article existe deja.</p>";
+												if($err==2)
+													echo "<p style='color:red'> Un des champs est vide.</p>";
 											}
 											?>
 

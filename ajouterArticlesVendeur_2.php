@@ -18,16 +18,22 @@ $id_vendeur=$_SESSION['id_vendeur'];
 			
 
 			$nom=isset($_POST['nom'])?$_POST['nom']:"";
+			$photo1=isset($_POST['photo1'])?$_POST['photo1']:"";
+			$photo2=isset($_POST['photo2'])?$_POST['photo2']:"";
 			$description=isset($_POST['description'])?$_POST['description']:"";
 			$prix=isset($_POST['prix'])?$_POST['prix']:"";
 			$categorie_type=isset($_POST['categorie_type'])?$_POST['categorie_type']:"";
 			$categorie_achat=isset($_POST['categorie_achat'])?$_POST['categorie_achat']:"";
 			$date=isset($_POST['date'])?$_POST['date']:"";
 
+			if (isset($_POST["ajouter"])) {
 			//Vérifier que tous les champs sont bien remplis. Dans le cas contraire, afficher un message d’erreur indiquant quel champ est vide.//blindage
 				$erreur = "";
 				if ($nom == "") {
 					$erreur .= "Le champ nom est vide. <br>";
+				}
+				if ($photo1 == "") {
+					$erreur .= "Le champ obligatoire photo est vide. <br>";
 				}
 				if ($description == "") {
 					$erreur .= "Le champ description est vide. <br>";
@@ -52,7 +58,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
 						if (mysqli_num_rows($resultArticle) != 0 ) {
-							header('Location: ajouterArticlesVendeur.php?erreur=1' );
+							header('Location: ajouterArticlesVendeur.php?erreur=3');
 						}
 						else
 						{
@@ -76,28 +82,74 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 							}while(mysqli_num_rows($resultArticle) != 0);
 
+							$nb1=1;
+                            $id_photo1=$nb1;
+                            do{
+
+                                $sql = "SELECT * FROM photo";
+                                //ID
+                                if ($id_photo1 != " ") {
+                                $sql .= " WHERE id_photo LIKE '%$id_photo1%'";
+                                }
+                                $resultPhoto1 = mysqli_query($db_handle, $sql);
+
+                                if (mysqli_num_rows($resultPhoto1) != 0)
+                                {
+                                    $nb1++;
+                                    $id_photo1=$nb1;
+                                }
+
+                            }while(mysqli_num_rows($resultPhoto1) != 0);
+
+                             $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo1', '$photo1', '$id_article') ";
+                            $result =mysqli_query($db_handle, $sql);
+                            echo "<p>Add successful article photo 1.</p>";
+
+
+                            if($photo2 != "")
+                            {
+                                //on defini l id de l acheteur
+                                $nb2=1;
+                                $id_photo2=$nb2;
+                                do{
+
+                                    $sql = "SELECT * FROM photo";
+                                    //ID
+                                    if ($id_photo2 != " ") {
+                                    $sql .= " WHERE id_photo LIKE '%$id_photo2%'";
+                                    }
+                                    $resultPhoto2 = mysqli_query($db_handle, $sql);
+
+                                    if (mysqli_num_rows($resultPhoto2) != 0)
+                                    {
+                                        $nb2++;
+                                        $id_photo2=$nb2;
+                                    }
+
+                                }while(mysqli_num_rows($resultPhoto2) != 0);
+
+							
+                                $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo2', '$photo2', '$id_article') ";
+                                $result =mysqli_query($db_handle, $sql);
+                                echo "<p>Add successful article photo 2.</p>";
+                            }
+
 
 							$sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
 
 							$result =mysqli_query($db_handle, $sql);
-							header('Location: gererArticlesVendeur.php?' );
+							header('Location: gererArticlesVendeur.php?');
 
 						}
-
-						
 					}
-
 				}
 				else
 				{
-					header('Location: ajouterArticlesVendeur.php?erreur=2' );
+					header('Location: ajouterArticlesVendeur.php?erreur=2');
 				}
 
 			}
 			
-		
-
-
-
+		}
 
 	?>
