@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
+$id_admin=$_SESSION['id_admin'];
 
 ?>
 
@@ -18,6 +18,8 @@ $id_vendeur=$_SESSION['id_vendeur'];
 			
 
 			$nom=isset($_POST['nom'])?$_POST['nom']:"";
+			$photo1=isset($_POST['photo1'])?$_POST['photo1']:"";
+			$photo2=isset($_POST['photo2'])?$_POST['photo2']:"";
 			$description=isset($_POST['description'])?$_POST['description']:"";
 			$prix=isset($_POST['prix'])?$_POST['prix']:"";
 			$categorie_type=isset($_POST['categorie_type'])?$_POST['categorie_type']:"";
@@ -29,6 +31,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
 				$erreur = "";
 				if ($nom == "") {
 					$erreur .= "Le champ nom est vide. <br>";
+				}
+				if ($photo1 == "") {
+					$erreur .= "Le champ obligatoire photo est vide. <br>";
 				}
 				if ($description == "") {
 					$erreur .= "Le champ description est vide. <br>";
@@ -45,7 +50,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 					if ($db_found) {
 
 						//on cherche si un compte avec cet email existe deja parmi les acheteurs
-						$sql = "SELECT * FROM article_vendeur";
+						$sql = "SELECT * FROM article_admin";
 						//avec son nom
 						if ($nom != "") {
 							$sql .= " WHERE nom LIKE '%$nom%'";
@@ -62,7 +67,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 							$id_article=$nb;
 							do{
 				
-								$sql = "SELECT * FROM article_vendeur";
+								$sql = "SELECT * FROM article_admin";
 								//ID
 								if ($id_article != " ") {
 								$sql .= " WHERE id_article LIKE '%$id_article%'";
@@ -77,7 +82,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 							}while(mysqli_num_rows($resultArticle) != 0);
 
-							 $nb1=1;
+							$nb1=1;
                             $id_photo1=$nb1;
                             do{
 
@@ -95,6 +100,11 @@ $id_vendeur=$_SESSION['id_vendeur'];
                                 }
 
                             }while(mysqli_num_rows($resultPhoto1) != 0);
+
+                             $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo1', '$photo1', '$id_article') ";
+                            $result =mysqli_query($db_handle, $sql);
+                            echo "<p>Add successful article photo 1.</p>";
+
 
                             if($photo2 != "")
                             {
@@ -118,27 +128,20 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
                                 }while(mysqli_num_rows($resultPhoto2) != 0);
 
-                                 $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo1', '$photo1', '$id_article') ";
-                           		 $result =mysqli_query($db_handle, $sql);
-                           		 echo "<p>Add successful article photo 1.</p>";
-
 							
                                 $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo2', '$photo2', '$id_article') ";
                                 $result =mysqli_query($db_handle, $sql);
                                 echo "<p>Add successful article photo 2.</p>";
+                            }
 
 
-							    $sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
+							$sql = "INSERT INTO article_admin(id_article, id_admin, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_admin', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
 
 							$result =mysqli_query($db_handle, $sql);
 							echo "<p>Add successful article.</p>";
-   
 
 						}
-
-						
 					}
-
 				}
 				else
 				{
@@ -148,8 +151,5 @@ $id_vendeur=$_SESSION['id_vendeur'];
 			}
 			
 		}
-
-
-
 
 	?>
