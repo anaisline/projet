@@ -35,23 +35,51 @@ if ($db_found) {
 	}
 	if($photo1!="")
 	{
-		$sql = "SELECT * from photo WHERE id_article='$id_articleAModif'";
-		$result = mysqli_query($db_handle, $sql);
-		$data= mysqli_fetch_assoc($result);
+		$sql2 = "SELECT * from photo WHERE id_article='$id_articleAModif'";
+		$result2 = mysqli_query($db_handle, $sql2);
+		$data= mysqli_fetch_assoc($result2);
 		$adresse1=$data['adresse_photo'];
 
 		$sql="UPDATE photo SET adresse_photo='$photo1' WHERE (id_article='$id_articleAModif' and adresse_photo='$adresse1')";
 		$result = mysqli_query($db_handle,$sql);
 
-		if($data=mysqli_fetch_assoc($result))
+		if($data=mysqli_fetch_assoc($result2))
 		{
 			$adresse2=$data['adresse_photo'];
-			$sql="UPDATE photo SET adresse_photo='$photo2' WHERE (id_article='$id_articleAModif' and adresse_photo='$adresse2')";
-			$result = mysqli_query($db_handle,$sql);
+			if($photo2!="")
+			{
+				$sql="UPDATE photo SET adresse_photo='$photo2' WHERE (id_article='$id_articleAModif' and adresse_photo='$adresse2')";
+				$result = mysqli_query($db_handle,$sql);
+			}
+			else
+			{
+				$sql2="DELETE FROM photo WHERE (adresse_photo='$adresse2' and id_article='$id_articleAModif')";
+				$result = mysqli_query($db_handle,$sql2);
+			}
 		}else
 		{
-			
 
+			$nb1=1;
+			$id_photo1=$nb1;
+			do{
+
+				$sql = "SELECT * FROM photo";
+                                //ID
+				if ($id_photo1 != " ") {
+					$sql .= " WHERE id_photo LIKE '%$id_photo1%'";
+				}
+				$resultPhoto1 = mysqli_query($db_handle, $sql);
+
+				if (mysqli_num_rows($resultPhoto1) != 0)
+				{
+					$nb1++;
+					$id_photo1=$nb1;
+				}
+
+			}while(mysqli_num_rows($resultPhoto1) != 0);
+
+			$sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo1', '$photo2', '$id_articleAModif') ";
+			$result =mysqli_query($db_handle, $sql);
 		}
 		
 	}

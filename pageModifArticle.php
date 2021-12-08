@@ -118,7 +118,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 									<div class="col-md-6"><label class="labels">Prix en euros</label><input type="text" class="form-control"  name="prixArticle" value="<?php echo $prix; ?>"></div>
 								</div>
 								<div class="row mt-2">
-									<div class="col-md-6"><label class="labels">Photo 1</label><input type="text" class="form-control"  name="photo1" value="<?php echo $photo1; ?>"></div>
+									<div class="col-md-6"><label class="labels">Photo 1*</label><input type="text" class="form-control"  name="photo1" value="<?php echo $photo1; ?>"></div>
 
 									<div class="col-md-6"><label class="labels">Photo 2</label><input type="text" class="form-control"  name="photo2" value="<?php echo $photo2; ?>"></div>
 								</div>
