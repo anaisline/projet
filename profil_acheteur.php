@@ -92,7 +92,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 					<div class="col-md-5 ">
 						<div class="p-3 py-5">
 							<div class="d-flex justify-content-between align-items-center mb-3">
-								<h4 class="text-right">Paramètres du profil vendeur</h4>
+								<h4 class="text-right">Paramètres du profil acheteur</h4>
 							</div>
 							<div class="row mt-2">
 								<div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control"  name="prenom" value="<?php echo $data['prenom']; ?>"></div>
