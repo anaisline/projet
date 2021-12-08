@@ -14,14 +14,12 @@ $id_vendeur=$_SESSION['id_vendeur'];
 		$db_found = mysqli_select_db($db_handle, $database);
 
 			
-		
-
-
+	
 		if (isset($_POST["supprimer"])) {
 			//Vérifier que tous les champs sont bien remplis. Dans le cas contraire, afficher un message d’erreur indiquant quel champ est vide.//blindage
 			$nom=isset($_POST['nom'])?$_POST['nom']:"";
-		$categorie_type=isset($_POST['categorie_type'])?$_POST['categorie_type']:"";
-		$categorie_achat=isset($_POST['categorie_achat'])?$_POST['categorie_achat']:"";
+			$categorie_type=isset($_POST['categorie_type'])?$_POST['categorie_type']:"";
+			$categorie_achat=isset($_POST['categorie_achat'])?$_POST['categorie_achat']:"";
 				$erreur = "";
 				if ($nom == "") {
 					$erreur .= "Le champ nom est vide. <br>";
@@ -43,6 +41,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 						//regarder s'il y a de resultat
 
 						if (mysqli_num_rows($resultArticle) != 0 ) {
+
 							echo "<p>Vous possedez un article qui possede ce nom donc on peut le supprimer</p>";
 //il faut recuperer l id de l article pour pouvoir supprimer les photos associees
 							$id_article=$data['id_article'];
@@ -84,6 +83,18 @@ $id_vendeur=$_SESSION['id_vendeur'];
 							}
 
 							
+						echo "<p>Vous possedez deja un article qui possede ce nom donc on  peut le supprimer</p>";
+
+							//il faut recuperer l id de l article puis supprimer les photos associees
+							$id_article=$data['id_article'];
+
+							$sql1= "DELETE FROM photo";
+							if ($id_article != " ") {
+								$sql1 .= " WHERE id_article LIKE '%$id_article%'";
+							}
+							$result1 =mysqli_query($db_handle, $sql);
+							echo "<p>Suppression de la photo article successfull.</p>";
+						
 							$sql= "DELETE FROM article_vendeur";
 							if ($nom != " ") {
 								$sql .= " WHERE nom LIKE '%$nom%'";
@@ -110,12 +121,13 @@ $id_vendeur=$_SESSION['id_vendeur'];
 				}
 			
 			}
-
+		
 			else
 			{
 				echo "Erreur: <br>" . $erreur;
 			}
 
-	}
+	
+}
 			
 ?>
