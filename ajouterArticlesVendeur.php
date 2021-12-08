@@ -58,6 +58,19 @@ $id_vendeur=$_SESSION['id_vendeur'];
         		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer le nom de votre article" />
    				 </td>
    				</tr>
+
+   				<tr>
+    			 <td><label>Photo 1 <span class="required">*</span></label></td>
+        		 <td><input type="text" name="photo1" class="field-long" placeholder="Entrer le lien" />
+   				 </td>
+   				</tr>
+
+   				<tr>
+    			 <td><label>Photo 2</label></td>
+        		 <td><input type="text" name="photo2" class="field-long" placeholder="Entrer le lien" />
+   				 </td>
+   				</tr>
+
     			
     			<tr>
     			 <td><label>Description <span class="required">*</span></label></td>
@@ -94,7 +107,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
    				<tr>
     			 <td><label>Date <span class="required">*</span></label></td>
-        		 <td><input type="date" name="date" class="field-long" placeholder="Entrer la date" />
+        		 <td><input type="date" name="date_jour" class="field-long" placeholder="Entrer la date" />
    				 </td>
    				</tr>
 
