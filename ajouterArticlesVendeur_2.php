@@ -52,7 +52,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
 						if (mysqli_num_rows($resultArticle) != 0 ) {
-							echo "<p>Vous possedez deja un article qui possede ce nom</p>";
+							header('Location: ajouterArticlesVendeur.php?erreur=1' );
 						}
 						else
 						{
@@ -80,7 +80,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 							$sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
 
 							$result =mysqli_query($db_handle, $sql);
-							echo "<p>Add successful article.</p>";
+							header('Location: gererArticlesVendeur.php?' );
 
 						}
 
@@ -90,7 +90,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 				}
 				else
 				{
-					echo "Erreur: <br>" . $erreur;
+					header('Location: ajouterArticlesVendeur.php?erreur=2' );
 				}
 
 			}

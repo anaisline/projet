@@ -111,6 +111,16 @@ $id_vendeur=$_SESSION['id_vendeur'];
    				 </td>
    				</tr>
 
+   				<?php
+			if(isset($_GET['erreur'])){
+				$err = $_GET['erreur'];
+				if($err==1)
+					echo "<p style='color:red'>Vous avez déjà un article avec ce nom.</p>";
+				if($err==2)
+					echo "<p style='color:red'>Un ou plusieurs champs sont vides.</p>";
+			}
+			?>
+
 
 				<tr>
 				<td colspan="2" align="center">
