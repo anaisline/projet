@@ -35,24 +35,26 @@ $db_found = mysqli_select_db($db_handle, $database);
 			<ul>
 				<li><a href="accueilAdmin.php">Accueil</a></li>
 
-				<li >
-					<a href="parcourir.html">Gerer mes articles</a>
+				<li class="menu-deroulant">
+					<a href="parcourir.html">Gérer</a>
+					<ul class="sous-menu">
+						<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+						<li><a href="#">Mes articles</a></li>
+					</ul>
 				</li>
 
 
-				<li><a href="#">Messagerie</a></li>
-
+				<li><a href="messagerieAdmin.html">Messagerie</a></li>
 
 				<li class="menu-deroulant">
 					<a href="#">Mon compte</a>
 					<ul class="sous-menu">
 						<li><a href="profil_admin.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+						<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
 					</ul>	
 				</li>
 
 			</ul>
-
 		</div>
 
 

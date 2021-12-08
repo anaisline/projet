@@ -53,7 +53,7 @@
 			if(isset($_GET['erreur'])){
 				$err = $_GET['erreur'];
 				if($err==1)
-					echo "<p style='color:red'>Un des champs est vide.</p>";
+					echo "<p style='color:red'>Un ou plusieurs champs sont vides.</p>";
 				if($err==2)
 					echo "<p style='color:red'>Veuillez accepter les termes et les conditions.</p>";
 				if($err==3)

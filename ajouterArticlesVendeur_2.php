@@ -48,7 +48,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 						$sql = "SELECT * FROM article_vendeur";
 						//avec son nom
 						if ($nom != "") {
-							$nom .= " WHERE nom LIKE '%$nom%'";
+							$sql .= " WHERE nom LIKE '%$nom%'";
 						}
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
