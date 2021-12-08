@@ -1,7 +1,7 @@
 <?php
 session_start();
 $id_vendeur=$_SESSION['id_vendeur'];
-
+$id_articleAModif=$_SESSION['id_articleAModif'];
 $database = "shopping";
 //connectez-vous dans BDD
 $db_handle = mysqli_connect('localhost', 'root', '');
@@ -58,11 +58,29 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 		<?php 
 
-		//$sql = "SELECT * from adresse WHERE id_adresse=(select id_adresse from acheteur where id_acheteur='$id_acheteur')";
-		//$result = mysqli_query($db_handle, $sql);
-		//$data= mysqli_fetch_assoc($result);
+		$sql = "SELECT * from article_vendeur WHERE id_article='$id_articleAModif'";
+		$result = mysqli_query($db_handle, $sql);
+		$data= mysqli_fetch_assoc($result);
+		$nom = $data['nom'];
+		$description = $data['description'];
+		$prix = $data['prix'];
+		$categorie_type = $data['categorie_type'];
+		$categorie_achat = $data['categorie_achat'];
 		
+		$sql = "SELECT * from photo WHERE id_article='$id_articleAModif'";
+		$result = mysqli_query($db_handle, $sql);
+		$data= mysqli_fetch_assoc($result);
+		$photo1=$data['adresse_photo'];
 		
+		if($data=mysqli_fetch_assoc($result))
+		{
+			$photo2=$data['adresse_photo'];
+		}
+		else
+		{
+			$photo2=" ";
+		}
+
 
 		?>
 
@@ -80,76 +98,76 @@ $db_found = mysqli_select_db($db_handle, $database);
 								<div class="d-flex justify-content-between align-items-center mb-3">
 									<h4 class="text-right">Modifier mon article</h4>
 								</div>
-							<div class="row mt-2">
-								<div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control"  name="nom" value=" "></div>
+								<div class="row mt-2">
+									<div class="col-md-6"><label class="labels">Nom de l'article</label><input type="text" class="form-control"  name="nom" value="<?php echo $nom; ?>"></div>
 
-								<div class="col-md-6"><label class="labels">Prix</label><input type="int" class="form-control"  name="prix" value=" "></div>
-							</div>
-							<div class="row mt-2">
-								<div class="col-md-6"><label class="labels">Photo 1</label><input type="text" class="form-control"  name="photo1" value=" "></div>
-
-								<div class="col-md-6"><label class="labels">Photo 1</label><input type="text" class="form-control"  name="photo2" value=" "></div>
-							</div>
-							<div class="row mt-2">
-								<div class="col-md-6"><label class="labels">Categorie(</label><input type="text" class="form-control"  name="mail" value=" "></div>
-
-								<div class="col-md-6"><label class="labels">Mot de passe</label><input type="text" class="form-control"  name="mdp" value=" "></div>
-							</div>
-							<div class="row mt-3">
-								<div class="col-md-12"><label class="labels">Description</label>
-									<input type="text" class="form-control" name="description" value=" ">
+									<div class="col-md-6"><label class="labels">Prix en euros</label><input type="int" class="form-control"  name="prix" value="<?php echo $prix; ?>"></div>
 								</div>
+								<div class="row mt-2">
+									<div class="col-md-6"><label class="labels">Photo 1</label><input type="text" class="form-control"  name="photo1" value="<?php echo $photo1; ?>"></div>
+
+									<div class="col-md-6"><label class="labels">Photo 2</label><input type="text" class="form-control"  name="photo2" value="<?php echo $photo2; ?>"></div>
+								</div>
+								<div class="row mt-2">
+									<div class="col-md-6"><label class="labels">Categorie de l'article (poupees/jeux/insolites)</label><input type="text" class="form-control"  name="typecat" value="<?php echo $categorie_type; ?>"></div>
+
+									<div class="col-md-6"><label class="labels">Categorie d'achat (immediat/negociable/meilleur prix)</label><input type="text" class="form-control"  name="typepaiement" value="<?php echo $categorie_achat; ?>"></div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-md-12"><label class="labels">Description</label>
+										<input type="text" class="form-control" name="description" value="<?php echo $description; ?>">
+									</div>
+								</div>
+
+								<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
+
 							</div>
-
-							<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
-
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
 		</div>
-<br><br><br>
+		<br><br><br>
 
 
 
-<div id="footer">
-	<!--Copyright &copy; 2021 Prime Properties<br> -->
+		<div id="footer">
+			<!--Copyright &copy; 2021 Prime Properties<br> -->
 
-	<dd>
-		<ul>
-			<li>
-				<p align=left>
-					Qui sommes-nous ?<br><br>
-					Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
-					Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
-					<p align=right>
-						Alors nous voila !
-					</p>
-				</p>
-			</li>
-			<li>
-				<p class="contact">Nous contacter: <br><br>
-					<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
-					67 avenue Henri Martin 75016 PARIS<br>
-					02 37 60 03 10<br>
+			<dd>
+				<ul>
+					<li>
+						<p align=left>
+							Qui sommes-nous ?<br><br>
+							Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
+							Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
+							<p align=right>
+								Alors nous voila !
+							</p>
+						</p>
+					</li>
+					<li>
+						<p class="contact">Nous contacter: <br><br>
+							<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
+							67 avenue Henri Martin 75016 PARIS<br>
+							02 37 60 03 10<br>
 
-				</p>
+						</p>
 
-			</li>
-			<li>
-				<p>
-					Instagram des auteurs :<br>
-					<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
-					<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
-					<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
-				</p>
-			</li>
-		</ul>
-	</dd>
-</div>
+					</li>
+					<li>
+						<p>
+							Instagram des auteurs :<br>
+							<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
+							<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
+							<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
+						</p>
+					</li>
+				</ul>
+			</dd>
+		</div>
 
-</div>
+	</div>
 
 </body>
 </html>
