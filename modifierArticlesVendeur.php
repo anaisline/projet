@@ -50,9 +50,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
  	<div id="section" align=center>
 
- 		<h2>Entrer les informations de l article que vous voulez supprimer</h2> 
+ 		<h2>Entrer les informations de l article que vous voulez modifier</h2> 
 
- 		<form action="supprimerArticlesVendeur_2.php" method="post">
+ 		<form action="regarderArticle.php" method="post">
 			<table>
 
 				<tr>
@@ -81,9 +81,17 @@ $id_vendeur=$_SESSION['id_vendeur'];
    				 </td>
    				</tr>
 
+   				<?php
+   				if(isset($_GET['erreur'])){
+				$err = $_GET['erreur'];
+				if($err==1)
+					echo "<p style='color:red'>Cet article n'existe pas.</p>";
+			}
+			?>
+
 				<tr>
 				<td colspan="2" align="center">
-				<input type="submit" name="supprimer" value="supprimer">
+				<input type="submit" name="rechercher" value="rechercher">
 			 	</td>
 
 				</tr>
