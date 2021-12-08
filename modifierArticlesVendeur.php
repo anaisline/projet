@@ -15,7 +15,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="ajouterArticlesVendeur.css" rel="stylesheet" type="text/css"/>
+	<link href="modifArticle.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
