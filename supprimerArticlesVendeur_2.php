@@ -47,6 +47,32 @@ $id_vendeur=$_SESSION['id_vendeur'];
 //il faut recuperer l id de l article pour pouvoir supprimer les photos associees
 							$id_article=$data['id_article'];
 
+							//il faut chercher si l utilisateur a deux photos a suppr ou 1 seule
+							$sql = "SELECT * FROM photo";
+							//avec son nom
+							if ($id_article != "") {
+								$sql .= " WHERE id_article LIKE '%$id_article%'";
+							}
+							$resultArticle = mysqli_query($db_handle, $sql);
+
+							if(mysqli_num_rows($resultArticle) != 1)
+							{
+								$comp=0;
+								do
+								{
+								$sql= "DELETE FROM photo";
+								if ($id_article != " ") {
+									$sql .= " WHERE id_article LIKE '%$id_article%'";	
+
+								}
+								$result =mysqli_query($db_handle, $sql);
+								echo "<p>Suppression de la photo de l article successfull.</p>";
+								$comp++;
+								}while($comp!=2);
+
+							}
+							else
+							{
 
 							$sql= "DELETE FROM photo";
 							if ($id_article != " ") {
@@ -55,6 +81,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 							}
 							$result =mysqli_query($db_handle, $sql);
 							echo "<p>Suppression de la photo de l article successfull.</p>";
+							}
 
 							
 							$sql= "DELETE FROM article_vendeur";
