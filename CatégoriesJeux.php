@@ -108,13 +108,15 @@
                 $resultatNom = $mysqli -> query($requNom);
 
                 $ligne1 = $resultatNom -> fetch_assoc();
+                $var = $ligne1['nom'];
+                $var2 = $ligne1['prenom'];
 
                 ?>
 
                 <tr align=center>
                     <td>
                         <?php
-                        echo $ligne1['nom'];
+                            echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
                         ?>
                     </td>
                     <td>
@@ -202,13 +204,15 @@ $mysqli -> close();
                 $resultatNom = $mysqli -> query($requNom);
 
                 $ligne1 = $resultatNom -> fetch_assoc();
+                $var = $ligne1['nom'];
+                $var2 = $ligne1['prenom'];
 
                 ?>
 
                 <tr align=center>
                     <td>
                         <?php
-                        echo $ligne1['nom'];
+                            echo "<a href='VisiteProfilAdmin.php?nom=".$var."&prenom=".$var2." '>$var</a>";
                         ?>
                     </td>
                     <td>
