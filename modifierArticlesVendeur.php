@@ -60,20 +60,10 @@ $id_vendeur=$_SESSION['id_vendeur'];
         		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer le nom de votre article" />
    				 </td>
    				</tr>
-
-   				<tr>
-    			 <td><label>Description <span class="required">*</span></label></td>
-        		 <td><input type="text" name="description" class="field-long" placeholder="Entrer une description" />
-   				 </td>
-   				</tr>
+>
 
 
-   				<tr>
-    			 <td><label>Prix <span class="required">*</span></label></td>
-        		 <td><input type="int" name="prix" class="field-long" placeholder="Entrer le prix" />
-   				 </td>
-   				</tr>
-
+   				
     			
    				<tr> 
    				 <td><label>Categorie <span class="required">*</span></label></td>
@@ -114,6 +104,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 		</form>
  		
 	</div>
+	<br><br>
 
 	<div id="footer">
 

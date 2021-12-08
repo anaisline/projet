@@ -46,8 +46,8 @@ $db_found = mysqli_select_db($db_handle, $database);
 				<li class="menu-deroulant">
 					<a href="#">Mon compte</a>
 					<ul class="sous-menu">
-						<li><a href="profil.php">Mon profil</a></li>
-						<li><a href="#">Se deconnecter</a></li>
+						<li><a href="profil_vendeur.php">Mon profil</a></li>
+						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
 					</ul>	
 				</li>
 
@@ -78,18 +78,32 @@ $db_found = mysqli_select_db($db_handle, $database);
 		}
 		else
 		{
-			$photo2=" ";
+			$photo2="";
 		}
 
 
 		?>
 
 		<div class="container rounded bg-black mt-8 mb-8">
-			<form action="" method="post">
+			<form action="modifArticle.php" method="post">
 				<div class="row">
 					<div class="col-md-5 ">
 						<div class="d-flex flex-column align-items-center text-center p-3 py-5">
-							<img class="rounded-circle mt-5" width="150px" src= " ">
+							<?php
+							if($photo2=="")
+							{
+								echo "<br>"."<br>"."<br>";
+							}
+							?>
+							<img  width="150px" src= "<?php echo $photo1; ?>">
+							<br>
+							<?php
+							if($photo2!="")
+							{
+								echo "<td>" . "<img src='$photo2' height='120' width='100'>" . "</td>";
+							}
+							?>
+							
 							<span class="font-weight-bold"> </span><span> </span></div>
 
 						</div>
@@ -101,7 +115,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 								<div class="row mt-2">
 									<div class="col-md-6"><label class="labels">Nom de l'article</label><input type="text" class="form-control"  name="nom" value="<?php echo $nom; ?>"></div>
 
-									<div class="col-md-6"><label class="labels">Prix en euros</label><input type="int" class="form-control"  name="prix" value="<?php echo $prix; ?>"></div>
+									<div class="col-md-6"><label class="labels">Prix en euros</label><input type="text" class="form-control"  name="prixArticle" value="<?php echo $prix; ?>"></div>
 								</div>
 								<div class="row mt-2">
 									<div class="col-md-6"><label class="labels">Photo 1</label><input type="text" class="form-control"  name="photo1" value="<?php echo $photo1; ?>"></div>
@@ -111,7 +125,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 								<div class="row mt-2">
 									<div class="col-md-6"><label class="labels">Categorie de l'article (poupees/jeux/insolites)</label><input type="text" class="form-control"  name="typecat" value="<?php echo $categorie_type; ?>"></div>
 
-									<div class="col-md-6"><label class="labels">Categorie d'achat (immediat/negociable/meilleur prix)</label><input type="text" class="form-control"  name="typepaiement" value="<?php echo $categorie_achat; ?>"></div>
+									<div class="col-md-6"><label class="labels">Categorie d'achat (immediat/negociable/meilleur_prix)</label><input type="text" class="form-control"  name="typepaiement" value="<?php echo $categorie_achat; ?>"></div>
 								</div>
 								<div class="row mt-3">
 									<div class="col-md-12"><label class="labels">Description</label>
