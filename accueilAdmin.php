@@ -32,7 +32,7 @@
  			<a href="parcourir.html">Gérer</a>
  			<ul class="sous-menu">
  				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
- 				<li><a href="#">Mes articles</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
  			</ul>
  			</li>
 
