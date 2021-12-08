@@ -112,7 +112,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 											}
 											?>
 
-											<div class="col-md-12" align=center> <input type="submit" class="btn btn-primary profile-button " name ="ajouter" value="Rechercher"> </div>
+											<div class="col-md-12" align=center> <input type="submit" class="btn btn-primary profile-button " name ="ajouter" value="Ajouter"> </div>
 										</div>
 									</div>
 								</form>
