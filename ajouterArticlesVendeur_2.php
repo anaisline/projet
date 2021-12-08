@@ -77,11 +77,62 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 							}while(mysqli_num_rows($resultArticle) != 0);
 
+							 $nb1=1;
+                            $id_photo1=$nb1;
+                            do{
 
-							$sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
+                                $sql = "SELECT * FROM photo";
+                                //ID
+                                if ($id_photo1 != " ") {
+                                $sql .= " WHERE id_photo LIKE '%$id_photo1%'";
+                                }
+                                $resultPhoto1 = mysqli_query($db_handle, $sql);
+
+                                if (mysqli_num_rows($resultPhoto1) != 0)
+                                {
+                                    $nb1++;
+                                    $id_photo1=$nb1;
+                                }
+
+                            }while(mysqli_num_rows($resultPhoto1) != 0);
+
+                            if($photo2 != "")
+                            {
+                                //on defini l id de l acheteur
+                                $nb2=1;
+                                $id_photo2=$nb2;
+                                do{
+
+                                    $sql = "SELECT * FROM photo";
+                                    //ID
+                                    if ($id_photo2 != " ") {
+                                    $sql .= " WHERE id_photo LIKE '%$id_photo2%'";
+                                    }
+                                    $resultPhoto2 = mysqli_query($db_handle, $sql);
+
+                                    if (mysqli_num_rows($resultPhoto2) != 0)
+                                    {
+                                        $nb2++;
+                                        $id_photo2=$nb2;
+                                    }
+
+                                }while(mysqli_num_rows($resultPhoto2) != 0);
+
+                                 $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo1', '$photo1', '$id_article') ";
+                           		 $result =mysqli_query($db_handle, $sql);
+                           		 echo "<p>Add successful article photo 1.</p>";
+
+							
+                                $sql = "INSERT INTO photo (id_photo, adresse_photo, id_article) VALUES ('$id_photo2', '$photo2', '$id_article') ";
+                                $result =mysqli_query($db_handle, $sql);
+                                echo "<p>Add successful article photo 2.</p>";
+
+
+							    $sql = "INSERT INTO article_vendeur(id_article, id_vendeur, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_vendeur', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
 
 							$result =mysqli_query($db_handle, $sql);
 							echo "<p>Add successful article.</p>";
+   
 
 						}
 

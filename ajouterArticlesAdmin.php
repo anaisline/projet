@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
+$id_admin=$_SESSION['id_admin'];
 
 ?>
 
