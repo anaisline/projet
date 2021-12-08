@@ -77,15 +77,16 @@ if (isset($_POST["connexion"])) {
 
 				if($typeCompte=="Acheteur")
 				{
-				//on defini l id de l acheteur
+				//on defini l id de l acheteur //il faut qu un utilisateur que ce soit un acheteur vendeur ou admin il n est pas le meme ID qu un autre utilisateur 
 					$nb=1;
 					$id_acheteur=$nb;
 					do{
 
 						$sql = "SELECT * FROM acheteur";
-				//ID
+			
 						if ($id_acheteur != " ") {
-							$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";
+							$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'" ;
+							
 						}
 						$resultAcheteur = mysqli_query($db_handle, $sql);
 
@@ -96,6 +97,42 @@ if (isset($_POST["connexion"])) {
 						}
 
 					}while(mysqli_num_rows($resultAcheteur) != 0);
+
+					$id_vendeur=$id_acheteur;
+					do{
+
+						$sql = "SELECT * FROM vendeur";
+						//ID
+						if ($id_vendeur != " ") {
+							$sql .= " WHERE id_vendeur LIKE '%$id_vendeur%'";
+								
+						}
+						$resultVendeur = mysqli_query($db_handle, $sql);
+
+						if (mysqli_num_rows($resultVendeur) != 0)
+						{
+							$id_vendeur++;
+						}
+
+					}while(mysqli_num_rows($resultVendeur) != 0);
+
+					$id_final=$id_vendeur;
+					do{
+
+						$sql = "SELECT * FROM administrateur";
+						//ID
+						if ($id_final != " ") {
+							$sql .= " WHERE id_admin LIKE '%$id_final%'";
+						}
+						$resultAdmin = mysqli_query($db_handle, $sql);
+
+						if (mysqli_num_rows($resultAdmin) != 0)
+						{
+							$id_final++;
+						}
+
+					}while(mysqli_num_rows($resultAdmin) != 0);
+
 
 
 				//on defini l id adresse de l acheteur (attention a ce qu il soit different de ceux deja ajouter)
@@ -143,12 +180,12 @@ if (isset($_POST["connexion"])) {
 
 					}while(mysqli_num_rows($resultCB) != 0);
 
-					$sql = "INSERT INTO cb (id_cb, numero_cb, code_secu, type, nom, id_acheteur) VALUES ('$id_cb', NULL, NULL, NULL, NULL, '$id_acheteur',NULL) ";
+					$sql = "INSERT INTO cb (id_cb, numero_cb, code_secu, type, nom, id_acheteur) VALUES ('$id_cb', NULL, NULL, NULL, NULL, '$id_final',NULL) ";
 					$result =mysqli_query($db_handle, $sql);
 					echo "<p>Add successful cb acheteur.</p>";
 
 
-					$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb,photo) VALUES('$id_acheteur', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_adresse','$id_cb',NULL)";
+					$sql = "INSERT INTO acheteur(id_acheteur, nom, prenom, tel, mail, mdp, id_adresse, id_cb,photo) VALUES('$id_final', '$nom', '$prenom',  '$tel','$mail', '$mdp','$id_adresse','$id_cb',NULL)";
 
 					$result =mysqli_query($db_handle, $sql);
 					header('Location: connexionAcheteur.php?');
