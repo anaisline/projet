@@ -36,7 +36,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				<li><a href="accueilVendeur.php">Accueil</a></li>
 
 				<li >
-					<a href="parcourir.html">Gerer mes articles</a>
+					<a href="gererArticlesVendeur.php">Gerer mes articles</a>
 				</li>
 
 
