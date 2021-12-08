@@ -118,6 +118,8 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</form>
  		
 	</div>
+
+
 	<br><br>
 
 	<div id="footer">
