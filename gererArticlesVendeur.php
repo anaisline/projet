@@ -14,99 +14,106 @@ $id_vendeur=$_SESSION['id_vendeur'];
 </head>
 <body>
 	<!-- wrapper area -->
-<div id="wrapper">
+	<div id="wrapper">
 
-	<div id="header">
-		<p>
-			<font>
-				Fray Her
-			</font>
-		</p>
- 	</div>
- 
- 	<div id="nav">
- 		<ul>
- 			<li><a href="accueilVendeur.php">Accueil</a></li>
+		<div id="header">
+			<p>
+				<font>
+					Fray Her
+				</font>
+			</p>
+		</div>
 
- 			<li >
- 			<a href="gererArticlesVendeur.php">Gerer mes articles</a>
- 			</li>
+		<div id="nav">
+			<ul>
+				<li><a href="accueilVendeur.php">Accueil</a></li>
 
- 			
- 			<li><a href="#">Messagerie</a></li>
+				<li >
+					<a href="gererArticlesVendeur.php">Gerer mes articles</a>
+				</li>
 
 
- 			<li class="menu-deroulant">
- 			<a href="#">Mon compte</a>
- 			<ul class="sous-menu">
+				<li><a href="#">Messagerie</a></li>
 
- 				<li><a href="profil_vendeur.php">Mon profil</a></li>
- 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
- 			</ul>	
- 			</li>
- 		
- 		</ul>
 
- 	</div>
+				<li class="menu-deroulant">
+					<a href="#">Mon compte</a>
+					<ul class="sous-menu">
 
- 	<div id="section" align=center>
+						<li><a href="profil_vendeur.php">Mon profil</a></li>
+						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+					</ul>	
+				</li>
+
+			</ul>
+
+		</div>
+
+		<div id="section" align=center>
 
 
 			<table>
 				<tr>
-				<td colspan="2" align="center">
-				<a href="ajouterArticlesVendeur.php"><input type="submit" name="ajouter" value="ajouter"></a>
-				<a href="modifierArticlesVendeur.php"><input type="submit" name="modifier" value="modifier"></a>
-				<a href="supprimerArticlesVendeur.php"><input type="submit" name="supprimer" value="supprimer"></a>
-			 	</td>
+					<td colspan="2" align="center">
+						<br>
+						<button onclick=window.location.href='ajouterArticlesVendeur.php' class="button-6" role="button"> Ajouter un article </button>
+
+						<br> <br> 
+
+						<button onclick=window.location.href='modifierArticlesVendeur.php' class="button-6" role="button"> Modifier un article </button>
+
+						<br> <br> 
+
+						<button onclick=window.location.href='supprimerArticlesVendeur.php' class="button-6" role="button"> Supprimer un article </button>
+					</td>
 
 				</tr>
 
-			
+
 			</table>
-	
- 		
-
-	</div>
-
-	
 
 
 
-	<div id="footer">
+		</div>
 
- 		<dd>
- 			<ul>
- 				<li>
- 					<p align=left>
- 						Qui sommes-nous ?<br><br>
- 						Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
- 						Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
- 						<p align=right>
- 							Alors nous voila !
- 						</p>
- 					</p>
- 				</li>
- 				<li>
- 					<p class="contact">Nous contacter: <br><br>
- 						<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
- 						67 avenue Henri Martin 75016 PARIS<br>
- 						02 37 60 03 10<br>
 
- 					</p>
 
- 				</li>
- 				<li>
- 					<p>
- 						Instagram des auteurs :<br>
- 						<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
- 						<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
- 						<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
- 					</p>
- 				</li>
- 			</ul>
- 		</dd>
- 	</div>
 
-</body>
-</html>
+
+		<div id="footer">
+
+			<dd>
+				<ul>
+					<li>
+						<p align=left>
+							Qui sommes-nous ?<br><br>
+							Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
+							Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
+							<p align=right>
+								Alors nous voila !
+							</p>
+						</p>
+					</li>
+					<li>
+						<p class="contact">Nous contacter: <br><br>
+							<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
+							67 avenue Henri Martin 75016 PARIS<br>
+							02 37 60 03 10<br>
+
+						</p>
+
+					</li>
+					<li>
+						<p>
+							Instagram des auteurs :<br>
+							<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
+							<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
+							<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
+						</p>
+					</li>
+				</ul>
+			</dd>
+		</div>
+
+	</body>
+	</html>
