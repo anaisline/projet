@@ -28,10 +28,10 @@
 				<li class="menu-deroulant">
 					<a href="parcourir.html">Parcourir les categories</a>
 					<ul class="sous-menu">
-						<li><a href="#">Poupees</a></li>
-						<li><a href="#">Jeux</a></li>
-						<li><a href="#">Insolite</a></li>
-						<li><a href="#">Tout parcourir</a></li>
+						<li><a href="CatégoriesPoupées.php">Poupees</a></li>
+						<li><a href="CatégoriesJeux.php">Jeux</a></li>
+						<li><a href="CatégoriesInsolite.php">Insolite</a></li>
+						<li><a href="CatégorieAll.php">Tout parcourir</a></li>
 					</ul>
 				</li>
 

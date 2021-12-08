@@ -27,11 +27,11 @@
 
 <div id="nav">
    <ul>
-    <li><a href="accueil.html">Accueil</a></li>
+    <li><a href="accueil_acheteur.html">Accueil</a></li>
 
     <li class="menu-deroulant">
 
-        <a href="parcourir.html">Parcourir les categories</a>
+        <a href="">Parcourir les categories</a>
         <ul class="sous-menu">
          <li><a href="#">Poupees</a></li>
          <li><a href="#">Jeux</a></li>
@@ -40,9 +40,9 @@
      </ul>
  </li>
 
-<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
+<li><a href="">Messagerie</a></li>
 
-<li><a href="panierSansConnexion.html">Panier</a></li>
+<li><a href="">Panier</a></li>
 
 <li class="menu-deroulant">
     <a href="#">Mon compte</a>

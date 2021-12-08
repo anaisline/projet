@@ -2,7 +2,13 @@
 session_start();
 $id_vendeur=$_SESSION['id_vendeur'];
 
+$database = "shopping";
+//connectez-vous dans BDD
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -39,8 +45,8 @@ $id_vendeur=$_SESSION['id_vendeur'];
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil.php">Mon profil</a></li>
- 				<li><a href="#">Se deconnecter</a></li>
+ 				<li><a href="profil_vendeur.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
  			</ul>	
  			</li>
  		
@@ -54,16 +60,22 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
  		<form action="regarderArticle.php" method="post">
 			<table>
+				<?php
+
+
+						
+
+						$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
+						$result = mysqli_query($db_handle, $sql);
+						$data = mysqli_fetch_assoc($result);
+				?>
 
 				<tr>
     			 <td><label>Nom <span class="required">*</span></label></td>
-        		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer le nom de votre article" />
+        		 <td><input type="text" name="nom" class="field-long" value="<?php echo $data['nom']; ?>" />
    				 </td>
    				</tr>
->
 
-
-   				
     			
    				<tr> 
    				 <td><label>Categorie <span class="required">*</span></label></td>
@@ -95,7 +107,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 				<tr>
 				<td colspan="2" align="center">
-				<input type="submit" name="rechercher" value="rechercher">
+
+				<input type="submit" name="modifier" value="modifier">
+
 			 	</td>
 
 				</tr>

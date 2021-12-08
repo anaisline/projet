@@ -20,13 +20,13 @@
 		
 		<div id="nav">
 			<ul>
-				<li><a href="accueilAdmin.html">Accueil</a></li>
+				<li><a href="accueilAdmin.php">Accueil</a></li>
 
 				<li class="menu-deroulant">
 					<a href="parcourir.html">Gérer</a>
 					<ul class="sous-menu">
 						<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
-						<li><a href="#">Mes articles</a></li>
+						<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
 					</ul>
 				</li>
 
@@ -36,7 +36,7 @@
 				<li class="menu-deroulant">
 					<a href="#">Mon compte</a>
 					<ul class="sous-menu">
-						<li><a href="#">Mon profil</a></li>
+						<li><a href="profil_admin.php">Mon profil</a></li>
 						<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
 					</ul>	
 				</li>

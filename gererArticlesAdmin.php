@@ -9,7 +9,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="ajouterArticlesVendeur.css" rel="stylesheet" type="text/css"/>
+	<link href="gererArticlesVendeur.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -26,21 +26,24 @@ $id_vendeur=$_SESSION['id_vendeur'];
  
  	<div id="nav">
  		<ul>
- 			<li><a href="accueilVendeur.php">Accueil</a></li>
-
- 			<li >
- 			<a href="gererArticlesVendeur.php">Gerer mes articles</a>
+ 			<li><a href="accueilAdmin.php">Accueil</a></li>
+           
+ 			<li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 			</ul>
  			</li>
 
  			
- 			<li><a href="#">Messagerie</a></li>
-
+ 			<li><a href="messagerieAdmin.html">Messagerie</a></li>
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil_vendeur.php">Mon profil</a></li>
- 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+ 				<li><a href="profil_admin.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
  			</ul>	
  			</li>
  		
@@ -50,48 +53,27 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
  	<div id="section" align=center>
 
- 		<h2>Entrer les informations de l article que vous voulez supprimer</h2> 
 
- 		<form action="supprimerArticlesVendeur_2.php" method="post">
 			<table>
-
-				<tr>
-    			 <td><label>Nom <span class="required">*</span></label></td>
-        		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer le nom de votre article" />
-   				 </td>
-   				</tr>
-    			
-   				<tr> 
-   				 <td><label>Categorie <span class="required">*</span></label></td>
-      			  <td><select name="categorie_type" class="field-select" >
-      			  <option value="poupees">Poupees</option>
-      			  <option value="jeux">Jeux</option>
-      			  <option value="insolites">Insolites</option>
-      			  </select>
-   				 </td>
-   				</tr>
-
-   				<tr> 
-   				 <td><label>Type d achat<span class="required">*</span></label></td>
-      			  <td><select name="categorie_achat" class="field-select" >
-      			  <option value="immediat">Immediat</option>
-      			  <option value="negociable">Negociable</option>
-      			  <option value="meilleur_prix">Meilleur prix</option>
-      			  </select>
-   				 </td>
-   				</tr>
-
 				<tr>
 				<td colspan="2" align="center">
-				<input type="submit" name="supprimer" value="supprimer">
+				<a href="ajouterArticlesAdmin.php"><input type="submit" name="ajouter" value="ajouter"></a>
+				<a href="#"><input type="submit" name="modifier" value="modifier"></a>
+				<a href="supprimerArticlesAdmin.php"><input type="submit" name="supprimer" value="supprimer"></a>
 			 	</td>
 
 				</tr>
 
+			
 			</table>
-		</form>
+	
  		
+
 	</div>
+
+	
+
+
 
 	<div id="footer">
 

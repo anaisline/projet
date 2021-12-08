@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
+$id_admin=$_SESSION['id_admin'];
 
 ?>
 
@@ -26,21 +26,24 @@ $id_vendeur=$_SESSION['id_vendeur'];
  
  	<div id="nav">
  		<ul>
- 			<li><a href="accueilVendeur.php">Accueil</a></li>
-
- 			<li >
- 			<a href="gererArticlesVendeur.php">Gerer mes articles</a>
+ 			<li><a href="accueilAdmin.php">Accueil</a></li>
+           
+ 			<li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 			</ul>
  			</li>
 
  			
  			<li><a href="#">Messagerie</a></li>
 
-
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil_vendeur.php">Mon profil</a></li>
- 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+ 				<li><a href="profil_admin.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
  			</ul>	
  			</li>
  		
@@ -50,7 +53,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
  	<div id="section" align=center>
 
- 		<form action="ajouterArticlesVendeur_2.php" method="post">
+ 		<form action="ajouterArticlesAdmin_2.php" method="post">
 			<table>
 
 				<tr>
@@ -61,16 +64,15 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
    				<tr>
     			 <td><label>Photo 1 <span class="required">*</span></label></td>
-        		 <td><input type="text" name="photo1" class="field-long" placeholder="Entrer le lien" />
+        		 <td><input type="text" name="photo1" class="field-long" placeholder="Entrer un lien" />
    				 </td>
    				</tr>
 
    				<tr>
-    			 <td><label>Photo 2</label></td>
-        		 <td><input type="text" name="photo2" class="field-long" placeholder="Entrer le lien" />
+    			 <td><label>Photo 2 <span class="required">*</span></label></td>
+        		 <td><input type="text" name="photo2" class="field-long" placeholder="Entrer un lien" />
    				 </td>
    				</tr>
-
     			
     			<tr>
     			 <td><label>Description <span class="required">*</span></label></td>
@@ -107,7 +109,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
    				<tr>
     			 <td><label>Date <span class="required">*</span></label></td>
-        		 <td><input type="date" name="date_jour" class="field-long" placeholder="Entrer la date" />
+        		 <td><input type="date" name="date" class="field-long" placeholder="Entrer la date" />
    				 </td>
    				</tr>
 
