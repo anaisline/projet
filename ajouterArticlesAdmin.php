@@ -61,6 +61,18 @@ $id_vendeur=$_SESSION['id_vendeur'];
         		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer le nom de votre article" />
    				 </td>
    				</tr>
+
+   				<tr>
+    			 <td><label>Photo 1 <span class="required">*</span></label></td>
+        		 <td><input type="text" name="photo1" class="field-long" placeholder="Entrer un lien" />
+   				 </td>
+   				</tr>
+
+   				<tr>
+    			 <td><label>Photo 2 <span class="required">*</span></label></td>
+        		 <td><input type="text" name="photo2" class="field-long" placeholder="Entrer un lien" />
+   				 </td>
+   				</tr>
     			
     			<tr>
     			 <td><label>Description <span class="required">*</span></label></td>
