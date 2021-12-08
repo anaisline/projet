@@ -2,7 +2,13 @@
 session_start();
 $id_vendeur=$_SESSION['id_vendeur'];
 
+$database = "shopping";
+//connectez-vous dans BDD
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -39,8 +45,8 @@ $id_vendeur=$_SESSION['id_vendeur'];
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil.php">Mon profil</a></li>
- 				<li><a href="#">Se deconnecter</a></li>
+ 				<li><a href="profil_vendeur.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
  			</ul>	
  			</li>
  		
@@ -50,16 +56,52 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
  	<div id="section" align=center>
 
- 		<h2>Entrer les informations de l article que vous voulez supprimer</h2> 
+ 		<h2>Entrer les informations de l article que vous voulez modifier</h2> 
 
  		<form action="supprimerArticlesVendeur_2.php" method="post">
 			<table>
+				<?php
+
+
+						
+
+						$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
+						$result = mysqli_query($db_handle, $sql);
+						$data = mysqli_fetch_assoc($result);
+				?>
 
 				<tr>
     			 <td><label>Nom <span class="required">*</span></label></td>
-        		 <td><input type="text" name="nom" class="field-long" placeholder="Entrer le nom de votre article" />
+        		 <td><input type="text" name="nom" class="field-long" value="<?php echo $data['nom']; ?>" />
    				 </td>
    				</tr>
+
+   				
+   				<tr>
+    			 <td><label>Photo 1 <span class="required">*</span></label></td>
+        		 <td><input type="text" name="photo1" class="field-long" value = "a voir" />
+   				 </td>
+   				</tr>
+
+   				<tr>
+    			 <td><label>Photo 2</label></td>
+        		 <td><input type="text" name="photo2" class="field-long" placeholder="Entrer le lien" />
+   				 </td>
+   				</tr>
+
+   				<tr>
+    			 <td><label>Description <span class="required">*</span></label></td>
+        		 <td><input type="text" name="description" class="field-long" value="<?php echo $data['description']; ?>" />
+   				 </td>
+   				</tr>
+
+
+   				<tr>
+    			 <td><label>Prix <span class="required">*</span></label></td>
+        		 <td><input type="int" name="prix" class="field-long" value="<?php echo $data['prix'];?>" />
+   				 </td>
+   				</tr>
+
     			
    				<tr> 
    				 <td><label>Categorie <span class="required">*</span></label></td>
@@ -83,7 +125,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 				<tr>
 				<td colspan="2" align="center">
-				<input type="submit" name="supprimer" value="supprimer">
+				<input type="submit" name="modifier" value="modifier">
 			 	</td>
 
 				</tr>
