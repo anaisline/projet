@@ -76,14 +76,14 @@ $id_vendeur=$_SESSION['id_vendeur'];
 							$sql= "DELETE FROM photo";
 							if ($id_article != " ") {
 								$sql .= " WHERE id_article LIKE '%$id_article%'";	
-
+                                          
 							}
 							$result =mysqli_query($db_handle, $sql);
 							echo "<p>Suppression de la photo de l article successfull.</p>";
 							}
 
 							
-						echo "<p>Vous possedez deja un article qui possede ce nom donc on  peut le supprimer</p>";
+						
 
 							//il faut recuperer l id de l article puis supprimer les photos associees
 							$id_article=$data['id_article'];
