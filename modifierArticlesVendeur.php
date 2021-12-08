@@ -14,8 +14,9 @@ $db_found = mysqli_select_db($db_handle, $database);
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<meta charset="utf-8">
-	<link href="modifArticle.css" rel="stylesheet" type="text/css"/>
+	<link href="modif.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -29,10 +30,14 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</font>
 		</p>
  	</div>
- 
+
+ 	<br>
+
+
+
  	<div id="nav">
  		<ul>
- 			<li><a href="accueilVendeur.php">Accueil</a></li>
+ 			<li><a href="profil_vendeur.php">Accueil</a></li>
 
  			<li >
  			<a href="gererArticlesVendeur.php">Gerer mes articles</a>
@@ -54,73 +59,64 @@ $db_found = mysqli_select_db($db_handle, $database);
 
  	</div>
 
- 	<div id="section" align=center>
-
- 		<h2>Entrer les informations de l article que vous voulez modifier</h2> 
-
- 		<form action="regarderArticle.php" method="post">
-			<table>
-				<?php
 
 
-						
 
-						$sql = "SELECT * from vendeur WHERE (id_vendeur = '$id_vendeur')";
-						$result = mysqli_query($db_handle, $sql);
-						$data = mysqli_fetch_assoc($result);
-				?>
-
-				<tr>
-    			 <td><label>Nom <span class="required">*</span></label></td>
-        		 <td><input type="text" name="nom" class="field-long" value="<?php echo $data['nom']; ?>" />
-   				 </td>
-   				</tr>
-
-    			
-   				<tr> 
-   				 <td><label>Categorie <span class="required">*</span></label></td>
-      			  <td><select name="categorie_type" class="field-select" >
-      			  <option value="poupees">Poupees</option>
-      			  <option value="jeux">Jeux</option>
-      			  <option value="insolites">Insolites</option>
-      			  </select>
-   				 </td>
-   				</tr>
-
-   				<tr> 
-   				 <td><label>Type d achat<span class="required">*</span></label></td>
-      			  <td><select name="categorie_achat" class="field-select" >
-      			  <option value="immediat">Immediat</option>
-      			  <option value="negociable">Negociable</option>
-      			  <option value="meilleur_prix">Meilleur prix</option>
-      			  </select>
-   				 </td>
-   				</tr>
-
-   				<?php
+ 	<div class="container">] <div class=" text-center mt-5 ">
+        <h2>Modifier un article</h2>
+    </div>
+    <form action="regarderArticle.php" method="post">
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form id="contact-form" role="form">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Nom </label> <input id="form_name" type="text" name="nom" class="form-control" placeholder="Entrez le nom de l'article" required="required" data-error="Le nom de l'article est requis."> </div>
+                                    </div>
+                                   <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_need">Categorie</label> <select id="form_need" name="categorie_type" class="form-control" required="required" data-error="Entrez la categorie.">
+                                                <option>poupees</option>
+                                                <option>jeux</option>
+                                                <option>insolites</option>
+                                            </select> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_need">Type d'achat</label> <select id="form_need" name="categorie_achat" class="form-control" required="required" data-error="Please specify your need.">
+                                                <option>immediat</option>
+                                                <option>negociable</option>
+                                                <option>meilleur_prix</option>
+                                            </select> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<?php
    				if(isset($_GET['erreur'])){
 				$err = $_GET['erreur'];
 				if($err==1)
 					echo "<p style='color:red'>Cet article n'existe pas.</p>";
 			}
 			?>
-
-				<tr>
-				<td colspan="2" align="center">
-
-				<input type="submit" name="modifier" value="modifier">
-
-			 	</td>
-
-				</tr>
-
-			</table>
-		</form>
- 		
-	</div>
+                                    
+                                    <div class="col-md-12" align=center> <input type="submit" class="btn btn-primary profile-button " name ="buton5" value="Rechercher"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</form>
+</div>
 
 
-	<br><br>
 
 	<div id="footer">
 
