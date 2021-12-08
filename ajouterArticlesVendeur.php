@@ -107,7 +107,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
    				<tr>
     			 <td><label>Date <span class="required">*</span></label></td>
-        		 <td><input type="date" name="date_jour" class="field-long" placeholder="Entrer la date" />
+        		 <td><input type="date" name="date" class="field-long" placeholder="Entrer la date" />
    				 </td>
    				</tr>
 
