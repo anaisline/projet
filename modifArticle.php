@@ -36,7 +36,7 @@ if ($db_found) {
 	if($photo1!="")
 	{
 		$sql2 = "SELECT * from photo WHERE id_article='$id_articleAModif'";
-		$result2 = mysqli_query($db_handle, $sql2);
+		$result2 = mysqli_query($db_handle, $sql2); 
 		$data= mysqli_fetch_assoc($result2);
 		$adresse1=$data['adresse_photo'];
 
