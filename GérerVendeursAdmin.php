@@ -41,6 +41,7 @@ if ($erreur == "") {
 				}
 			}
 			$result = mysqli_query($db_handle, $sql);
+			$data=mysqli_fetch_assoc($result);
 
 			if (mysqli_num_rows($result) != 0) {
 				echo "<p>Le vendeur existe déjà.</p>";
@@ -67,7 +68,8 @@ if ($erreur == "") {
 
 				}while(mysqli_num_rows($resultVendeur) != 0);
 
-				$sql = "INSERT INTO vendeur(id_vendeur, mail, mdp, description, photo, nom, prenom, id_adresse, tel) VALUES('$id_vendeur', '$mail', '', '', '', '$nom', '$prenom', '0', '0')";
+				
+				$sql = "INSERT INTO vendeur(id_vendeur, mail, mdp, description, photo, nom, prenom, id_adresse, tel) VALUES('$id_vendeur', '$mail', '', '', '', '$nom', '$prenom', '$id_adresse', '0')";
 		        $result = mysqli_query($db_handle, $sql);
 		        echo "$sql";
 		        echo "<p>Add successful.</p>";
@@ -76,6 +78,33 @@ if ($erreur == "") {
 		}
 
 		if (isset($_POST["bouton2"])){
+
+			$sql= "SELECT * from vendeur";
+			if ($mail != "") {
+				$sql .= " WHERE mail LIKE '%$mail%'";
+				if ($prenom != "") {
+					$sql .= " AND prenom LIKE '%$prenom%'";   
+					if($nom != ""){
+						$sql .= " AND nom LIKE '%$nom%'";
+					}
+				}
+			}
+			$resultVendeur = mysqli_query($db_handle, $sql);
+			$data=mysqli_fetch_assoc($resultVendeur);
+
+		
+			if(mysqli_num_rows($resultVendeur) != 0 )
+			{
+
+			$id_adresse=$data['id_adresse'];
+
+			if($id_adresse != NULL)
+			{
+				$sql= "DELETE from adresse WHERE id_adresse LIKE '%$id_adresse%'";
+				$result1 = mysqli_query($db_handle, $sql);
+				echo "delete adresse";
+			}
+
 			$sql= "DELETE from vendeur";
 			if ($mail != "") {
 				$sql .= " WHERE mail LIKE '%$mail%'";
@@ -86,13 +115,19 @@ if ($erreur == "") {
 					}
 				}
 			}
-			$result = mysqli_query($db_handle, $sql);
+			$result1 = mysqli_query($db_handle, $sql);
+
+			}
+			else
+			{
+				echo "on ne trouve pas de vendeurs avec ses informations";
+			}
 
 		}
 	}
 	else
 	{
-		echo "BDD ne fonctionne pas ";
+		echo "Probleme de connexion avec la BDD";
 	}
 
 
