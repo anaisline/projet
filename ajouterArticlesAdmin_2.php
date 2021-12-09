@@ -64,23 +64,42 @@ $id_admin=$_SESSION['id_admin'];
 						{
 							//on defini l id de l acheteur
 							$nb=1;
-							$id_article=$nb;
+							$id_articleA=$nb;
 							do{
 				
 								$sql = "SELECT * FROM article_admin";
 								//ID
-								if ($id_article != " ") {
-								$sql .= " WHERE id_article LIKE '%$id_article%'";
+								if ($id_articleA != " ") {
+								$sql .= " WHERE id_article LIKE '%$id_articleA%'";
 								}
 								$resultArticle = mysqli_query($db_handle, $sql);
 
 								if (mysqli_num_rows($resultArticle) != 0)
 								{
 									$nb++;
-									$id_article=$nb;
+									$id_articleA=$nb;
 								}
 
 							}while(mysqli_num_rows($resultArticle) != 0);
+
+							$id_article=$id_articleA;
+						
+							do{
+
+							$sql = "SELECT * FROM article_vendeur";
+							//ID
+							if ($id_article != " ") {
+								$sql .= " WHERE id_article LIKE '%$id_article%'";
+								
+								}
+							$resultVendeur = mysqli_query($db_handle, $sql);
+
+								if (mysqli_num_rows($resultVendeur) != 0)
+								{
+									$id_article++;
+								}
+
+							}while(mysqli_num_rows($resultVendeur) != 0);
 
 							$nb1=1;
                             $id_photo1=$nb1;
