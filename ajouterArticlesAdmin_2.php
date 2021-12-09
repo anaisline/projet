@@ -49,7 +49,7 @@ $id_admin=$_SESSION['id_admin'];
 
 					if ($db_found) {
 
-						//on cherche si un compte avec cet email existe deja parmi les acheteurs
+						//on cherche si un article avec ce nom existe deja parmi les vendeurs
 						$sql = "SELECT * FROM article_admin";
 						//avec son nom
 						if ($nom != "") {
@@ -57,7 +57,17 @@ $id_admin=$_SESSION['id_admin'];
 						}
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
-						if (mysqli_num_rows($resultArticle) != 0 ) {
+
+						//on cherche si un article avec ce nom existe deja parmi les admin
+						$sql = "SELECT * FROM article_vendeur";
+						//avec son nom
+						if ($nom != "") {
+							$sql .= " WHERE nom LIKE '%$nom%'";
+						}
+						$resultArticleV = mysqli_query($db_handle, $sql);
+						//regarder s'il y a de resultat
+
+						if (mysqli_num_rows($resultArticle) != 0 || mysqli_num_rows($resultArticleV) != 0) {
 							header('Location: ajouterArticlesAdmins.php?erreur=3');
 						}
 						else
