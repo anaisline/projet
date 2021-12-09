@@ -58,7 +58,7 @@ $id_admin=$_SESSION['id_admin'];
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
 						if (mysqli_num_rows($resultArticle) != 0 ) {
-							echo "<p>Vous possedez deja un article qui possede ce nom</p>";
+							header('Location: ajouterArticlesAdmins.php?erreur=3');
 						}
 						else
 						{
@@ -138,14 +138,14 @@ $id_admin=$_SESSION['id_admin'];
 							$sql = "INSERT INTO article_admin(id_article, id_admin, prix, nom, description, categorie_type, categorie_achat, date) VALUES ('$id_article', '$id_admin', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date') ";
 
 							$result =mysqli_query($db_handle, $sql);
-							echo "<p>Add successful article.</p>";
+							header('Location: gererArticlesAdmin.php?');
 
 						}
 					}
 				}
 				else
 				{
-					echo "Erreur: <br>" . $erreur;
+					header('Location: ajouterArticlesAdmin.php?erreur=2');
 				}
 
 			}

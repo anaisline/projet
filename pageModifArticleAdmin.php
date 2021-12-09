@@ -1,13 +1,13 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
-$id_articleAModif=$_SESSION['id_articleAModif'];
-$database = "shopping";
+$id_admin=$_SESSION['id_admin'];
+$id_articleAModif=$_SESSION['id_articleAModifAdmin'];
 //connectez-vous dans BDD
+$database = "shopping";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
-
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -19,45 +19,46 @@ $db_found = mysqli_select_db($db_handle, $database);
 	<title>Fray Her</title>
 </head>
 <body>
-
 	<!-- wrapper area -->
-	<div id="wrapper">
+<div id="wrapper">
 
-		<div id="header">
-			<p>
-				<font>
-					Fray Her
-				</font>
-			</p>
-		</div>
-		<br>
-		<div id="nav">
-			<ul>
-				<li><a href="accueilVendeur.php">Accueil</a></li>
+	<div id="header">
+		<p>
+			<font>
+				Fray Her
+			</font>
+		</p>
+ 	</div>
+ <br>
+ 	<div id="nav">
+ 		<ul>
+ 			<li><a href="accueilAdmin.php">Accueil</a></li>
+           
+ 			<li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 			</ul>
+ 			</li>
 
-				<li >
-					<a href="gererArticlesVendeur.php">Gerer mes articles</a>
-				</li>
+ 			
 
+ 			<li class="menu-deroulant">
+ 			<a href="#">Mon compte</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="profil_admin.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
+ 			</ul>	
+ 			</li>
+ 		
+ 		</ul>
 
+ 	</div>
 
+ 	<?php 
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="profil_vendeur.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-					</ul>	
-				</li>
-
-			</ul>
-
-		</div>
-
-
-		<?php 
-
-		$sql = "SELECT * from article_vendeur WHERE id_article='$id_articleAModif'";
+		$sql = "SELECT * from article_admin WHERE id_article='$id_articleAModif'";
 		$result = mysqli_query($db_handle, $sql);
 		$data= mysqli_fetch_assoc($result);
 		$nom = $data['nom'];
@@ -84,7 +85,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 		?>
 
 		<div class="container rounded bg-black mt-8 mb-8">
-			<form action="modifArticle.php" method="post">
+			<form action="modifArticleAdmin.php" method="post">
 				<div class="row">
 					<div class="col-md-5 ">
 						<div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -142,45 +143,44 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</div>
 		<br><br><br>
 
+	
 
 
-		<div id="footer">
-			<!--Copyright &copy; 2021 Prime Properties<br> -->
 
-			<dd>
-				<ul>
-					<li>
-						<p align=left>
-							Qui sommes-nous ?<br><br>
-							Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
-							Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
-							<p align=right>
-								Alors nous voila !
-							</p>
-						</p>
-					</li>
-					<li>
-						<p class="contact">Nous contacter: <br><br>
-							<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
-							67 avenue Henri Martin 75016 PARIS<br>
-							02 37 60 03 10<br>
+	<div id="footer">
 
-						</p>
+ 		<dd>
+ 			<ul>
+ 				<li>
+ 					<p align=left>
+ 						Qui sommes-nous ?<br><br>
+ 						Nous sommes un groupe d'étudiants qui avons<br> pour but de créer un site internet pour vous permettre de<br> faire votre shopping facilement.<br>
+ 						Nous avons réfléchi à ce dont vous pourriez avoir<br> besoin et il nous est apparu que nous avons beaucoup <br>de difficultés à faire hanter les personnes qui le méritent...<br>
+ 						<p align=right>
+ 							Alors nous voila !
+ 						</p>
+ 					</p>
+ 				</li>
+ 				<li>
+ 					<p class="contact">Nous contacter: <br><br>
+ 						<a href="mailto:paris.shopping@gmail.com">paris.shopping@gmail.com</a><br>
+ 						67 avenue Henri Martin 75016 PARIS<br>
+ 						02 37 60 03 10<br>
 
-					</li>
-					<li>
-						<p>
-							Instagram des auteurs :<br>
-							<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
-							<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
-							<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
-						</p>
-					</li>
-				</ul>
-			</dd>
-		</div>
+ 					</p>
 
-	</div>
+ 				</li>
+ 				<li>
+ 					<p>
+ 						Instagram des auteurs :<br>
+ 						<br> <a href="https://www.instagram.com/anaisline_/" class="button">> anaisline_</a>
+ 						<br> <a href="https://www.instagram.com/marine_rhd/" class="button">> marine_rhd</a>
+ 						<br> <a href="https://www.instagram.com/benji.lvld/" class="button">> benji.lvld</a>
+ 					</p>
+ 				</li>
+ 			</ul>
+ 		</dd>
+ 	</div>
 
 </body>
 </html>

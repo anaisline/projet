@@ -1,14 +1,8 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
-
-$database = "shopping";
-//connectez-vous dans BDD
-$db_handle = mysqli_connect('localhost', 'root', '');
-$db_found = mysqli_select_db($db_handle, $database);
+$id_admin=$_SESSION['id_admin'];
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -30,27 +24,28 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</font>
 		</p>
  	</div>
-
  	<br>
-
-
-
+ 
  	<div id="nav">
  		<ul>
- 			<li><a href="profil_vendeur.php">Accueil</a></li>
-
- 			<li >
- 			<a href="gererArticlesVendeur.php">Gerer mes articles</a>
+ 			<li><a href="accueilAdmin.php">Accueil</a></li>
+           
+ 			<li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 			</ul>
  			</li>
 
  			
-
+ 			<li><a href="messagerieAdmin.html">Messagerie</a></li>
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil_vendeur.php">Mon profil</a></li>
- 				<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+ 				<li><a href="profil_admin.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
  			</ul>	
  			</li>
  		
@@ -59,12 +54,10 @@ $db_found = mysqli_select_db($db_handle, $database);
  	</div>
 
 
-
-
  	<div class="container">] <div class=" text-center mt-5 ">
         <h2>Modifier un article</h2>
     </div>
-    <form action="regarderArticle.php" method="post">
+    <form action="regarderArticleAdmin.php" method="post">
     <div class="row ">
         <div class="col-lg-7 mx-auto">
             <div class="card mt-2 mx-auto p-4 bg-light">
@@ -114,7 +107,6 @@ $db_found = mysqli_select_db($db_handle, $database);
     </div>
 </form>
 </div>
-
 
 
 	<div id="footer">

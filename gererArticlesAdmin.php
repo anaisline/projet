@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
+$id_admin=$_SESSION['id_admin'];
 
 ?>
 
@@ -37,7 +37,6 @@ $id_vendeur=$_SESSION['id_vendeur'];
  			</li>
 
  			
- 			<li><a href="messagerieAdmin.html">Messagerie</a></li>
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
@@ -56,15 +55,22 @@ $id_vendeur=$_SESSION['id_vendeur'];
 
 			<table>
 				<tr>
-				<td colspan="2" align="center">
-				<a href="ajouterArticlesAdmin.php"><input type="submit" name="ajouter" value="ajouter"></a>
-				<a href="#"><input type="submit" name="modifier" value="modifier"></a>
-				<a href="supprimerArticlesAdmin.php"><input type="submit" name="supprimer" value="supprimer"></a>
-			 	</td>
+					<td colspan="2" align="center">
+						<br>
+						<button onclick=window.location.href='ajouterArticlesAdmin.php' class="button-6" role="button"> Ajouter un article </button>
+
+						<br> <br> 
+
+						<button onclick=window.location.href='modifierArticlesAdmin.php' class="button-6" role="button"> Modifier un article </button>
+
+						<br> <br> 
+
+						<button onclick=window.location.href='supprimerArticlesAdmin.php' class="button-6" role="button"> Supprimer un article </button>
+					</td>
 
 				</tr>
 
-			
+
 			</table>
 	
  		
