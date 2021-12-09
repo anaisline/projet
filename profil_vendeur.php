@@ -40,7 +40,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				</li>
 
 
-				<li><a href="#">Messagerie</a></li>
+	
 
 
 				<li class="menu-deroulant">

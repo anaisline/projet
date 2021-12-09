@@ -43,7 +43,6 @@ $db_found = mysqli_select_db($db_handle, $database);
  			</li>
 
  			
- 			<li><a href="messagerieAdmin.html">Messagerie</a></li>
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>

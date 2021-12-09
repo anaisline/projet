@@ -33,7 +33,6 @@ $id_vendeur=$_SESSION['id_vendeur'];
 				</li>
 
 
-				<li><a href="#">Messagerie</a></li>
 
 
 				<li class="menu-deroulant">
