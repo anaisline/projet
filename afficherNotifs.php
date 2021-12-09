@@ -7,6 +7,7 @@ $database = "shopping";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 		<br>
 		<div id="nav">
 			<ul>
-				<li><a href="accueil_acheteur.php">Accueil</a></li>
+				<li><a href="accueilAcheteur.php">Accueil</a></li>
 
 				<li class="menu-deroulant">
 
@@ -65,100 +66,74 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 			$sql = "SELECT * from alerte WHERE id_acheteur='$id_acheteur'";
 			$results = mysqli_query($db_handle, $sql); 
-			$data = mysqli_num_rows($results);
+			$data = mysqli_fetch_assoc($results);
 			if ($data != 0 ) {
+
 				//affichage des articles trouvés selon les alertes
-				do
-				{
+			
 					///ALERTE n°i : on recupere les infos et on affiche l'alerte
-					$mot_cle_1 = $data['mot_cle_1'];
-					$mot_cle_2 = $data['mot_cle_2'];
-					$mot_cle_3 = $data['mot_cle_3'];
-					$categorie_type = $data['categorie_type'];
-					$categorie_achat = $data['categorie_achat'];
+				$mot_cle_1 = $data['mot_cle_1'];
+				$mot_cle_2 = $data['mot_cle_2'];
+				$mot_cle_3 = $data['mot_cle_3'];
+				$categorie_type = $data['categorie_type'];
+				$categorie_achat = $data['categorie_achat'];
 
 					///ON TROUVE LES ARTICLES VENDEUR AVEC LES MEMES INFOS
-					$sql21= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and description LIKE '%'$mot_cle_1'%'";
-					$results21 = mysqli_query($db_handle, $sql);
-					$data21 = mysqli_num_rows($results21);
+				if($mot_cle_2!="" && $mot_cle_3!="")
+				{ echo "cc1";
+					$data2=0;
+					$data21=0;
+					$data3=0;
+					$data31=0;
 
-					$sql211= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and nom LIKE '%'$mot_cle_1'%'";
-					$results211 = mysqli_query($db_handle, $sql); 
-					$data211 = mysqli_num_rows($results211);
+					$sql1= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(description LIKE '%'$mot_cle_3'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_3'%'))";
+					$results1 = mysqli_query($db_handle, $sql1);
+					$data1 = mysqli_fetch_assoc($results1);
 
-					if($mot_cle_2!="")
+					$sql11= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(description LIKE '%'$mot_cle_3'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_3'%'))";
+					$results11 = mysqli_query($db_handle, $sql11);
+					$data11 = mysqli_fetch_assoc($results11);
+				}
+				else
+				{ 
+					$data1=0;
+					$data11=0;
+
+					if($mot_cle_2!="" && $mot_cle_3=="")
 					{
-						$sql22= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and description LIKE '%'$mot_cle_2'%'";
-						$results22 = mysqli_query($db_handle, $sql); 
-						$data22 = mysqli_num_rows($results22);
+						$data3=0;
+						$data31=0;
 
-						$sql221= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and nom LIKE '%'$mot_cle_2'%'";
-						$results221 = mysqli_query($db_handle, $sql); 
-						$data221 = mysqli_num_rows($results221);
-					}
-					if($mot_cle_3!="")
-					{
-						$sql23= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and description LIKE '%'$mot_cle_3'%'";
-						$results23 = mysqli_query($db_handle, $sql); 
-						$data23 = mysqli_num_rows($results23);
-
-						$sql231= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and nom LIKE '%'$mot_cle_1'%'";
-						$results231 = mysqli_query($db_handle, $sql); 
-						$data231 = mysqli_num_rows($results231);
-					}
-
-					///ON TROUVE LES ARTICLES ADMIN AVEC LES MEMES INFOS
-					$sql31= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and description LIKE '%'$mot_cle_1'%'";
-					$results31 = mysqli_query($db_handle, $sql); 
-					$data31 = mysqli_num_rows($results31);
-
-					$sql311= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and nom LIKE '%'$mot_cle_1'%'";
-					$results311 = mysqli_query($db_handle, $sql); 
-					$data311 = mysqli_num_rows($results311);
-
-					if($mot_cle_2!="")
-					{
-						$sql32= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and description LIKE '%'$mot_cle_2'%'";
-						$results32 = mysqli_query($db_handle, $sql); 
-						$data32 = mysqli_num_rows($results32);
-
-						$sql321= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and nom LIKE '%'$mot_cle_2'%'";
-						$results321 = mysqli_query($db_handle, $sql); 
-						$data321 = mysqli_num_rows($results321);
+						$sql2= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%'))";
+						$results2 = mysqli_query($db_handle, $sql2);
+						$data2 = mysqli_fetch_assoc($results2);
+						/*
+						$sql21= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%'))";
+						$results21 = mysqli_query($db_handle, $sql21);
+						$data21 = mysqli_fetch_assoc($results21);*/
 					}
 					else
 					{
-						$data32 =0;
-						$data321 = 0;
+						$data2=0;
+						$data21=0;
+
+						$sql3= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_1'%'))";
+						$results3 = mysqli_query($db_handle, $sql3);
+						$data3 = mysqli_fetch_assoc($results3);
+
+						$sql31= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_1'%'))";
+						$results31 = mysqli_query($db_handle, $sql31);
+						$data31 = mysqli_fetch_assoc($results31);
 					}
-					if($mot_cle_3!="")
-					{
-						$sql33= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and description LIKE '%'$mot_cle_3'%'";
-						$results33 = mysqli_query($db_handle, $sql); 
-						$data33 = mysqli_num_rows($results33);
+				}
 
-						$sql331= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and nom LIKE '%'$mot_cle_1'%'";
-						$results331 = mysqli_query($db_handle, $sql); 
-						$data331 = mysqli_num_rows($results331);
-					}
-					else
-					{
-						$data33 =0;
-						$data331 = 0;
-					}
-
-					
-
-					///ON LES AFFICHE S IL Y EN A (s'il y en a pas on affiche patience...)
-					if($data21==0 && $data211==0 && $data22==0 && $data221==0 && $data23==0 && $data231==0 && $data31==0 && $data311==0 && $data32==0 && $data321==0 && $data33==0 && $data331==0)
-					{
-						echo "Vous n'avez pas de notifications." ;
-					}
+				if($data1==0 && $data2==0 && $data3==0 && $data11==0 && $data21==0 && $data31==0)
+				{
+					echo "Vous n'avez pas de notification" ;
+				}
 
 
-					///ON PASSE A L ALERTE SUIVANTE S IL Y EN A UNE
-					$data = mysqli_num_rows($results);
-				}while($data);
+				
 				
 			}
 			else //pas d'alerte encore créées 
