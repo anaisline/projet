@@ -40,7 +40,7 @@
      </ul>
  </li>
 
-<li><a href="formulaire_notifs.php">Notifications</a></li>
+<li><a href="notifications.php">Notifications</a></li>
 
 <li><a href="">Panier</a></li>
 

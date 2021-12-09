@@ -63,9 +63,9 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 
 <div class="container">] <div class=" text-center mt-5 ">
-        <h2>Creer une alerte</h2>
+        <h2>Supprimer une alerte</h2>
     </div>
-    <form action="creerAlerte.php" method="post">
+    <form action="suppAlerte.php" method="post">
     <div class="row ">
         <div class="col-lg-7 mx-auto">
             <div class="card mt-2 mx-auto p-4 bg-light">
@@ -105,16 +105,17 @@ $db_found = mysqli_select_db($db_handle, $database);
                                             </select> </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                 	<?php
 											if(isset($_GET['erreur'])){
 												$err = $_GET['erreur'];
 												if($err==1)
-													echo "<p style='color:red'>Cette alerte existe deja.</p>";
+													echo "<p style='color:red'>Cette alerte n'existe pas.</p>";
 											}
 											?>
                                     
-                                    <div class="col-md-12" align=center> <input type="submit" class="btn btn-primary profile-button " name ="creer" value="Creer"> </div>
+                                    <div class="col-md-12" align=center> <input type="submit" class="btn btn-primary profile-button " name ="supp" value="Supprimer"> </div>
                                 </div>
                             </div>
                         </form>

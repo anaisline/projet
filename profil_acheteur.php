@@ -46,7 +46,7 @@ $db_found = mysqli_select_db($db_handle, $database);
      </ul>
  </li>
 
-<li><a href="formulaire_notifs.php">Messagerie</a></li>
+<li><a href="notifications.php">Messagerie</a></li>
 
 <li><a href="">Panier</a></li>
 
