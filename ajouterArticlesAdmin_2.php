@@ -49,7 +49,7 @@ $id_admin=$_SESSION['id_admin'];
 
 					if ($db_found) {
 
-						//on cherche si un compte avec cet email existe deja parmi les acheteurs
+						//on cherche si un article avec ce nom existe deja parmi les vendeurs
 						$sql = "SELECT * FROM article_admin";
 						//avec son nom
 						if ($nom != "") {
@@ -57,30 +57,59 @@ $id_admin=$_SESSION['id_admin'];
 						}
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
-						if (mysqli_num_rows($resultArticle) != 0 ) {
+
+						//on cherche si un article avec ce nom existe deja parmi les admin
+						$sql = "SELECT * FROM article_vendeur";
+						//avec son nom
+						if ($nom != "") {
+							$sql .= " WHERE nom LIKE '%$nom%'";
+						}
+						$resultArticleV = mysqli_query($db_handle, $sql);
+						//regarder s'il y a de resultat
+
+						if (mysqli_num_rows($resultArticle) != 0 || mysqli_num_rows($resultArticleV) != 0) {
 							header('Location: ajouterArticlesAdmins.php?erreur=3');
 						}
 						else
 						{
 							//on defini l id de l acheteur
 							$nb=1;
-							$id_article=$nb;
+							$id_articleA=$nb;
 							do{
 				
 								$sql = "SELECT * FROM article_admin";
 								//ID
-								if ($id_article != " ") {
-								$sql .= " WHERE id_article LIKE '%$id_article%'";
+								if ($id_articleA != " ") {
+								$sql .= " WHERE id_article LIKE '%$id_articleA%'";
 								}
 								$resultArticle = mysqli_query($db_handle, $sql);
 
 								if (mysqli_num_rows($resultArticle) != 0)
 								{
 									$nb++;
-									$id_article=$nb;
+									$id_articleA=$nb;
 								}
 
 							}while(mysqli_num_rows($resultArticle) != 0);
+
+							$id_article=$id_articleA;
+						
+							do{
+
+							$sql = "SELECT * FROM article_vendeur";
+							//ID
+							if ($id_article != " ") {
+								$sql .= " WHERE id_article LIKE '%$id_article%'";
+								
+								}
+							$resultVendeur = mysqli_query($db_handle, $sql);
+
+								if (mysqli_num_rows($resultVendeur) != 0)
+								{
+									$id_article++;
+								}
+
+							}while(mysqli_num_rows($resultVendeur) != 0);
 
 							$nb1=1;
                             $id_photo1=$nb1;
