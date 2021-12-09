@@ -118,8 +118,11 @@ td > input{
   margin-left: 10px;
 }
 
-table{
+form > table{
   color: black;
+  width: 900px;
+  height: 250px;
+  margin-bottom: 30px;
 }
 
 th{

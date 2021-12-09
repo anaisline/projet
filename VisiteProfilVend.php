@@ -94,17 +94,15 @@ $db_found = mysqli_select_db($db_handle, $database);
 				if($err==1)
 					echo "<p style='color:red'>Ce mail existe deja.</p>";
 			}
-			?>
-
-			<form action="CatégoriesPoupéesBdd.php">
-		        <?php
-		        $valeur = $data['id_vendeur'];
-		        $requeteVend = "SELECT * from article_vendeur where $valeur = article_vendeur.id_vendeur";
-		        $resultat = mysqli_query($db_handle, $requeteVend);
-		                //afficher le resultat
-		        while ($ligne = $resultat -> fetch_assoc()) {
-		            ?>
-
+			
+	        $valeur = $data['id_vendeur'];
+	        $requeteVend = "SELECT * from article_vendeur where $valeur = article_vendeur.id_vendeur";
+	        $resultat = mysqli_query($db_handle, $requeteVend);
+	                //afficher le resultat
+	        while ($ligne = $resultat -> fetch_assoc()) {
+	            ?>
+	        
+				<form action="CatégoriesPoupéesBdd.php">
 		            <table  align=center border=1>
 		                <tr align=center>
 		                    <td colspan='2'>

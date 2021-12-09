@@ -15,7 +15,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 <head>
 
 	<meta charset="utf-8">
-	<link href="VisiteProfilVend.css" rel="stylesheet" type="text/css"/>
+	<link href="VisiteProfilAdmin.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -94,101 +94,96 @@ $db_found = mysqli_select_db($db_handle, $database);
 				if($err==1)
 					echo "<p style='color:red'>Ce mail existe deja.</p>";
 			}
-			?>
+			
+			$valeur = $data['id_admin'];
+			$requeteVend = "SELECT * from article_admin where $valeur = article_admin.id_admin";
+			$resultat = mysqli_query($db_handle, $requeteVend);
+	                //afficher le resultat
+			while ($ligne = $resultat -> fetch_assoc()) {
+				?>
+				<form action="CatégoriesPoupéesBdd.php">
+					<table align=center border=1>
+						<tr align=center>
+							<td colspan='2'>
+								<?php
+								echo $ligne['nom'];
+								?>
+							</td>
+						</tr>
 
-			<form action="CatégoriesPoupéesBdd.php">
-		        <?php
-		        $valeur = $data['id_admin'];
-		        $requeteVend = "SELECT * from article_admin where $valeur = article_admin.id_admin";
-		        $resultat = mysqli_query($db_handle, $requeteVend);
-		                //afficher le resultat
-		        while ($ligne = $resultat -> fetch_assoc()) {
-		            ?>
 
-		            <table  align=center border=1>
-		                <tr align=center>
-		                    <td colspan='2'>
-		                        <?php
-		                        echo $ligne['nom'];
-		                        ?>
-		                    </td>
-		                </tr>
-		                
+						<tr align=center>
+							<td>
+								<?php
+								$recup = $ligne['id_article'];
 
-		                <tr align=center>
-		                    <td>
-		                        <?php
-		                        $recup = $ligne['id_article'];
+								$requPhoto = "SELECT adresse_photo from photo, article_admin where photo.id_article = $recup";
+								$resultatPhoto = mysqli_query($db_handle, $requPhoto);
 
-		                        $requPhoto = "SELECT adresse_photo from photo, article_admin where photo.id_article = $recup";
-		                        $resultatPhoto = mysqli_query($db_handle, $requPhoto);
+								$count = "SELECT count(id_photo) as numero from photo where photo.id_article = $recup";
+								$resCount = mysqli_query($db_handle, $count);
+								$data2 = mysqli_fetch_array($resCount);
 
-		                        $count = "SELECT count(id_photo) as numero from photo where photo.id_article = $recup";
-		                        $resCount = mysqli_query($db_handle, $count);
-		                        $data2 = mysqli_fetch_array($resCount);
+								for ($i=0; $i < $data2['numero']; $i++) { 
+									$ligne1 = $resultatPhoto -> fetch_assoc();
+									echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+								}
 
-		                        for ($i=0; $i < $data2['numero']; $i++) { 
-		                            $ligne1 = $resultatPhoto -> fetch_assoc();
-		                            echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
-		                        }
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Description : " . $ligne['description'];
+								?>
+							</td>
+						</tr>
+						<?php
 
-		                        ?>
-		                    </td>
-		                    <td>
-		                        <?php
-		                        echo "Description : " . $ligne['description'];
-		                        ?>
-		                    </td>
-		                </tr>
-		                <?php
+						$recup = $ligne['id_admin'];
 
-		                $recup = $ligne['id_admin'];
+						$requNom = "SELECT * from administrateur where administrateur.id_admin = $recup";
+						$resultatNom = mysqli_query($db_handle, $requNom);
 
-		                $requNom = "SELECT * from administrateur where administrateur.id_admin = $recup";
-		                $resultatNom = mysqli_query($db_handle, $requNom);
+						$ligne1 = $resultatNom -> fetch_assoc();
 
-		                $ligne1 = $resultatNom -> fetch_assoc();
-		                
 		                //$_SESSION['nom']=$ligne1['nom'];
-		                $var = $ligne1['nom'];
-		                        
-		                ?>
+						$var = $ligne1['nom'];
 
-		                <tr align=center>
-		                    <td>
-		                            <?php
-		                            echo "<a href='VisiteProfil.php?nom=".$var." '>$var</a>";
-		                            ?>
-		                    </td>
-		                    <td>
-		                        <?php
-		                        echo $ligne['prix'] . " euros";
-		                        ?>
-		                    </td>
-		                </tr>
+						?>
 
-		                <tr align=center>
-		                    <td>
-		                        <?php
-		                        echo "Achat " . $ligne['categorie_achat'];
-		                        ?>
-		                    </td>
-		                    <td>
-		                        <?php
-		                        echo "Mis en vente le : " . $ligne['date'];
-		                        ?>
-		                    </td>
-		                </tr>            
+						<tr align=center>
+							<td>
+								<?php
+								echo "<a href='VisiteProfil.php?nom=".$var." '>$var</a>";
+								?>
+							</td>
+							<td>
+								<?php
+								echo $ligne['prix'] . " euros";
+								?>
+							</td>
+						</tr>
 
-		            </tr>
+						<tr align=center>
+							<td>
+								<?php
+								echo "Achat " . $ligne['categorie_achat'];
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Mis en vente le : " . $ligne['date'];
+								?>
+							</td>
+						</tr>
 
-		        </table>
-		    </form>
+					</table>
+				</form>
 
-		    <?php
-		}
-		$db_handle -> close();
-		?>
+				<?php
+			}
+			$db_handle -> close();
+			?>
 
 		</div>
 
