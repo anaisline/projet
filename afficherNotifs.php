@@ -86,11 +86,11 @@ $db_found = mysqli_select_db($db_handle, $database);
 					$data3=0;
 					$data31=0;
 
-					$sql1= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(description LIKE '%'$mot_cle_3'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_3'%'))";
+					$sql1= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%$mot_cle_1%')OR(description LIKE '%$mot_cle_2%')OR(description LIKE '%$mot_cle_3%')OR(nom LIKE '%$mot_cle_1%')OR(nom LIKE '%$mot_cle_2%')OR(nom LIKE '%$mot_cle_3%'))";
 					$results1 = mysqli_query($db_handle, $sql1);
 					$data1 = mysqli_fetch_assoc($results1);
 
-					$sql11= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(description LIKE '%'$mot_cle_3'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_3'%'))";
+					$sql11= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%$mot_cle_1%')OR(description LIKE '%$mot_cle_2%')OR(description LIKE '%$mot_cle_3%')OR(nom LIKE '%$mot_cle_1%')OR(nom LIKE '%$mot_cle_2%')OR(nom LIKE '%$mot_cle_3%'))";
 					$results11 = mysqli_query($db_handle, $sql11);
 					$data11 = mysqli_fetch_assoc($results11);
 				}
@@ -104,29 +104,29 @@ $db_found = mysqli_select_db($db_handle, $database);
 						$data3=0;
 						$data31=0;
 
-						$sql2= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%'))";
+						$sql2= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%$mot_cle_1%')OR(description LIKE '%$mot_cle_2%')OR(nom LIKE '%$mot_cle_1%')OR(nom LIKE '%$mot_cle_2%'))";
 						$results2 = mysqli_query($db_handle, $sql2);
 						$data2 = mysqli_fetch_assoc($results2);
-						/*
-						$sql21= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(description LIKE '%'$mot_cle_2'%')OR(nom LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_2'%'))";
+						
+						$sql21= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%$mot_cle_1%')OR(description LIKE '%$mot_cle_2%')OR(nom LIKE '%$mot_cle_1%')OR(nom LIKE '%$mot_cle_2%'))";
 						$results21 = mysqli_query($db_handle, $sql21);
-						$data21 = mysqli_fetch_assoc($results21);*/
+						$data21 = mysqli_fetch_assoc($results21);
 					}
 					else
 					{
 						$data2=0;
 						$data21=0;
 
-						$sql3= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_1'%'))";
+						$sql3= "SELECT * FROM article_vendeur WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%$mot_cle_1%')OR(nom LIKE '%$mot_cle_1%'))";
 						$results3 = mysqli_query($db_handle, $sql3);
 						$data3 = mysqli_fetch_assoc($results3);
 
-						$sql31= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%'$mot_cle_1'%')OR(nom LIKE '%'$mot_cle_1'%'))";
+						$sql31= "SELECT * FROM article_admin WHERE categorie_type='$categorie_type' and categorie_achat='$categorie_achat' and ((description LIKE '%$mot_cle_1%')OR(nom LIKE '%$mot_cle_1%'))";
 						$results31 = mysqli_query($db_handle, $sql31);
 						$data31 = mysqli_fetch_assoc($results31);
 					}
 				}
-
+				
 				if($data1==0 && $data2==0 && $data3==0 && $data11==0 && $data21==0 && $data31==0)
 				{
 					echo "Vous n'avez pas de notification" ;
