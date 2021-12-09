@@ -31,11 +31,7 @@ $id_vendeur=$_SESSION['id_vendeur'];
 					if ($db_found) {
 
 						//on cherche si un compte avec cet email existe deja parmi les acheteurs
-						$sql = "SELECT * FROM article_vendeur";
-						//avec son nom
-						if ($nom != "") {
-							$sql .= " WHERE nom LIKE '%$nom%'";
-						}
+						$sql = "SELECT * FROM article_vendeur WHERE nom LIKE '%$nom%' and categorie_achat LIKE '%$categorie_achat%' and categorie_type LIKE '%$categorie_type%'";
 						$resultArticle = mysqli_query($db_handle, $sql);
 						$data=mysqli_fetch_assoc($resultArticle);
 						//regarder s'il y a de resultat

@@ -58,7 +58,7 @@ $id_admin=$_SESSION['id_admin'];
 						$resultArticle = mysqli_query($db_handle, $sql);
 						//regarder s'il y a de resultat
 						if (mysqli_num_rows($resultArticle) != 0 ) {
-							header('Location: ajouterArticlesAdmin.php?erreur=3');
+							header('Location: ajouterArticlesAdmins.php?erreur=3');
 						}
 						else
 						{
