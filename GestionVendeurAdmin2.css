@@ -95,6 +95,7 @@ font{
 td > input[type=text], input[type=email]{
   width: 200px;
   height: 30px;
+  color : black;
 }
 
 td > input[type=submit]{
@@ -115,14 +116,12 @@ td > input{
   margin-left: 10px;
 }
 
-#section > form > table > tr{
+#section > form > table > tr>td{
   border: 2px solid white;
-  color: white;
-}
-
-#section > table > input[type=text]{
   color: black;
 }
+
+
 
 table{
   padding: 30px;
