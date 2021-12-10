@@ -276,6 +276,16 @@ $mysqli -> set_charset("utf8");
 
         <h2>Articles à lancer aux enchères</h2>
 
+        <?php
+        if(isset($_GET['erreur'])){
+            $err = $_GET['erreur'];
+            if($err==1){
+                echo "<p align=center style='color:red'>Vous avez déjà lancé cet artile aux enchères</p>";
+                $err=0;
+            }
+        }
+        ?>
+
         <div id="section" align=center>
 
             <?php
@@ -364,7 +374,11 @@ $mysqli -> set_charset("utf8");
                         <tr>
                             <td colspan="2" align=center>
                                 <?php
-                                echo "<a href='#'>Lancer les enchères</a>"
+                                $varArt = $ligne['id_article'];
+                                $varVend = $ligne['id_vendeur'];
+                                $varPrix = $ligne['prix'];
+                                $varDateFin = $ligne['date_fin'];
+                                echo "<a href='EncheresAcheteurVend.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Lancer les enchères</a>";
                                 ?>
                             </td>
                             
@@ -460,10 +474,13 @@ $mysqli -> set_charset("utf8");
                         <tr>
                             <td colspan="2" align=center>
                                 <?php
-                                echo "<a href='#'>Lancer les enchères</a>"
+                                $varArt = $ligne['id_article'];
+                                $varVend = $ligne['id_admin'];
+                                $varPrix = $ligne['prix'];
+                                $varDateFin = $ligne['date_fin'];
+                                echo "<a href='EncheresAcheteurVend.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Lancer les enchères</a>";
                                 ?>
                             </td>
-                            
                         </tr>
                     </table>
                 </form>
