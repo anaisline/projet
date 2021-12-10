@@ -32,7 +32,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</div>
 		<br>
 		<div id="nav">
-		    <ul>
+		    <ul>	
 		        <li><a href="accueilAcheteur.php">Accueil</a></li>
 
 		        <li class="menu-deroulant">
@@ -96,9 +96,9 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 		?>
 		<br><br>
-		<h4 align="center" style="margin-left:160px">Paramètres du profil acheteur</h4>
+		<h4 align="center" style="margin-left:160pxm=;margin-bottom: 190px">Paramètres du profil acheteur</h4>
 
-		<div class="container rounded bg-black mt-8 mb-8">
+		<div class="container rounded bg-black mt-8 mb-8" style="z-index: -2;">
 			<form action="verifModifProfilAcheteur.php" method="post">
 				<div class="row">
 					<div class="col-md-5 " >
