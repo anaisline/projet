@@ -74,42 +74,53 @@ $id_admin=$_SESSION['id_admin'];
 						{
 							//on defini l id de l acheteur
 							$nb=1;
-							$id_articleA=$nb;
+							$id_article=$nb;	
+							$compt=0;
+
 							do{
+								$compt2=0;
+								do{
 				
-								$sql = "SELECT * FROM article_admin";
-								//ID
-								if ($id_articleA != " ") {
-								$sql .= " WHERE id_article LIKE '%$id_articleA%'";
-								}
-								$resultArticle = mysqli_query($db_handle, $sql);
+									$sql = "SELECT * FROM article_vendeur";
+									//ID
+									if ($id_article != "") {
+									$sql .= " WHERE id_article LIKE '%$id_article%'";
+									}
+									$resultArticle = mysqli_query($db_handle, $sql);
+									$compt=0;
 
-								if (mysqli_num_rows($resultArticle) != 0)
-								{
-									$nb++;
-									$id_articleA=$nb;
-								}
+									if (mysqli_num_rows($resultArticle) != 0)
+									{
+										$nb++;
+										$id_article=$nb;
+										$compt=1;
+										$compt2=1;
+									}
 
-							}while(mysqli_num_rows($resultArticle) != 0);
+								}while(mysqli_num_rows($resultArticle) != 0);
 
-							$id_article=$id_articleA;
-						
-							do{
+								do{
+					
+									$sql = "SELECT * FROM article_admin";
+									//ID
+									if ($id_article != "") {
+									$sql .= " WHERE id_article LIKE '%$id_article%'";
+									}
+									$resultArticle = mysqli_query($db_handle, $sql);
+									if($compt2 != 1){
+										$compt=0;
+									}
 
-							$sql = "SELECT * FROM article_vendeur";
-							//ID
-							if ($id_article != " ") {
-								$sql .= " WHERE id_article LIKE '%$id_article%'";
-								
-								}
-							$resultVendeur = mysqli_query($db_handle, $sql);
+									if (mysqli_num_rows($resultArticle) != 0)
+									{
+										$nb++;
+										$id_article=$nb;
+										$compt=1;
+									}
 
-								if (mysqli_num_rows($resultVendeur) != 0)
-								{
-									$id_article++;
-								}
+								}while(mysqli_num_rows($resultArticle) != 0);
 
-							}while(mysqli_num_rows($resultVendeur) != 0);
+							}while($compt != 0);
 
 							$nb1=1;
                             $id_photo1=$nb1;
