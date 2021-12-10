@@ -48,7 +48,7 @@
          </ul>
     </div>
 
-<h2>Tous les articles</h2>
+<h2>Poupées</h2>
 
 <div id="section" align=center>
 
