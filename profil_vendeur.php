@@ -54,6 +54,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</ul>
 
 		</div>
+		<br><br>
 
 
 		<?php 
@@ -117,7 +118,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				</div>
 			</div>
 		</form>
-		</div>
+		</div> <br>
 
 
 

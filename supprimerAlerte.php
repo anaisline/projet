@@ -63,7 +63,9 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 
 <div class="container">] <div class=" text-center mt-5 ">
+	<br>
         <h2>Supprimer une alerte</h2>
+        <br><br>
     </div>
     <form action="suppAlerte.php" method="post">
     <div class="row ">

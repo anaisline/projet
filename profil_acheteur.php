@@ -15,7 +15,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<meta charset="utf-8">
-	<link href="profil_vendeur.css" rel="stylesheet" type="text/css"/>
+	<link href="profil_acheteur.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -95,11 +95,13 @@ $db_found = mysqli_select_db($db_handle, $database);
 		
 
 		?>
+		<br><br>
+		<h4 align="center" style="margin-left:160px">Paramètres du profil acheteur</h4>
 
 		<div class="container rounded bg-black mt-8 mb-8">
 			<form action="verifModifProfilAcheteur.php" method="post">
 				<div class="row">
-					<div class="col-md-5 ">
+					<div class="col-md-5 " >
 						<div class="d-flex flex-column align-items-center text-center p-3 py-5">
 							<img class="rounded-circle mt-5" width="150px" src= "<?php echo $image; ?>">
 							<span class="font-weight-bold"><?php echo $data['prenom']." ".$data['nom']; ?></span><span> </span></div>
@@ -110,7 +112,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 						<div class="col-md-5 ">
 							<div class="p-3 py-5">
 								<div class="d-flex justify-content-between align-items-center mb-3">
-									<h4 class="text-right">Paramètres du profil acheteur</h4>
+									
 								</div>
 								<div class="row mt-2">
 									<div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control"  name="prenom" value="<?php echo $data['prenom']; ?>"></div>
@@ -176,7 +178,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</div>
 		</form>
 	</div>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
