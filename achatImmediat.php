@@ -160,7 +160,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" name="acheter" value="Acheter">
+						<input type="submit" name="acheter" value="Passer a la commande">
 					</td>
 
 				</tr>
