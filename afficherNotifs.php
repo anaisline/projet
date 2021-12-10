@@ -44,7 +44,7 @@ $id_acheteur=$_SESSION['id_acheteur'];
 
 				<li><a href="notifications.php">Notifications</a></li>
 
-				<li><a href="">Panier</a></li>
+				<li><a href="Panier_Acheteur.php">Panier</a></li>
 
 				<li class="menu-deroulant">
 					<a href="#">Mon compte</a>
@@ -58,6 +58,8 @@ $id_acheteur=$_SESSION['id_acheteur'];
 
 		</div>
 
+		<h2>Vos notifications selon vos alertes</h2>
+
 		
 		<?php
 		$mysqli = new mysqli("localhost", "root", "", "shopping");
@@ -69,7 +71,7 @@ $id_acheteur=$_SESSION['id_acheteur'];
 		if($data==0)
 		{
 			?>
-			<div id="section" align=center>
+			<div id="section" align="center">
 				<?php
 				echo "Vous n'avez pas créé d'alerte." ;
 				?>
@@ -87,6 +89,16 @@ $id_acheteur=$_SESSION['id_acheteur'];
 			$mot_cle_3 = $data['mot_cle_3'];
 			$categorie_type = $data['categorie_type'];
 			$categorie_achat = $data['categorie_achat'];
+
+			?>
+			<div id="section" align="center">
+			<h3> Alerte : </h3>
+			<?php
+			echo "Mot cle 1 : " .$mot_cle_1. "<br>"."Mot cle 2 : ".$mot_cle_2. "<br>"."Mot Cle 3 : ". $mot_cle_3 ."<br>";
+			echo "Type : ".$categorie_type."<br>"."Categorie d'achat : ".$categorie_achat	;
+			?>
+			</div>
+			<?php
 
 					///ON TROUVE LES ARTICLES VENDEUR AVEC LES MEMES INFOS
 			if($mot_cle_2!="" && $mot_cle_3!="")
@@ -140,7 +152,7 @@ $id_acheteur=$_SESSION['id_acheteur'];
 		if($data1==0 && $data2==0 && $data3==0 && $data11==0 && $data21==0 && $data31==0)
 		{
 			?>
-			<div id="section" align=center>
+			<div id="section" align="center">
 				<?php
 				echo "Vous n'avez pas de notification" ;
 				?>
@@ -156,7 +168,7 @@ $id_acheteur=$_SESSION['id_acheteur'];
 
 
 				<form action="AjouterPanierAcheteurAdmin.php">
-					<table>
+					<table align="center">
 						<tr align=center>
 							<td colspan='2'>
 								<?php
@@ -247,7 +259,541 @@ $id_acheteur=$_SESSION['id_acheteur'];
 				<?php
 				$data1 = mysqli_fetch_assoc($results1);
 			}while($data1);
+
+
+
+
 		}//fin du if pour data 1
+
+
+		if($data2 != 0)
+		{
+			do{
+				?>
+
+
+
+				<form action="AjouterPanierAcheteurAdmin.php">
+					<table align="center">
+						<tr align=center>
+							<td colspan='2'>
+								<?php
+								echo $data2['nom'];
+								?>
+							</td>
+						</tr>
+
+
+						<tr align=center>
+							<td>
+								<?php
+								$recup = $data2['id_article'];
+
+								$requPhoto = "SELECT adresse_photo from photo, article_vendeur where photo.id_article = '$recup'";
+								$resultatPhoto = $mysqli-> query($requPhoto);
+
+								$count = "SELECT count(id_photo) as numero from photo where photo.id_article = '$recup'";
+								$resCount = mysqli_query($mysqli, $count);
+								$data01 = mysqli_fetch_array($resCount);
+
+								for ($i=0; $i < $data01['numero']; $i++) { 
+									$ligne1 = $resultatPhoto -> fetch_assoc();
+									echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+								}
+
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Description : " . $data2['description'];
+								?>
+							</td>
+						</tr>
+						<?php
+
+						$recup = $data2['id_vendeur'];
+
+						$requNom = "SELECT * from vendeur where vendeur.id_vendeur = $recup";
+						$resultatNom = $mysqli -> query($requNom);
+
+						$data0 = $resultatNom -> fetch_assoc();
+						$var = $data0['nom'];
+						$var2 = $data0['prenom'];
+						?>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+								?>
+							</td>
+							<td>
+								<?php
+								echo $data2['prix'] . " euros";
+								?>
+							</td>
+						</tr>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "Achat " . $data2['categorie_achat'];
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Mis en vente le : " . $data2['date'];
+								?>
+							</td>
+						</tr>
+						<tr align=center>
+							<td colspan="2">
+								<?php
+								$var = $data2['id_article'];
+								echo "<a href='AjouterPanierAcheteurAdmin.php?id_article=".$var." '>Ajouter au panier</a>";
+								?>
+							</td>
+						</tr>
+
+					</table>
+				</form>
+
+
+
+
+
+				<?php
+				$data2 = mysqli_fetch_assoc($results2);
+			}while($data2);
+
+
+
+			
+		}//fin du if pour data 2
+
+		if($data3 != 0)
+		{
+			do{
+				?>
+
+
+
+				<form action="AjouterPanierAcheteurAdmin.php">
+					<table align="center">
+						<tr align=center>
+							<td colspan='2'>
+								<?php
+								echo $data3['nom'];
+								?>
+							</td>
+						</tr>
+
+
+						<tr align=center>
+							<td>
+								<?php
+								$recup = $data3['id_article'];
+
+								$requPhoto = "SELECT adresse_photo from photo, article_vendeur where photo.id_article = '$recup'";
+								$resultatPhoto = $mysqli-> query($requPhoto);
+
+								$count = "SELECT count(id_photo) as numero from photo where photo.id_article = '$recup'";
+								$resCount = mysqli_query($mysqli, $count);
+								$data01 = mysqli_fetch_array($resCount);
+
+								for ($i=0; $i < $data01['numero']; $i++) { 
+									$ligne1 = $resultatPhoto -> fetch_assoc();
+									echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+								}
+
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Description : " . $data3['description'];
+								?>
+							</td>
+						</tr>
+						<?php
+
+						$recup = $data3['id_vendeur'];
+
+						$requNom = "SELECT * from vendeur where vendeur.id_vendeur = $recup";
+						$resultatNom = $mysqli -> query($requNom);
+
+						$data0 = $resultatNom -> fetch_assoc();
+						$var = $data0['nom'];
+						$var2 = $data0['prenom'];
+						?>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+								?>
+							</td>
+							<td>
+								<?php
+								echo $data3['prix'] . " euros";
+								?>
+							</td>
+						</tr>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "Achat " . $data3['categorie_achat'];
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Mis en vente le : " . $data3['date'];
+								?>
+							</td>
+						</tr>
+						<tr align=center>
+							<td colspan="2">
+								<?php
+								$var = $data3['id_article'];
+								echo "<a href='AjouterPanierAcheteurAdmin.php?id_article=".$var." '>Ajouter au panier</a>";
+								?>
+							</td>
+						</tr>
+
+					</table>
+				</form>
+
+
+
+
+
+				<?php
+				$data3 = mysqli_fetch_assoc($results3);
+			}while($data3);
+
+
+
+			
+		}//fin du if pour data 3
+
+		if($data11 != 0)
+		{
+			do{
+				?>
+
+
+
+				<form action="AjouterPanierAcheteurAdmin.php">
+					<table align="center">
+						<tr align=center>
+							<td colspan='2'>
+								<?php
+								echo $data11['nom'];
+								?>
+							</td>
+						</tr>
+
+
+						<tr align=center>
+							<td>
+								<?php
+								$recup = $data11['id_article'];
+
+								$requPhoto = "SELECT adresse_photo from photo, article_admin where photo.id_article = '$recup'";
+								$resultatPhoto = $mysqli-> query($requPhoto);
+
+								$count = "SELECT count(id_photo) as numero from photo where photo.id_article = '$recup'";
+								$resCount = mysqli_query($mysqli, $count);
+								$data01 = mysqli_fetch_array($resCount);
+
+								for ($i=0; $i < $data01['numero']; $i++) { 
+									$ligne1 = $resultatPhoto -> fetch_assoc();
+									echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+								}
+
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Description : " . $data11['description'];
+								?>
+							</td>
+						</tr>
+						<?php
+
+						$recup = $data11['id_admin'];
+
+						$requNom = "SELECT * from administrateur where administrateur.id_admin = $recup";
+						$resultatNom = $mysqli -> query($requNom);
+
+						$data0 = $resultatNom -> fetch_assoc();
+						$var = $data0['nom'];
+						$var2 = $data0['prenom'];
+						?>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+								?>
+							</td>
+							<td>
+								<?php
+								echo $data11['prix'] . " euros";
+								?>
+							</td>
+						</tr>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "Achat " . $data11['categorie_achat'];
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Mis en vente le : " . $data11['date'];
+								?>
+							</td>
+						</tr>
+						<tr align=center>
+							<td colspan="2">
+								<?php
+								$var = $data11['id_article'];
+								echo "<a href='AjouterPanierAcheteurAdmin.php?id_article=".$var." '>Ajouter au panier</a>";
+								?>
+							</td>
+						</tr>
+
+					</table>
+				</form>
+
+
+
+
+
+				<?php
+				$data11 = mysqli_fetch_assoc($results11);
+			}while($data11);
+
+
+
+
+		}//fin du if pour data 1
+
+
+		if($data21 != 0)
+		{
+			do{
+				?>
+
+
+
+				<form action="AjouterPanierAcheteurAdmin.php">
+					<table align="center">
+						<tr align=center>
+							<td colspan='2'>
+								<?php
+								echo $data21['nom'];
+								?>
+							</td>
+						</tr>
+
+
+						<tr align=center>
+							<td>
+								<?php
+								$recup = $data21['id_article'];
+
+								$requPhoto = "SELECT adresse_photo from photo, article_admin where photo.id_article = '$recup'";
+								$resultatPhoto = $mysqli-> query($requPhoto);
+
+								$count = "SELECT count(id_photo) as numero from photo where photo.id_article = '$recup'";
+								$resCount = mysqli_query($mysqli, $count);
+								$data01 = mysqli_fetch_array($resCount);
+
+								for ($i=0; $i < $data01['numero']; $i++) { 
+									$ligne1 = $resultatPhoto -> fetch_assoc();
+									echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+								}
+
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Description : " . $data21['description'];
+								?>
+							</td>
+						</tr>
+						<?php
+
+						$recup = $data21['id_admin'];
+
+						$requNom = "SELECT * from administrateur where administrateur.id_admin = $recup";
+						$resultatNom = $mysqli -> query($requNom);
+
+						$data0 = $resultatNom -> fetch_assoc();
+						$var = $data0['nom'];
+						$var2 = $data0['prenom'];
+						?>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+								?>
+							</td>
+							<td>
+								<?php
+								echo $data21['prix'] . " euros";
+								?>
+							</td>
+						</tr>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "Achat " . $data21['categorie_achat'];
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Mis en vente le : " . $data21['date'];
+								?>
+							</td>
+						</tr>
+						<tr align=center>
+							<td colspan="2">
+								<?php
+								$var = $data21['id_article'];
+								echo "<a href='AjouterPanierAcheteurAdmin.php?id_article=".$var." '>Ajouter au panier</a>";
+								?>
+							</td>
+						</tr>
+
+					</table>
+				</form>
+
+
+
+
+
+				<?php
+				$data21 = mysqli_fetch_assoc($results21);
+			}while($data21);
+
+
+
+			
+		}//fin du if pour data 2
+
+		if($data31 != 0)
+		{
+			do{
+				?>
+
+
+
+				<form action="AjouterPanierAcheteurAdmin.php">
+					<table align="center">
+						<tr align=center>
+							<td colspan='2'>
+								<?php
+								echo $data31['nom'];
+								?>
+							</td>
+						</tr>
+
+
+						<tr align=center>
+							<td>
+								<?php
+								$recup = $data31['id_article'];
+
+								$requPhoto = "SELECT adresse_photo from photo, article_admin where photo.id_article = '$recup'";
+								$resultatPhoto = $mysqli-> query($requPhoto);
+
+								$count = "SELECT count(id_photo) as numero from photo where photo.id_article = '$recup'";
+								$resCount = mysqli_query($mysqli, $count);
+								$data01 = mysqli_fetch_array($resCount);
+
+								for ($i=0; $i < $data01['numero']; $i++) { 
+									$ligne1 = $resultatPhoto -> fetch_assoc();
+									echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+								}
+
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Description : " . $data31['description'];
+								?>
+							</td>
+						</tr>
+						<?php
+
+						$recup = $data31['id_admin'];
+
+						$requNom = "SELECT * from administrateur where administrateur.id_admin = $recup";
+						$resultatNom = $mysqli -> query($requNom);
+
+						$data0 = $resultatNom -> fetch_assoc();
+						$var = $data0['nom'];
+						$var2 = $data0['prenom'];
+						?>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+								?>
+							</td>
+							<td>
+								<?php
+								echo $data31['prix'] . " euros";
+								?>
+							</td>
+						</tr>
+
+						<tr align=center>
+							<td>
+								<?php
+								echo "Achat " . $data31['categorie_achat'];
+								?>
+							</td>
+							<td>
+								<?php
+								echo "Mis en vente le : " . $data31['date'];
+								?>
+							</td>
+						</tr>
+						<tr align=center>
+							<td colspan="2">
+								<?php
+								$var = $data31['id_article'];
+								echo "<a href='AjouterPanierAcheteurAdmin.php?id_article=".$var." '>Ajouter au panier</a>";
+								?>
+							</td>
+						</tr>
+
+					</table>
+				</form>
+
+
+
+
+
+				<?php
+				$data31 = mysqli_fetch_assoc($results31);
+			}while($data31);
+
+
+
+			
+		}//fin du if pour data 3
+
+
+
 
 
 
