@@ -119,10 +119,10 @@ $db_found = mysqli_select_db($db_handle, $database);
 					<td><input type="text" name="tel" class="field-long" value="<?php echo $data['tel']; ?>" />
 					</td>
 					</tr>
-
+<!--
 					<h3>Vos informations bancaires</h3>
 
-					//cb est une table diff
+					//cb est une table diff -->
 					<?php
 						$sqlCB = "SELECT * from cb WHERE (id_acheteur = '$id_acheteur')";
 						$resultCB = mysqli_query($db_handle, $sqlCB);
