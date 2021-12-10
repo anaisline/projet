@@ -59,8 +59,11 @@ $db_found = mysqli_select_db($db_handle, $database);
 		     </ul>
 		</div>
 
+		<br><br><br>
+
 <div id="section" align=center>
 <img src="messagerie.png">
+<br>
 
             <table>
                 <tr>
