@@ -36,7 +36,7 @@
            <li><a href="#">Poupees</a></li>
            <li><a href="#">Jeux</a></li>
            <li><a href="#">Insolite</a></li>
-           <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
+           <li><a href="#">Tout parcourir</a></li>
         </ul>
         </li>
 
