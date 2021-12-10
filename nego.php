@@ -61,14 +61,21 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 			<form action="nego_2.php" method="post" align=center>
 				<?php 
+
+				$sqlTest = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur)";
+				$resultTest = mysqli_query($db_handle, $sqlTest);
+				if(mysqli_num_rows($resultTest)== 0)
+				{
+					echo "coucou";
+					$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', NULL, '0') ";
+    			  	$resultCreer =mysqli_query($db_handle, $sqlCreer);
+    			 	echo "<p>Add successful nego.</p>";
+				}
 				
-				$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', NULL, '0') ";
-    			  $resultCreer =mysqli_query($db_handle, $sqlCreer);
-    			 echo "<p>Add successful nego.</p>";
 				?>
 				<table align=center>
 					<?php
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article)";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur)";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
