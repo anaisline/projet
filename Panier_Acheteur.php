@@ -34,28 +34,27 @@ $mysqli -> set_charset("utf8");
 
                     <a href="">Parcourir les categories</a>
                     <ul class="sous-menu">
-                     <li><a href="#">Poupees</a></li>
-                     <li><a href="#">Jeux</a></li>
-                     <li><a href="#">Insolite</a></li>
-                     <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
-                 </ul>
-             </li>
 
-             <li><a href="">Messagerie</a></li>
+                        <li><a href="CatégoriesPoupéesAcheteur.php">Poupees</a></li>
+                        <li><a href="CatégoriesJeuxAcheteur.php">Jeux</a></li>
+                        <li><a href="CatégoriesInsolitesAcheteur.php">Insolite</a></li>
+                        <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="notifications.php">Notifications</a></li>
 
-             <li><a href="Panier_Acheteur.php">Panier</a></li>
+                <li><a href="Panier_Acheteur.php">Panier</a></li>
 
-             <li class="menu-deroulant">
-                <a href="#">Mon compte</a>
-                <ul class="sous-menu">
-                 <li><a href="profil_acheteur.php">Ma page</a></li>
-                 <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-             </ul>   
-         </li>
-
-     </ul>
-
- </div>
+                <li class="menu-deroulant">
+                    <a href="#">Mon compte</a>
+                    <ul class="sous-menu">
+                    <li><a href="profil_acheteur.php">Ma page</a></li>
+                    <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+                    
+                </li>
+             </ul>
+        </div>
 
     <h2>Votre panier</h2>
 
