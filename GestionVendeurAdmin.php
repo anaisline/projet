@@ -57,7 +57,7 @@
 			$mysqli -> set_charset("utf8");
 			$requete = "SELECT * from vendeur";
 			$resultat = $mysqli -> query($requete);
-			echo "<table border='1'>";
+			echo "<table border='5'>";
 			echo "<tr>";
 			echo "<th>" . "Nom" . "</th>";
 			echo "<th>" . "Prénom" . "</th>";
@@ -72,16 +72,15 @@
 				echo "<td>" . $ligne['prenom'] . "</td>";
 				echo "<td>" . $ligne['mail'] . "</td>";
 				echo "<td>" . $ligne['description'] . "</td>";
-				echo "<td>" . $ligne['photo'] . "</td>";
+				echo "<td>" . "<img src=" . $ligne['photo'] . "	>" . "</td>";
 				echo "<td>" . $ligne['tel'] . "</td>";
 				echo "</tr>";
 			}
 			$mysqli -> close();
 
 			?>
-
 			<form action="GérerVendeursAdmin.php"  method="post">
-				<table>
+				<table border='3'>
 					<tr>
 						<td>Prénom</td>
 						<td><input type="text" name="prenom" placeholder="Entrer son prénom"></td>

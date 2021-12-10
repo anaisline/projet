@@ -31,32 +31,28 @@
 
         <li class="menu-deroulant">
 
-        <a href="">Parcourir les categories</a>
-        <ul class="sous-menu">
+            <a href="">Parcourir les categories</a>
+            <ul class="sous-menu">
 
-         <li><a href="CatégoriesPoupées.php">Poupees</a></li>
-         <li><a href="CatégoriesJeux.php">Jeux</a></li>
-         <li><a href="CatégoriesInsolite.php">Insolite</a></li>
-         <li><a href="CatégorieAll.php">Tout parcourir</a></li>
+                <li><a href="CatégoriesPoupéesAcheteur.php">Poupees</a></li>
+                <li><a href="CatégoriesJeuxAcheteur.php">Jeux</a></li>
+                <li><a href="CatégoriesInsolitesAcheteur.php">Insolite</a></li>
+                <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
+            </ul>
+        </li>
+        
+        <li><a href="notifications.php">Notifications</a></li>
 
-         </li>
+        <li><a href="Panier_Acheteur.php">Panier</a></li>
+
+        <li class="menu-deroulant">
+            <a href="#">Mon compte</a>
+            <ul class="sous-menu">
+            <li><a href="profil_acheteur.php">Ma page</a></li>
+            <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+            
+        </li>
      </ul>
- 
-
-<li><a href="notifications.php">Notifications</a></li>
-
-<li><a href="">Panier</a></li>
-
-<li class="menu-deroulant">
-    <a href="#">Mon compte</a>
-    <ul class="sous-menu">
-     <li><a href="profil_acheteur.php">Ma page</a></li>
-     <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-	
-</li>
- </ul>
-
-    
 </div>
 
 
