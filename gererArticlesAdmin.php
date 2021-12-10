@@ -49,6 +49,7 @@ $id_admin=$_SESSION['id_admin'];
  		</ul>
 
  	</div>
+ 	<br><br><br>
 
  	<div id="section" align=center>
 
