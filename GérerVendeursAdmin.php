@@ -44,7 +44,7 @@ if ($erreur == "") {
 			$data=mysqli_fetch_assoc($result);
 
 			if (mysqli_num_rows($result) != 0) {
-				echo "<p>Le vendeur existe déjà.</p>";
+				header('Location: GestionVendeurAdmin.php?erreur=4');
 			} 
 			else {
 
@@ -73,6 +73,7 @@ if ($erreur == "") {
 		        $result = mysqli_query($db_handle, $sql);
 		        echo "$sql";
 		        echo "<p>Add successful.</p>";
+		        header('Location: GestionVendeurAdmin.php?');
 
 			}
 		}
@@ -116,11 +117,12 @@ if ($erreur == "") {
 				}
 			}
 			$result1 = mysqli_query($db_handle, $sql);
+			header('Location: GestionVendeurAdmin.php?');
 
 			}
 			else
 			{
-				echo "on ne trouve pas de vendeurs avec ses informations";
+				header('Location: GestionVendeurAdmin.php?erreur=3');
 			}
 
 		}

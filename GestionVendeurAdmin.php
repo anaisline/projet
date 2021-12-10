@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<link href="GestionVendeurAdmin.css" rel="stylesheet" type="text/css"/>
+	<link href="GestionVendeurAdmin2.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -79,19 +79,20 @@
 			$mysqli -> close();
 
 			?>
+
 			<form action="GérerVendeursAdmin.php"  method="post">
 				<table border='3'>
 					<tr>
 						<td>Prénom</td>
-						<td><input type="text" name="prenom" placeholder="Entrer son prénom"></td>
+						<td><input type="text" name="prenom" placeholder="Entrer son prénom" placeholder="inp"></td>
 					</tr>
 					<tr>
 						<td>Nom</td>
-						<td><input type="text" name="nom" placeholder="Entrer son nom"></td>
+						<td><input type="text" name="nom" placeholder="Entrer son nom" placeholder="inp"></td>
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td><input type="email" name="mail" placeholder="Entrer son adresse mail"></td>
+						<td><input type="email" name="mail" placeholder="Entrer son adresse mail" placeholder="inp"></td>
 					</tr>
 
 					<tr>
@@ -109,6 +110,8 @@
 				$err = $_GET['erreur'];
 				if($err==1 || $err==2 || $err==3)
 					echo "<p style='color:red'>Utilisateur, prénom ou nom incorrect</p>";
+				if($err==4)
+					echo "<p style='color:red'>Ce vendeur existe deja.</p>";
 			}
 			?>
 			<br>

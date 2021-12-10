@@ -1,4 +1,4 @@
-body { background-color: white;
+body { background-color: black;
   
 }
 
@@ -95,6 +95,7 @@ font{
 td > input[type=text], input[type=email]{
   width: 200px;
   height: 30px;
+  color : black;
 }
 
 td > input[type=submit]{
@@ -115,16 +116,20 @@ td > input{
   margin-left: 10px;
 }
 
-#section > form > table > tr{
+#section > form > table > tr>td{
   border: 2px solid white;
-  color: white;
+  color: black;
 }
+
+
 
 table{
   padding: 30px;
   margin-bottom: 50px;
   color: white;
 }
+
+
 
 th{
   font-size: 50%;
@@ -219,10 +224,8 @@ php{
   margin-left: 200px;
 }
 
-#section > table > tr > td >input
-{
-  //color : black;
-  //background-color: black;
+#inp::placeholder{
+    color: orange;
 }
 
 #section > p{
