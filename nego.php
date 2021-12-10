@@ -63,7 +63,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 					<?php
 						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article)";
 						$result = mysqli_query($db_handle, $sql);
-						if(mysqli_num_rows($resultPanier)!=0)
+						if(mysqli_num_rows($result)!=0)
 						{
 							$data = mysqli_fetch_assoc($result);
 						}
