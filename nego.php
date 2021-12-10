@@ -2,6 +2,7 @@
 session_start();
 $id_acheteur=$_SESSION['id_acheteur'];
 $id_article=$_GET['id_article'];
+$id_vendeur=$_GET['id_vendeur'];
 
 $database = "shopping";
 //connectez-vous dans BDD
@@ -58,12 +59,18 @@ $db_found = mysqli_select_db($db_handle, $database);
 			<h2 align=center> Negocier un article<h2>
 				
 
-			<form action="#" method="post" align=center>
+			<form action="nego_2.php" method="post" align=center>
+				<?php 
+				
+				$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', NULL, '0') ";
+    			  $resultCreer =mysqli_query($db_handle, $sqlCreer);
+    			 echo "<p>Add successful nego.</p>";
+				?>
 				<table align=center>
 					<?php
 						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article)";
 						$result = mysqli_query($db_handle, $sql);
-						if(mysqli_num_rows($result)!=0)
+						if(mysqli_num_rows($result)!= 0)
 						{
 							$data = mysqli_fetch_assoc($result);
 						}
@@ -92,8 +99,11 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</table>
 		</form>
 	
-
 	</div>
+	<?php
+	$_SESSION['id_article']=$id_article;
+	$_SESSION['id_vendeur']=$id_vendeur;
+	?>
 	<div id="footer">
 		<!--Copyright &copy; 2021 Prime Properties<br> -->
 
