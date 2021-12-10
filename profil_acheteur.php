@@ -33,7 +33,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 		<br>
 		<div id="nav">
    <ul>
-    <li><a href="accueil_acheteur.html">Accueil</a></li>
+    <li><a href="accueilAcheteur.php">Accueil</a></li>
 
     <li class="menu-deroulant">
 
@@ -42,7 +42,7 @@ $db_found = mysqli_select_db($db_handle, $database);
          <li><a href="#">Poupees</a></li>
          <li><a href="#">Jeux</a></li>
          <li><a href="#">Insolite</a></li>
-         <li><a href="#">Tout parcourir</a></li>
+         <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
      </ul>
  </li>
 
