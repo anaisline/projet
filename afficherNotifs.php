@@ -245,7 +245,7 @@ $id_acheteur=$_SESSION['id_acheteur'];
 
 
 				<?php
-				$data1 = $mysqli -> query($sql1);
+				$data1 = mysqli_fetch_assoc($results1);
 			}while($data1);
 		}//fin du if pour data 1
 
