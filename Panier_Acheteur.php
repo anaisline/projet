@@ -247,11 +247,23 @@ $mysqli -> set_charset("utf8");
                 </tr>
                 <tr>
                     <td colspan="2" align=center>
-                        <input type="submit" name="Payer" value="Payer">
+                    <a href="achatImmediat.php"><input type="submit" name="Payer" value="Payer"></a>
                     </td>
                     
                 </tr>
+                <?php
+                if(isset($_GET['acheter'])){
+                
+                    echo "<p style='color:red'>Cet article n'existe pas.</p>";
+            }
+            ?>
             </table>
+            <?php
+                if(isset($_GET['acheter'])){
+                
+                    echo "<p style='color:red'>Cet article n'existe pas.</p>";
+            }
+            ?>
 
 
         </div>

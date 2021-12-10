@@ -127,10 +127,29 @@ if (isset($_POST["acheter"])) {
             $result = mysqli_query($db_handle,$sql);
         }
 
+		do
+		{
+			$sql = "SELECT * FROM panier";
+        	if ($id_acheteur != " ") {
+				$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";					
+			}
+			$resultPanier = mysqli_query($db_handle, $sql);
+			if(mysqli_num_rows($resultPanier) != 0)
+			{
+				$sql= "DELETE FROM panier";
+				if ($id_acheteur != " ") {
+					$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";	
 
+				}
+				$result =mysqli_query($db_handle, $sql);
+				echo "<p>Suppression des articles du panier successfull.</p>";
+			}
+				
+		}while(mysqli_num_rows($resultPanier) != 0);
 
-
-
+		
+        header('Location: Panier_Acheteur.php?');/*verifier que ce soit le bon lien*/
+        
 
 	}
 	else
