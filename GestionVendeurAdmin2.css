@@ -1,4 +1,4 @@
-body { background-color: white;
+body { background-color: black;
   
 }
 
@@ -120,11 +120,17 @@ td > input{
   color: white;
 }
 
+#section > table > input[type=text]{
+  color: black;
+}
+
 table{
   padding: 30px;
   margin-bottom: 50px;
   color: white;
 }
+
+
 
 th{
   font-size: 50%;
@@ -219,10 +225,8 @@ php{
   margin-left: 200px;
 }
 
-#section > table > tr > td >input
-{
-  //color : black;
-  //background-color: black;
+#inp::placeholder{
+    color: orange;
 }
 
 #section > p{
