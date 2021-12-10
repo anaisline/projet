@@ -6,6 +6,11 @@ $nbArticles = 0;
 
 $mysqli = new mysqli("localhost", "root", "", "shopping");
 $mysqli -> set_charset("utf8");
+
+$database = "shopping";
+//connectez-vous dans BDD
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
 ?>
 
 
@@ -575,8 +580,11 @@ $mysqli -> set_charset("utf8");
                         <tr>
                             <td colspan="2" align=center>
                                 <?php
-                                $art = $ligne['id_article'];
-                                echo "<a href='nego.php?id_article=".$art."'>Négocier</a>"
+                                $id_article = $ligne['id_article'];
+                                $id_vendeur = $ligne['id_vendeur'];
+
+                                echo "<a href='nego.php?id_article=".$id_article."&id_vendeur=".$id_vendeur."'>Négocier</a>";
+
                                 ?>
                             </td>
                         </tr>
@@ -671,8 +679,11 @@ $mysqli -> set_charset("utf8");
                         <tr>
                             <td colspan="2" align=center>
                                 <?php
-                                $art = $ligne['id_article'];
-                                echo "<a href='nego.php?id_article=".$art."'>Négocier</a>"
+                                $id_articleA = $ligne['id_article'];
+                                $id_admin = $ligne['id_admin'];
+
+                                echo "<a href='nego.php?id_article=".$id_articleA."&id_vendeur=".$id_admin."'>Négocier</a>";
+
                                 ?>
                             </td>
                         </tr>
@@ -690,7 +701,6 @@ $mysqli -> set_charset("utf8");
             }
             $mysqli -> close();
             ?>
-
 
         </div>
 
