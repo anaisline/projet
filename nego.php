@@ -16,7 +16,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="profil_vendeur.css" rel="stylesheet" type="text/css"/>
+	<link href="nego.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
 <body>
@@ -125,7 +125,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 							
 
 						}
-						
+		
 
 						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt0' || compteur='$compt2' || compteur='$compt4') AND (accepte='$accepte')";
 						$result = mysqli_query($db_handle, $sql);
@@ -175,7 +175,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 				<tr>
 					<td colspan="2" align="center">
-					<a href="negoAccepteAcheteur.php">Accepter l offre</a>
+					<p align="center"> ou </p><br><a href="negoAccepteAcheteur.php">Accepter l offre</a>
 					</td>
 
 				</tr>
