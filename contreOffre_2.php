@@ -30,7 +30,7 @@ if (isset($_POST["envoyer"])) {
 
 			if($offre!="")
        		{
-        	//on cherche si un article avec ce nom existe bien
+        	
 			$sqlL = "SELECT * FROM nego WHERE id_article LIKE '%$id_article%' and id_vendeur LIKE '%$id_vendeur%' and id_acheteur LIKE '%$id_acheteur%'";
 			$resultL = mysqli_query($db_handle, $sqlL);
         	$data=mysqli_fetch_assoc($resultL);
@@ -62,10 +62,7 @@ if (isset($_POST["envoyer"])) {
 		echo "pb de connexion";
 	}
 
-
 }
-
-
 
 
 ?>

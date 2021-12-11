@@ -63,7 +63,12 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 if($db_found) {
 
-$sql="SELECT * FROM nego WHERE (id_vendeur='$id_vendeur') AND (compteur='1' || compteur='3' || compteur='5') ";
+$compt1=1;
+$compt3=3;
+$compt5=5;
+$accepte=0;
+
+$sql="SELECT * FROM nego WHERE (id_vendeur='$id_vendeur') AND (compteur='$compt1' || compteur='$compt3'|| compteur='$compt5') AND (accepte='$accepte')";
 $result = mysqli_query($db_handle, $sql);
 $data=mysqli_fetch_assoc($result);
 
@@ -73,7 +78,6 @@ if (mysqli_num_rows($result) != 0 ) {
 	$id_article=$data['id_article'];
 	$id_acheteur=$data['id_acheteur'];
 	$compt=$data['compteur'];
-
 
 
 	$sqlA="SELECT * FROM article_vendeur WHERE (id_article='$id_article') AND (id_vendeur='$id_vendeur') ";
@@ -95,32 +99,44 @@ if (mysqli_num_rows($result) != 0 ) {
 
 
 		?>
-		
+
 		<tr>
 			<td colspan="2" align="center">
 			<a href="contreOffre.php"><input type="submit" name="contre_offre" value="Faire une contre offre"></a>
 			</td>
 		</tr>
 
+		<?php	
+			}
 
-			<?php
-				}
-
-			?>		
+				if($compt==5)
+				{
+		?>
+	
 		<tr>
 			<td colspan="2" align="center">
-			<a href="accepteNego.php"><input type="submit" name="accepter" value="Accepter l offre"></a>
+			<a href="refuseNego.php"><input type="submit" name="refuser" value="Refuser l offre"></a>
+			</td>
+		</tr>
+
+		<?php
+
+		}
+
+		?>
+	
+		<tr>
+			<td colspan="2" align="center">
+			<a href="accepteNego.php">Accepter l offre</a>
 			</td>
 		</tr>
 		
-	
 
 <?php
 	}
 }
 else
 {
-		echo "ac " .$id_vendeur;
 	echo "Vous n avez pas d offres sur vos articles";
 }
 }
@@ -135,8 +151,6 @@ else
 </table>
 
 </div>
-
-
 
 
 
