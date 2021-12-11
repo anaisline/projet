@@ -115,7 +115,7 @@ if (mysqli_num_rows($result) != 0 ) {
 	
 		<tr>
 			<td colspan="2" align="center">
-			<a href="refuseNego.php"><input type="submit" name="refuser" value="Refuser l offre"></a>
+			<a href="refuserNego.php">Refuser l offre</a>
 			</td>
 		</tr>
 
