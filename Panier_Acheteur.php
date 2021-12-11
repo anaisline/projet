@@ -297,6 +297,10 @@ $mysqli -> set_charset("utf8");
                 echo "<p align=center style='color:red'>Vous avez déjà lancé cet artile aux enchères</p>";
                 $err=0;
             }
+            if($err==2){
+                echo "<p align=center style='color:red'>Vous n'avez pas lancé les enchères de cet article</p>";
+                $err=0;
+            }
         }
         ?>
 
