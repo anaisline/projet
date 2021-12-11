@@ -34,25 +34,32 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 		<div id="nav">
 			<ul>
-				<li><a href="accueilAcheteur.php">Accueil</a></li>
+        <li><a href="accueilAcheteur.php">Accueil</a></li>
 
-				<li >
-					<a href="parcourir.html">Gerer mes articles</a>
-				</li>
+        <li class="menu-deroulant">
 
+            <a href="">Parcourir les categories</a>
+            <ul class="sous-menu">
 
-				<li><a href="#">Notifications</a></li>
+                <li><a href="CatégoriesPoupéesAcheteur.php">Poupees</a></li>
+                <li><a href="CatégoriesJeuxAcheteur.php">Jeux</a></li>
+                <li><a href="CatégoriesInsolitesAcheteur.php">Insolite</a></li>
+                <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
+            </ul>
+        </li>
+        
+        <li><a href="notifications.php">Notifications</a></li>
 
+        <li><a href="Panier_Acheteur.php">Panier</a></li>
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="profil_acheteur.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-					</ul>	
-				</li>
-
-			</ul>
+        <li class="menu-deroulant">
+            <a href="#">Mon compte</a>
+            <ul class="sous-menu">
+            <li><a href="profil_acheteur.php">Ma page</a></li>
+            <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+            
+        </li>
+     </ul>
 
 		</div>
 
@@ -63,42 +70,64 @@ $db_found = mysqli_select_db($db_handle, $database);
 			<form action="nego_2.php" method="post" align=center>
 				<?php 
 
-				$sqlTest = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur)";
+				$sqlTest = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur')";
 				$resultTest = mysqli_query($db_handle, $sqlTest);
 				if(mysqli_num_rows($resultTest)== 0)
 				{
 
-					$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', NULL, '0') ";
+					$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', '0', '0') ";
     			  	$resultCreer =mysqli_query($db_handle, $sqlCreer);
-    			 	echo "<p>Add successful nego.</p>";
 				}
 				
 				?>
 				<table align=center>
 					<?php
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
+					$compt0=0;
+					$compt1=1;
+					$compt2=2;
+					$compt3=3;
+					$compt4=4;
+					$compt5=5;
+					$accepte=0;
+					$accepte1=1;
+					$accepte2=2;
+
+
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte1')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							echo "Votre offre d achat a ete accepte par le vendeur.";
-							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
+							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte1')";
 							$resultD = mysqli_query($db_handle, $sqlD);
+
+
+						 $sql="DELETE from panier WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article')";
+          				  $result = mysqli_query($db_handle,$sql);
+
+
+							
 						}
 						
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte2')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							echo "Votre offre d achat a ete refuse par le vendeur.";
-							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
+							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte2')";
 							$resultD = mysqli_query($db_handle, $sqlD);
+
+							 $sql="DELETE from panier WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article')";
+          					  $result = mysqli_query($db_handle,$sql);
+
+							
 
 						}
 						
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='0' || compteur='2' || compteur='4') AND (accepte='0')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt0' || compteur='$compt2' || compteur='$compt4') AND (accepte='$accepte')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
@@ -120,9 +149,12 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 				</tr>
 
+				
+
+
 				<?php
 					}
-					$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='1' || compteur='3') AND (accepte='0')";
+					$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt1' || compteur='$compt3') AND (accepte='$accepte')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
@@ -131,7 +163,28 @@ $db_found = mysqli_select_db($db_handle, $database);
 						
 						
 				?>
+				<?php
 
+
+				$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND ( compteur='$compt2' || compteur='$compt4') AND (accepte='$accepte')";
+						$result = mysqli_query($db_handle, $sql);
+						if(mysqli_num_rows($result)!= 0)
+						{	
+						
+					?>
+
+				<tr>
+					<td colspan="2" align="center">
+					<a href="negoAccepteAcheteur.php">Accepter l offre</a>
+					</td>
+
+				</tr>
+
+				<?php
+				
+				}
+
+				?>
 			</table>
 		</form>
 	
