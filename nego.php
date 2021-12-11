@@ -63,42 +63,52 @@ $db_found = mysqli_select_db($db_handle, $database);
 			<form action="nego_2.php" method="post" align=center>
 				<?php 
 
-				$sqlTest = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur)";
+				$sqlTest = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur')";
 				$resultTest = mysqli_query($db_handle, $sqlTest);
 				if(mysqli_num_rows($resultTest)== 0)
 				{
 
-					$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', NULL, '0') ";
+					$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', '0', '0') ";
     			  	$resultCreer =mysqli_query($db_handle, $sqlCreer);
-    			 	echo "<p>Add successful nego.</p>";
 				}
 				
 				?>
 				<table align=center>
 					<?php
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
+					$compt0=0;
+					$compt1=1;
+					$compt2=2;
+					$compt3=3;
+					$compt4=4;
+					$compt5=5;
+					$accepte=0;
+					$accepte1=1;
+					$accepte2=2;
+
+
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte1')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							echo "Votre offre d achat a ete accepte par le vendeur.";
-							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
+							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte1')";
 							$resultD = mysqli_query($db_handle, $sqlD);
 						}
 						
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte2')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							echo "Votre offre d achat a ete refuse par le vendeur.";
-							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
+							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt5') AND (accepte='$accepte2')";
 							$resultD = mysqli_query($db_handle, $sqlD);
 
 						}
 						
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='0' || compteur='2' || compteur='4') AND (accepte='0')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt0' || compteur='$compt2' || compteur='$compt4') AND (accepte='$accepte')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
@@ -122,7 +132,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 				<?php
 					}
-					$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='1' || compteur='3') AND (accepte='0')";
+					$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt1' || compteur='$compt3') AND (accepte='$accepte')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
