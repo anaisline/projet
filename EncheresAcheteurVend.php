@@ -65,6 +65,10 @@ $date_fin = $_GET['date_fin'];
 	                echo "<p style='color:red'>Votre prix maximal doit être supérieur au prix initial</p>";
 	                $err=0;
 	            }
+                if($err==2){
+                    echo "<p style='color:red'>Les enchères s'enflamment ! Si vous voulez votre chance augmentez votre mise</p>";
+                    $err=0;
+                }
 	        }
 	        ?>
 
