@@ -9,9 +9,9 @@ $date_fin = $_SESSION['date_fin'];
 
 $prix_max=isset($_POST['prix_max'])?$_POST['prix_max']:"";
 
-date_default_timezone_set('Europe/Amsterdam');
-$DateAndTime = date('d-m-Y h:i:s a', time());  
-echo "The current date and time are $DateAndTime.";
+//date_default_timezone_set('Europe/Amsterdam');
+//$DateAndTime = date('d-m-Y h:i:s a', time());  
+//echo "The current date and time are $DateAndTime.";
 
 $database = "shopping";
 //connectez-vous dans BDD
@@ -42,9 +42,7 @@ if($db_found){
 	}
 	else{
 		header('Location: EncheresAcheteurVend.php?id_article='.$id_article.'&id_vendeur='.$id_vendeur.'&prix_init='.$prix_init.'&date_fin='.$date_fin.'&erreur=1');
-	}
-
-		
+	}		
 }
 
 ?>

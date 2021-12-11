@@ -16,7 +16,7 @@ if($id_acheteur != "" and $id_article != "")
 {
 		if($db_found) {
 
-			$sql="SELECT * from panier where id_article = $id_article";
+			$sql="SELECT * from panier where id_article = $id_article and id_acheteur = $id_acheteur";
 			$result=mysqli_query($db_handle, $sql);
 			if (mysqli_num_rows($result) == 0){
 				$sql="INSERT INTO panier (id_article, id_acheteur) VALUES ($id_article, $id_acheteur)";

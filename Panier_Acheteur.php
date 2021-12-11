@@ -306,6 +306,8 @@ $mysqli -> set_charset("utf8");
             $requeteArticle = "SELECT * from article_vendeur, panier where panier.id_acheteur = $id_acheteur
             and panier.id_article = article_vendeur.id_article";
             $resultat1 = $mysqli -> query($requeteArticle);
+            $today = date("Y-m-d");
+            $today_time = strtotime($today);
 
             while ($ligne = $resultat1 -> fetch_assoc()) {
                 if($ligne['categorie_achat'] == "meilleur_prix"){
@@ -386,15 +388,37 @@ $mysqli -> set_charset("utf8");
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" align=center>
+                            <?php
+                            $expire = $ligne['date_fin']; //from database
+                            $expire_time = strtotime($expire);
+
+                            if($today_time < $expire_time){
+                            ?>
+                                <td colspan="2" align=center>
+                                    <?php
+                                    $varArt = $ligne['id_article'];
+                                    $varVend = $ligne['id_vendeur'];
+                                    $varPrix = $ligne['prix'];
+                                    $varDateFin = $ligne['date_fin'];
+                                    echo "<a href='EncheresAcheteurVend.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Lancer les enchères</a>";
+                                    ?>
+                                </td>
                                 <?php
-                                $varArt = $ligne['id_article'];
-                                $varVend = $ligne['id_vendeur'];
-                                $varPrix = $ligne['prix'];
-                                $varDateFin = $ligne['date_fin'];
-                                echo "<a href='EncheresAcheteurVend.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Lancer les enchères</a>";
+                            }
+                            else{
                                 ?>
-                            </td>
+                                <td colspan="2" align=center>
+                                    <?php
+                                    $varArt = $ligne['id_article'];
+                                    $varVend = $ligne['id_vendeur'];
+                                    $varPrix = $ligne['prix'];
+                                    $varDateFin = $ligne['date_fin'];
+                                    echo "<a href='EncheresAcheteurResultTraitement.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Obtenir les resultats</a>";
+                                    ?>
+                                </td>
+                                <?php
+                            }
+                            ?>
                             
                         </tr>
                     </table>
@@ -486,15 +510,38 @@ $mysqli -> set_charset("utf8");
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" align=center>
+                            <?php
+                            $expire = $ligne['date_fin']; //from database
+                            $expire_time = strtotime($expire);
+
+                            if($today_time < $expire_time){
+                            ?>
+                                <td colspan="2" align=center>
+                                    <?php
+                                    $varArt = $ligne['id_article'];
+                                    $varVend = $ligne['id_admin'];
+                                    $varPrix = $ligne['prix'];
+                                    $varDateFin = $ligne['date_fin'];
+                                    echo "<a href='EncheresAcheteurVend.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Lancer les enchères</a>";
+                                    ?>
+                                </td>
                                 <?php
-                                $varArt = $ligne['id_article'];
-                                $varVend = $ligne['id_admin'];
-                                $varPrix = $ligne['prix'];
-                                $varDateFin = $ligne['date_fin'];
-                                echo "<a href='EncheresAcheteurVend.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Lancer les enchères</a>";
+                            }
+                            else{
                                 ?>
-                            </td>
+                                <td colspan="2" align=center>
+                                    <?php
+                                    $varArt = $ligne['id_article'];
+                                    $varVend = $ligne['id_admin'];
+                                    $varPrix = $ligne['prix'];
+                                    $varDateFin = $ligne['date_fin'];
+                                    echo "<a href='EncheresAcheteurResultTraitement.php?id_article=".$varArt."&id_vendeur=".$varVend."&prix_init=".$varPrix."&date_fin=".$varDateFin."'>Obtenir les resultats</a>";
+                                    ?>
+                                </td>
+                                <?php
+                            }
+                            ?>
+                            
                         </tr>
                     </table>
                 </form>
