@@ -31,8 +31,8 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</p>
 		</div>
 		<br>
-		<div id="nav">
-		    <ul>
+		<div id="nav" style="z-index: 200;">
+		    <ul>	
 		        <li><a href="accueilAcheteur.php">Accueil</a></li>
 
 		        <li class="menu-deroulant">
@@ -95,14 +95,14 @@ $db_found = mysqli_select_db($db_handle, $database);
 		
 
 		?>
-		<br><br>
-		<h4 align="center" style="margin-left:160px">Paramètres du profil acheteur</h4>
 
-		<div class="container rounded bg-black mt-8 mb-8">
+		<div class="container rounded bg-black mt-8 mb-8" style="z-index: 0">
 			<form action="verifModifProfilAcheteur.php" method="post">
+
 				<div class="row">
 					<div class="col-md-5 " >
 						<div class="d-flex flex-column align-items-center text-center p-3 py-5">
+						
 							<img class="rounded-circle mt-5" width="150px" src= "<?php echo $image; ?>">
 							<span class="font-weight-bold"><?php echo $data['prenom']." ".$data['nom']; ?></span><span> </span></div>
 							<div class="mt-20 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton3">Supprimer la photo</button></div>
@@ -110,6 +110,8 @@ $db_found = mysqli_select_db($db_handle, $database);
 							<div class="mt-20 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton4">Supprimer la CB</button></div>
 						</div>
 						<div class="col-md-5 ">
+							<!-- Titre formulaire -->
+							<h4 align="center">Paramètres du profil acheteur</h4>
 							<div class="p-3 py-5">
 								<div class="d-flex justify-content-between align-items-center mb-3">
 									
@@ -178,11 +180,12 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</div>
 		</form>
 	</div>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
-	<div id="footer">
+
+
+	<div id="footer" style="margin-top: 550px">
 		<!--Copyright &copy; 2021 Prime Properties<br> -->
 
 		<dd>
