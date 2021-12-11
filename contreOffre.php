@@ -1,16 +1,16 @@
 <?php
 session_start();
+$id_vendeur=$_SESSION['id_vendeur'];
+$id_article=$_SESSION['id_article'];
 $id_acheteur=$_SESSION['id_acheteur'];
-$id_article=$_GET['id_article'];
-$id_vendeur=$_GET['id_vendeur'];
 
 $database = "shopping";
 //connectez-vous dans BDD
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
-
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 				</li>
 
 
-				<li><a href="#">Notifications</a></li>
+				<li><a href="notifVendeur.php">Notifications</a></li>
 
 
 				<li class="menu-deroulant">
@@ -57,61 +57,32 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</div>
 
 		<div>
-			<h2 align=center> Negocier un article </h2>
+			<h2 align=center> Negocier un article</h2>
 				
 
-			<form action="nego_2.php" method="post" align=center>
-				<?php 
-
-				$sqlTest = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur)";
-				$resultTest = mysqli_query($db_handle, $sqlTest);
-				if(mysqli_num_rows($resultTest)== 0)
-				{
-
-					$sqlCreer="INSERT INTO nego (offre, id_article, id_acheteur, id_vendeur, accepte, compteur) VALUES (NULL, '$id_article', '$id_acheteur', '$id_vendeur', NULL, '0') ";
-    			  	$resultCreer =mysqli_query($db_handle, $sqlCreer);
-    			 	echo "<p>Add successful nego.</p>";
-				}
+			<form action="contreOffre_2.php" method="post" align=center>
 				
-				?>
 				<table align=center>
 					<?php
-
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
-						$result = mysqli_query($db_handle, $sql);
-						if(mysqli_num_rows($result)!= 0)
-						{
-							echo "Votre offre d achat a ete accepte par le vendeur.";
-							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
-							$resultD = mysqli_query($db_handle, $sqlD);
-						}
-						
-
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
-						$result = mysqli_query($db_handle, $sql);
-						if(mysqli_num_rows($result)!= 0)
-						{
-							echo "Votre offre d achat a ete refuse par le vendeur.";
-							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
-							$resultD = mysqli_query($db_handle, $sqlD);
-
-						}
-						
-
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='0' || compteur='2' || compteur='4') AND (accepte='0')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur)";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							$data = mysqli_fetch_assoc($result);
+						}
+						else
+						{
+							echo "on ne trouve pas cet article a negocier";
+						}
 						
 					?>
+
 
 					<tr>
 						<td><label>Offre article <span class="required"></span></label></td>
 						<td><input type="int" name="offre" class="field-long" placeholder="<?php echo $data['offre']; ?>" />
 						</td>
 					</tr>
-					
 
 				<tr>
 					<td colspan="2" align="center">
@@ -119,27 +90,14 @@ $db_found = mysqli_select_db($db_handle, $database);
 					</td>
 
 				</tr>
-
-				<?php
-					}
-					$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='1' || compteur='3') AND (accepte='0')";
-						$result = mysqli_query($db_handle, $sql);
-						if(mysqli_num_rows($result)!= 0)
-						{
-							echo "Cet article est dans l attente d une reponse du vendeur";
-						}
-						
-						
-				?>
-
+				
 			</table>
 		</form>
+
+
 	
 	</div>
-	<?php
-	$_SESSION['id_article']=$id_article;
-	$_SESSION['id_vendeur']=$id_vendeur;
-	?>
+	
 	<div id="footer">
 		<!--Copyright &copy; 2021 Prime Properties<br> -->
 
@@ -177,6 +135,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 	</div>
 
 </div>
+
 
 </body>
 </html>
