@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id_vendeur=$_SESSION['id_vendeur'];
+$id_admin=$_SESSION['id_admin'];
 $id_article=$_SESSION['id_article'];
 $id_acheteur=$_SESSION['id_acheteur'];
 
@@ -34,25 +34,33 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 		<div id="nav">
 			<ul>
-				<li><a href="accueilAcheteur.php">Accueil</a></li>
+        
+        <li><a href="accueilAdmin.php">Accueil</a></li>
+        
+        <li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 			</ul>
+ 			</li>
 
-				<li >
-					<a href="parcourir.html">Gerer mes articles</a>
-				</li>
+
+        <li >
+            <a href="notifAdmin.php">Notifications</a>
+        </li>
 
 
-				<li><a href="notifVendeur.php">Notifications</a></li>
+        <li class="menu-deroulant">
+            <a href="#">Mon compte</a>
+            <ul class="sous-menu">
 
+               <li><a href="profil_admin.php">Mon profil</a></li>
+               <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+           </ul>	
+       </li>
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="profil_acheteur.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-					</ul>	
-				</li>
-
-			</ul>
+   </ul>
 
 		</div>
 
@@ -60,11 +68,11 @@ $db_found = mysqli_select_db($db_handle, $database);
 			<h2 align=center> Negocier un article</h2>
 				
 
-			<form action="contreOffre_2.php" method="post" align=center>
+			<form action="contreOffreAdmin_2.php" method="post" align=center>
 				
 				<table align=center>
 					<?php
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_admin')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
