@@ -1,9 +1,3 @@
-<?php
-    session_start();
-   $id_admin= $_SESSION['id_admin']; 
-
-    ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,26 +20,28 @@
  
  	<div id="nav">
  		<ul>
- 			<li><a href="accueilAdmin.php">Accueil</a></li>
-           
+ 			<li><a href="accueil.php">Accueil</a></li>
+
  			<li class="menu-deroulant">
- 			<a href="parcourir.html">Gérer</a>
+ 			<a href="parcourir.html">Parcourir les categories</a>
  			<ul class="sous-menu">
- 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
- 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 				<li><a href="CatégoriesPoupées.php">Poupees</a></li>
+ 				<li><a href="CatégoriesJeux.php">Jeux</a></li>
+ 				<li><a href="CatégoriesInsolite.php">Insolite</a></li>
+ 				<li><a href="CatégorieAll.php">Tout parcourir</a></li>
  			</ul>
  			</li>
 
-            <li >
-            <a href="notifAdmin.php">Notifications</a>
-            </li>
+ 			
+ 			<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
 
+ 			<li><a href="panierSansConnexion.html">Panier</a></li>
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
  			<ul class="sous-menu">
- 				<li><a href="profil_admin.php">Mon profil</a></li>
- 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
+ 				<li><a href="connexionAcheteur.php">Se connecter</a></li>
+ 				<li><a href="nouveauClient.php">Creer son compte</a></li>
  			</ul>	
  			</li>
  		
@@ -64,8 +60,8 @@
 <!--selection du jour -->
  	</div>
 
- 	
-<?php
+    <?php
+    session_start();
 
     $mysqli = new mysqli("localhost", "root", "", "shopping");
     $mysqli -> set_charset("utf8");
@@ -98,6 +94,7 @@
                         
                         echo '<div class="card-content">';
                             echo '<p> '.$ligne['description'].'</p>';
+                            echo '<a href="CatégorieAll.php" color=white>En savoir plus</a>';
                         echo '</div>';
                     echo '</div>';
                 echo '</li>';
@@ -130,6 +127,7 @@
                         
                         echo '<div class="card-content">';
                             echo '<p> '.$ligne['description'].'</p>';
+                            echo '<a href="CatégorieAll.php" color=white>En savoir plus</a>';
                         echo '</div>';
                     echo '</div>';
                 echo '</li>';
