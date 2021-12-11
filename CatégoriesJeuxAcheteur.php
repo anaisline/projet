@@ -132,7 +132,7 @@
             <tr align=center>
                 <td>
                         <?php
-                        echo "<a href='VisiteProfilVend.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+                        echo "<a href='VisiteProfilVendCo.php?nom=".$var."&prenom=".$var2." '>$var</a>";
                         ?>
                 </td>
                 <td>
@@ -230,7 +230,7 @@
                 <tr align=center>
                     <td>
                         <?php
-                            echo "<a href='VisiteProfilAdmin.php?nom=".$var."&prenom=".$var2." '>$var</a>";
+                            echo "<a href='VisiteProfilAdminCo.php?nom=".$var."&prenom=".$var2." '>$var</a>";
                             ?>
                     </td>
                     <td>
