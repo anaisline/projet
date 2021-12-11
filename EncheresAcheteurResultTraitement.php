@@ -18,22 +18,36 @@ if($db_found){
 	and prix_max = (SELECT max(prix_max) from enchere)";
 	$resultat = mysqli_query($db_handle, $sql);
 
-	if (mysqli_num_rows($resultat) != 0) {
+	if (mysqli_num_rows($resultat) > 1) {
 
 		while ($ligne = $resultat -> fetch_assoc()) {
 
-			$sql = "DELETE FROM enchere, panier where enchere.id_article = panier.id_article
-			and enchere.id_acheteur = panier.id_acheteur";
+			$recupArt = $ligne['id_article'];
+			$recupAch = $ligne['id_acheteur'];
+			$sql = "DELETE FROM panier where id_article = $recupArt";
+			$sql = "DELETE FROM enchere where id_article = $recupArt";
 			$resultat = mysqli_query($db_handle, $sql);
 
+			echo $sql;
+
 			if($ligne['id_acheteur'] == $id_acheteur){
-				$prix_final = $ligne['prix_max'];
+
+				$prix_final = $ligne['prix_max'] + 1;
 				header('Location: EncheresAcheteurResultVictoire.php?prix_final='.$prix_final);
 			}
 			else{
+
 				header('Location: EncheresAcheteurResultDefaite.php');
 			}
 		}
+	}
+	elseif (mysqli_num_rows($resultat) == 1) { //Si il n'y a qu'un seul participant (il a forcément gagné sans ré encherir)
+		$sql = "DELETE FROM panier where id_article = $id_article";
+		$resultat2 = mysqli_query($db_handle, $sql);
+		$sql = "DELETE FROM enchere where id_article = $id_article";
+		$resultat2 = mysqli_query($db_handle, $sql);
+
+		header('Location: EncheresAcheteurResultVictoire.php?prix_final='.$prix_init);
 	}
 }
 
