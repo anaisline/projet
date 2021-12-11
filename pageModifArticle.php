@@ -65,12 +65,14 @@ $db_found = mysqli_select_db($db_handle, $database);
 		$prix = $data['prix'];
 		$categorie_type = $data['categorie_type'];
 		$categorie_achat = $data['categorie_achat'];
+		$date_fin= $data['date_fin'];
+		
 		
 		$sql = "SELECT * from photo WHERE id_article='$id_articleAModif'";
 		$result = mysqli_query($db_handle, $sql);
 		$data= mysqli_fetch_assoc($result);
 		$photo1=$data['adresse_photo'];
-		
+
 		if($data=mysqli_fetch_assoc($result))
 		{
 			$photo2=$data['adresse_photo'];
@@ -130,7 +132,18 @@ $db_found = mysqli_select_db($db_handle, $database);
 									<div class="col-md-12"><label class="labels">Description</label>
 										<input type="text" class="form-control" name="description" value="<?php echo $description; ?>">
 									</div>
+									<?php
+								if($categorie_achat=="meilleur_prix")
+								{
+									?>
+									<div class="col-md-12"><label class="labels">Date de fin d'enchere</label>
+										<input type="date" class="form-control" name="date_fin" value="<?php echo $date_fin; ?>">
+									</div>
+									<?php
+								}
+								?>
 								</div>
+
 
 								<div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" name="bouton1">Enregistrer les modifications</button></div>
 
