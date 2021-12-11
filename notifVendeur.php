@@ -7,13 +7,16 @@ $database = "shopping";
 $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 
+$mysqli = new mysqli("localhost", "root", "", "shopping");
+    $mysqli -> set_charset("utf8");
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<link href="test.css" rel="stylesheet" type="text/css"/>
+	<link href="notifVendeur.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 
 </head>
@@ -56,28 +59,37 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 </div>
 
-<div id="section" align=center>
+<div id="section" align="center">
+	<h2 align="left">Vos notifications</h2>
 	<table align=center>
+
 
 <?php
 
 if($db_found) {
+
 
 $compt1=1;
 $compt3=3;
 $compt5=5;
 $accepte=0;
 
+
 $sql="SELECT * FROM nego WHERE (id_vendeur='$id_vendeur') AND (compteur='$compt1' || compteur='$compt3'|| compteur='$compt5') AND (accepte='$accepte')";
 $result = mysqli_query($db_handle, $sql);
-$data=mysqli_fetch_assoc($result);
+$resultat = $mysqli -> query($sql);
 
-if (mysqli_num_rows($result) != 0 ) {
 
-	$offre=$data['offre'];
-	$id_article=$data['id_article'];
-	$id_acheteur=$data['id_acheteur'];
-	$compt=$data['compteur'];
+while ($ligne = $resultat -> fetch_assoc()) {
+        
+
+if (mysqli_num_rows($result) != 0) {
+
+
+	$offre=$ligne['offre'];
+	$id_article=$ligne['id_article'];
+	$id_acheteur=$ligne['id_acheteur'];
+	$compt=$ligne['compteur'];
 
 
 	$sqlA="SELECT * FROM article_vendeur WHERE (id_article='$id_article') AND (id_vendeur='$id_vendeur') ";
@@ -89,20 +101,20 @@ if (mysqli_num_rows($result) != 0 ) {
 		$nom=$dataA['nom'];
 
 
-		echo "Votre article " .$nom. "a eu une offre a ".$offre. " euros";
+		echo "Votre article " .$nom. " a eu une offre a ".$offre. " euros<br>";
 
-		$_SESSION['id_article']=$id_article;
-		$_SESSION['id_acheteur']=$id_acheteur;
+		
 
 		if($compt!=5)
 		{
-
-
+	
 		?>
 
 		<tr>
 			<td colspan="2" align="center">
-			<a href="contreOffre.php"><input type="submit" name="contre_offre" value="Faire une contre offre"></a>
+			<?php
+               echo "<a href='contreOffre.php?id_article=".$id_article."&id_acheteur=".$id_acheteur." '>Faire une contre offre</a>";
+           ?>
 			</td>
 		</tr>
 
@@ -115,7 +127,9 @@ if (mysqli_num_rows($result) != 0 ) {
 	
 		<tr>
 			<td colspan="2" align="center">
-			<a href="refuserNego.php">Refuser l offre</a>
+			<?php
+               echo "<a href='refuserNego.php?id_article=".$id_article."&id_acheteur=".$id_acheteur." '>Refuser l offre</a>";
+           ?>
 			</td>
 		</tr>
 
@@ -127,18 +141,28 @@ if (mysqli_num_rows($result) != 0 ) {
 	
 		<tr>
 			<td colspan="2" align="center">
-			<a href="accepteNego.php">Accepter l offre</a>
+			<p align="center">ou</p>
+			<?php
+               echo "<a href='accepteNego.php?id_article=".$id_article."&id_acheteur=".$id_acheteur." '>Accepter l offre</a>";
+           ?>
 			</td>
 		</tr>
 		
 
 <?php
 	}
+	else
+	{
+		echo "On ne trouve pas l'article";
+	}
+	
 }
 else
 {
 	echo "Vous n avez pas d offres sur vos articles";
 }
+}
+
 }
 else
 {

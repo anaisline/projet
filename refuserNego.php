@@ -1,8 +1,8 @@
 <?php
 session_start();
 $id_vendeur=$_SESSION['id_vendeur'];
-$id_article=$_SESSION['id_article'];
-$id_acheteur=$_SESSION['id_acheteur'];
+$id_article=$_GET['id_article'];
+$id_acheteur=$_GET['id_acheteur'];
 
 $database = "shopping";
 //connectez-vous dans BDD
