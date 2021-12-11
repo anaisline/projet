@@ -68,100 +68,80 @@
 <!--selection du jour -->
 </div>
 
-<section class="carousel">
-    <ul class="carousel-items">
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">My awesome article</h2>
-                <img src="https://static.fnac-static.com/multimedia/Images/FD/Comete/135843/CCP_IMG_ORIGINAL/1781817.gif" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button" color=white>Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">Just another awesome article</h2>
-                <img src="https://lpcm.hypotheses.org/files/2018/12/horreurth%C3%A9ologie-672x372.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">Yet another awesome article</h2>
-                <img src="https://static.actu.fr/uploads/2019/06/nuit-horreur-kinepolis-lille-lomme-960x640.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">Wow! Another awesome article</h2>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSurdyCUhfrjlpp7SNmyfquFapmX_Z8kc42IQ&usqp=CAU" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">That's some awesome article</h2>
-                <img src="Montagne.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">Just a lot or articles !</h2>
-                <img src="Montagne.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">One more, one more !</h2>
-                <img src="Montagne.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">Again !</h2>
-                <img src="Montagne.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-        <li class="carousel-item">
-            <div class="card">
-                <h2 class="card-title">One last</h2>
-                <img src="Montagne.jpg" />
-                <div class="card-content">
-                    <p>Mewl for food at 4am chase mice. Scratch leg; meow for can opener to feed me purr when being pet nya nya nyan catasstrophe, fooled again thinking the dog likes me cough hairball on conveniently placed pants.</p>
-                    <a href="#" class="button">Read more</a>
-                </div>
-            </div>
-        </li>
-    </ul>
-</section>
+<?php
+
+    $mysqli = new mysqli("localhost", "root", "", "shopping");
+    $mysqli -> set_charset("utf8");
+    
+    echo '<section class="carousel">';
+        echo '<ul class="carousel-items">';            
+            $requeteVend = "SELECT * from article_admin order by article_admin.date";
+            $resultat = $mysqli -> query($requeteVend);
+                    //afficher le resultat
+            while ($ligne = $resultat -> fetch_assoc()) {
+
+                echo '<li class="carousel-item">';
+                    echo '<div class="card">';
+
+                        echo '<h2 class="card-title"> '.$ligne['nom'].' </h2>';
+                        
+                        $recup = $ligne['id_article'];
+
+                        $requPhoto = "SELECT adresse_photo from photo, article_vendeur where photo.id_article = $recup";
+                        $resultatPhoto = $mysqli -> query($requPhoto);
+
+                        $count = "SELECT count(id_photo) as numero from photo where photo.id_article = $recup";
+                        $resCount = mysqli_query($mysqli, $count);
+                        $data2 = mysqli_fetch_array($resCount);
+
+                        for ($i=0; $i < 1; $i++) { 
+                            $ligne1 = $resultatPhoto -> fetch_assoc();
+                            echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+                        }
+                        
+                        echo '<div class="card-content">';
+                            echo '<p> '.$ligne['description'].'</p>';
+                            echo '<a href="CatégorieAllAcheteur.php" color=white>En savoir plus</a>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</li>';
+            }
+
+
+            $requeteVend = "SELECT * from article_vendeur order by article_vendeur.date";
+            $resultat = $mysqli -> query($requeteVend);
+                    //afficher le resultat
+            while ($ligne = $resultat -> fetch_assoc()) {
+
+                echo '<li class="carousel-item">';
+                    echo '<div class="card">';
+
+                        echo '<h2 class="card-title"> '.$ligne['nom'].' </h2>';
+                        
+                        $recup = $ligne['id_article'];
+
+                        $requPhoto = "SELECT adresse_photo from photo, article_vendeur where photo.id_article = $recup";
+                        $resultatPhoto = $mysqli -> query($requPhoto);
+
+                        $count = "SELECT count(id_photo) as numero from photo where photo.id_article = $recup";
+                        $resCount = mysqli_query($mysqli, $count);
+                        $data2 = mysqli_fetch_array($resCount);
+
+                        for ($i=0; $i < 1; $i++) { 
+                            $ligne1 = $resultatPhoto -> fetch_assoc();
+                            echo '<img src="'. $ligne1['adresse_photo'] .'" alt="" />';
+                        }
+                        
+                        echo '<div class="card-content">';
+                            echo '<p> '.$ligne['description'].'</p>';
+                            echo '<a href="CatégorieAllAcheteur.php" color=white>En savoir plus</a>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</li>';
+            }
+        echo '</ul>';
+    echo '</section>';
+    ?>
 
 <div id="footer">
    <!--Copyright &copy; 2021 Prime Properties<br> -->
