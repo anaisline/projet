@@ -92,6 +92,7 @@ $db_found = mysqli_select_db($db_handle, $database);
                                                 <option>negociable</option>
                                                 <option>meilleur_prix</option>
                                             </select> </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="row">

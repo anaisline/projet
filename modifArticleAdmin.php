@@ -14,6 +14,7 @@ $description=isset($_POST['description'])?$_POST['description']:"";
 $typepaiement=isset($_POST['typepaiement'])?$_POST['typepaiement']:"";
 $typecat=isset($_POST['typecat'])?$_POST['typecat']:"";
 $prixArticle=isset($_POST['prixArticle'])?$_POST['prixArticle']:"";
+$date_fin=isset($_POST['date_fin'])?$_POST['date_fin']:"";
 
 if ($db_found) {
 	$erreur = 0;
@@ -99,6 +100,12 @@ if ($db_found) {
 			$sql="UPDATE article_admin SET categorie_type='$typecat' WHERE id_article='$id_articleAModif' ";
 			$result = mysqli_query($db_handle,$sql);	
 		}
+
+	}
+	if($date_fin!="" && $typepaiement=="meilleur_prix")
+	{
+			$sql="UPDATE article_admin SET date_fin='$date_fin' WHERE id_article='$id_articleAModif' ";
+			$result = mysqli_query($db_handle,$sql);	
 
 	}
 	if($erreur==0)
