@@ -107,7 +107,7 @@ $db_found = mysqli_select_db($db_handle, $database);
           				  $result = mysqli_query($db_handle,$sql);
 
 
-							header('Location: Panier_Acheteur.php?');/*verifier que ce soit le bon lien*/
+							
 						}
 						
 
@@ -122,7 +122,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 							 $sql="DELETE from panier WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article')";
           					  $result = mysqli_query($db_handle,$sql);
 
-							header('Location: Panier_Acheteur.php?');/*verifier que ce soit le bon lien*/
+							
 
 						}
 						
