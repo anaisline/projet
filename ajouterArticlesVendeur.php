@@ -61,37 +61,37 @@ $id_vendeur=$_SESSION['id_vendeur'];
 								<form id="contact-form" role="form">
 									<div class="controls">
 										<div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_name">Nom</label> <input id="form_name" type="text" name="nom" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_lastname">Description</label> <input id="form_lastname" type="text" name="description" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_name">Photo 1 </label> <input id="form_name" type="text" name="photo1" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_lastname">Photo 2</label> <input id="form_lastname" type="text" name="photo2" class="form-control" placeholder="" > </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_name">Prix</label> <input id="form_name" type="text" name="prix" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_lastname">Date</label> <input id="form_lastname" type="date" name="date" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
-                                    </div>
-                                </div>
+											<div class="col-md-6">
+												<div class="form-group"> <label for="form_name">Nom</label> <input id="form_name" type="text" name="nom" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group"> <label for="form_lastname">Description</label> <input id="form_lastname" type="text" name="description" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group"> <label for="form_name">Photo 1 </label> <input id="form_name" type="text" name="photo1" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group"> <label for="form_lastname">Photo 2</label> <input id="form_lastname" type="text" name="photo2" class="form-control" placeholder="" > </div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group"> <label for="form_name">Prix</label> <input id="form_name" type="text" name="prix" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group"> <label for="form_lastname">Date</label> <input id="form_lastname" type="date" name="date" class="form-control" placeholder="" required="required" data-error="Ce champs est requis."> </div>
+											</div>
+										</div>
 										<div class="row">
 
 											<div class="col-md-6">
-												 <div class="form-group"> <label for="form_need">Categorie</label> <select id="form_need" name="categorie_type" class="form-control" required="required" data-error="Entrez la categorie.">
-                                                <option>poupees</option>
-                                                <option>jeux</option>
-                                                <option>insolites</option>
-                                            </select> </div>
+												<div class="form-group"> <label for="form_need">Categorie</label> <select id="form_need" name="categorie_type" class="form-control" required="required" data-error="Entrez la categorie.">
+													<option>poupees</option>
+													<option>jeux</option>
+													<option>insolites</option>
+												</select> </div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group"> <label for="form_need">Type d'achat</label> <select id="form_need" name="categorie_achat" class="form-control" required="required" data-error="Please specify your need.">
@@ -101,6 +101,16 @@ $id_vendeur=$_SESSION['id_vendeur'];
 												</select> </div>
 											</div>
 										</div>
+
+										<div class="row mt-3">
+											<div class="col-md-12"><label class="labels">Date de fin d'enchere (si meilleur_prix)</label>
+												<input type="date" class="form-control" name="datefin" >
+												<br>
+											</div>
+										</div>
+
+
+
 										<div class="row">
 											<?php
 											if(isset($_GET['erreur'])){

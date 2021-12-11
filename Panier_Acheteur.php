@@ -294,7 +294,7 @@ $mysqli -> set_charset("utf8");
         if(isset($_GET['erreur'])){
             $err = $_GET['erreur'];
             if($err==1){
-                echo "<p align=center style='color:red'>Vous avez déjà lancé cet artile aux enchères</p>";
+                echo "<p align=center style='color:red'>Vous avez déjà lancé cet article aux enchères</p>";
                 $err=0;
             }
             if($err==2){

@@ -104,6 +104,12 @@ $id_admin=$_SESSION['id_admin'];
 												</select> </div>
 											</div>
 										</div>
+										<div class="row mt-3">
+											<div class="col-md-12"><label class="labels">Date de fin d'enchere (si meilleur_prix)</label>
+												<input type="date" class="form-control" name="datefin" >
+												<br>
+											</div>
+										</div>
 										<div class="row">
 											<?php
 											if(isset($_GET['erreur'])){
