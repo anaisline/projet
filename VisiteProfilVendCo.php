@@ -3,6 +3,8 @@ session_start();
 $nom_vendeur=$_GET['nom'];
 $prenom_vendeur=$_GET['prenom'];
 
+$id_acheteur=$_SESSION['id_acheteur'];
+
 $database = "shopping";
 //connectez-vous dans BDD
 $db_handle = mysqli_connect('localhost', 'root', '');
@@ -32,33 +34,34 @@ $db_found = mysqli_select_db($db_handle, $database);
 		</div>
 		<br>
 		<div id="nav">
-			<ul>
-				<li><a href="accueil.html">Accueil</a></li>
+        <ul>
+            <li><a href="accueilAcheteur.php">Accueil</a></li>
 
-				<li class="menu-deroulant">
-					<a href="parcourir.html">Parcourir les categories</a>
-					<ul class="sous-menu">
-						<li><a href="CatégoriesPoupées.php">Poupees</a></li>
-						<li><a href="CatégoriesJeux.php">Jeux</a></li>
-						<li><a href="CatégoriesInsolite.php">Insolite</a></li>
-						<li><a href="CatégorieAll.php">Tout parcourir</a></li>
-					</ul>
-				</li>
+            <li class="menu-deroulant">
 
+                <a href="">Parcourir les categories</a>
+                <ul class="sous-menu">
 
-				<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
+                    <li><a href="CatégoriesPoupéesAcheteur.php">Poupees</a></li>
+                    <li><a href="CatégoriesJeuxAcheteur.php">Jeux</a></li>
+                    <li><a href="CatégoriesInsolitesAcheteur.php">Insolite</a></li>
+                    <li><a href="CatégorieAllAcheteur.php">Tout parcourir</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="notifications.php">Notifications</a></li>
 
-				<li><a href="panierSansConnexion.html">Panier</a></li>
+            <li><a href="Panier_Acheteur.php">Panier</a></li>
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="connexionAcheteur.php">Se connecter</a></li>
-						<li><a href="nouveauClient.html">Creer son compte</a></li>
-					</ul>	
-				</li>
-			</ul>
-		</div>
+            <li class="menu-deroulant">
+                <a href="#">Mon compte</a>
+                <ul class="sous-menu">
+                <li><a href="profil_acheteur.php">Ma page</a></li>
+                <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+                
+            </li>
+         </ul>
+    </div>
 
 		<div id="section">
 			<?php 
@@ -177,6 +180,15 @@ $db_found = mysqli_select_db($db_handle, $database);
 		                        ?>
 		                    </td>
 		                </tr>
+		                <tr align=center>
+			                <td colspan="2">
+			                    <?php
+			                    $var = $ligne['id_article'];
+			                    $var2 = $ligne['categorie_achat'];
+			                    echo "<a href='AjouterPanierAcheteurVendVisite.php?id_article=".$var." '>Ajouter au panier</a>";
+			                    ?>
+			                </td>
+			            </tr>
 
 		        </table>
 		    </form>
