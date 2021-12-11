@@ -82,14 +82,19 @@ $db_found = mysqli_select_db($db_handle, $database);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							echo "Votre offre d achat a ete accepte par le vendeur.";
+							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='1')";
+							$resultD = mysqli_query($db_handle, $sqlD);
 						}
 						
 
-						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='0')";
+						$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
 							echo "Votre offre d achat a ete refuse par le vendeur.";
+							$sqlD = "DELETE from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article=$id_article) AND (id_vendeur=$id_vendeur) AND (compteur='5') AND (accepte='2')";
+							$resultD = mysqli_query($db_handle, $sqlD);
+
 						}
 						
 
