@@ -33,7 +33,9 @@ $id_vendeur=$_SESSION['id_vendeur'];
             <a href="gererArticlesVendeur.php">Gerer mes articles</a>
         </li>
 
-
+        <li >
+            <a href="notifVendeur.php">Notifications</a>
+        </li>
 
 
         <li class="menu-deroulant">
