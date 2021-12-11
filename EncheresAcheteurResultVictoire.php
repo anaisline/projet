@@ -1,10 +1,7 @@
 <?php
 session_start();
 $id_acheteur=$_SESSION['id_acheteur'];
-$id_article = $_GET['id_article'];
-$id_vendeur = $_GET['id_vendeur'];
-$prix_init = $_GET['prix_init'];
-$date_fin = $_GET['date_fin'];
+$prix_final = $_GET['prix_final'];
 ?>
 
 <!DOCTYPE html>
@@ -56,41 +53,10 @@ $date_fin = $_GET['date_fin'];
 
         <div id="section" align=center>
 
-        	<h2>Fixez votre prix maximal :</h2>
-
-        	<?php
-	        if(isset($_GET['erreur'])){
-	            $err = $_GET['erreur'];
-	            if($err==1){
-	                echo "<p style='color:red'>Votre prix maximal doit être supérieur au prix initial</p>";
-	                $err=0;
-	            }
-	        }
-	        ?>
-
-        	<form action="EncheresAcheteurVendTraitement.php" method="post">
-        		<?php
-        		$_SESSION['id_article'] = $id_article;
-				$_SESSION['id_vendeur'] = $id_vendeur;
-				$_SESSION['prix_init'] = $prix_init;
-				$_SESSION['date_fin'] = $date_fin;
-        		?>
-        		<table>
-        			<tr>
-        				<td>
-        					Quel est le prix maximal que vous pouvez mettre ?
-        				</td>
-        				<td align=center>
-        					<input type="text" name="prix_max" placeholder="Prix maximum">
-        				</td>
-        			</tr>
-        			<tr>
-        				<td colspan="2" align=center>
-        					<input type="submit" name="Valider" value="Valider">
-        				</td>
-        			</tr>
-        		</table>
-        	</form>
+        	<h1>Vous avez remporté les enchères !!</h1>
+            <br><br>
+            <h2>Le prix de votre article est de <?php echo $prix_final ?></h2>
+            
         </div>
 
 
