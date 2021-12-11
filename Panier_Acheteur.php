@@ -251,20 +251,24 @@ $mysqli -> set_charset("utf8");
                 </tr>
                 <tr>
                     <td colspan="2" align=center>
+
                         <?php
                         if($prixTot>0)
                         {
                             ?>
+                            <a href="viderPanier.php"><input type="submit" name="Vider" value="Vider le panier"></a>
                             <a href="achatImmediat.php"><input type="submit" name="Payer" value="Payer"></a>
                             <?php
                         }
                         else
                         {
                             ?>
+                            <a href=""><input type="submit" name="Vider" value="Vider le panier"></a>
                              <a href=""><input type="submit" name="Payer" value="Payer"></a>
                              <?php
                         }
                         ?>
+
                     
                     </td>
                     
