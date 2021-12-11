@@ -94,8 +94,11 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</table>
 		</form>
 
+<?php
+	$_SESSION['id_article']=$id_article;
+	$_SESSION['id_acheteur']=$id_acheteur;
 
-	
+?>	
 	</div>
 	
 	<div id="footer">

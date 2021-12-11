@@ -1,8 +1,8 @@
 <?php
 session_start();
 $id_admin=$_SESSION['id_admin'];
-$id_article=$_SESSION['id_article'];
-$id_acheteur=$_SESSION['id_acheteur'];
+$id_article=$_GET['id_article'];
+$id_acheteur=$_GET['id_acheteur'];
 
 $database = "shopping";
 //connectez-vous dans BDD
@@ -101,10 +101,13 @@ $db_found = mysqli_select_db($db_handle, $database);
 				
 			</table>
 		</form>
-
-
-	
 	</div>
+
+	<?php
+	$_SESSION['id_article']=$id_article;
+	$_SESSION['id_acheteur']=$id_acheteur;
+
+?>
 	
 	<div id="footer">
 		<!--Copyright &copy; 2021 Prime Properties<br> -->
