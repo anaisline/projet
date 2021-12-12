@@ -145,9 +145,9 @@ li div a{
 }
 
 h2{
-  color: white;
-  padding-top: 40px;
-  padding-bottom: 10px;
+  color: red;
+  //padding-top: 40px;
+ // padding-bottom: 10px;
 
 }
 
@@ -217,7 +217,7 @@ td > input{
 table{
   padding: 30px;
   border: 1px solid white;
-  color: white;
+  color: black;
 }
 
 th{
@@ -237,9 +237,11 @@ th{
 }
 
 php{
-  color: white;
+  color: black;
   font-size: 50%;
 }
+
+
 
 #section > table > tr > td > a{
   margin-left: 200px;
@@ -247,7 +249,7 @@ php{
 
 #section > p{
   font-size: 50%;
-  color: white;
+  color: black;
 }
 
 #section>p>a
@@ -291,6 +293,24 @@ php{
     padding-bottom: 10px;
 
 }
+
+tr{
+  //background-color: antiquewhite;
+  color: black;
+  height: 30px;
+}
+tr>th {
+  //background-color: antiquewhite;
+  color: black;
+  height: 30px;
+}
+table{
+  width: 500px;
+  height: 50px;
+  margin-bottom: 30px;
+  color: black;
+}
+
 
 
 
