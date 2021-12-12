@@ -178,7 +178,7 @@ if (isset($_POST["ajouter"])) {
 								echo "<p>Add successful article photo 2.</p>";
 							}
 
-							if($date_fin=="" && $categorie_achat=="meilleur_prix")
+							if($categorie_achat=="meilleur_prix")
 							{
 								$sql = "INSERT INTO article_admin(id_article, id_admin, prix, nom, description, categorie_type, categorie_achat, date,date_fin) VALUES ('$id_article', '$id_admin', '$prix', '$nom', '$description', '$categorie_type', '$categorie_achat', '$date','$date_fin') ";
 

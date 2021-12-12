@@ -16,20 +16,22 @@ if (isset($_POST["buton5"])){
 	if($db_found)
 	{
 		$erreur=0;
-		$sql = "SELECT id_admin as ida from article_admin WHERE (nom='$nom' and categorie_type='$categorie_type' and categorie_achat='$categorie_achat' )";
+		$sql = "SELECT *  from article_admin WHERE (nom='$nom' and categorie_type='$categorie_type' and categorie_achat='$categorie_achat' )";
 		$result = mysqli_query($db_handle, $sql);
 		$data = mysqli_fetch_array($result);
+
 		if (mysqli_num_rows($result) == 0) {
 
 			$erreur= 1;
 		}
 		else
 		{
-			$_SESSION['id_articleAModifAdmin']=$data['ida'];
+			$_SESSION['id_articleAModifAdmin']=$data['id_article'];
 		}
 		if($erreur==0)
 		{
 			header('Location: pageModifArticleAdmin.php?');
+			//echo $data['id_article'];
 
 		}
 		else
