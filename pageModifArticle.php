@@ -21,38 +21,31 @@ $db_found = mysqli_select_db($db_handle, $database);
 <body>
 
 	<!-- wrapper area -->
-	<div id="wrapper">
+	<div id="nav" style="z-index: 200;">
+     <ul>
+        
+        <li><a href="accueilVendeur.php">Accueil</a></li>
+        <li >
+            <a href="gererArticlesVendeur.php">Gerer mes articles</a>
+        </li>
 
-		<div id="header">
-			<p>
-				<font>
-					Fray Her
-				</font>
-			</p>
-		</div>
-		<br>
-		<div id="nav">
-			<ul>
-				<li><a href="accueilVendeur.php">Accueil</a></li>
-
-				<li >
-					<a href="gererArticlesVendeur.php">Gerer mes articles</a>
-				</li>
+        <li >
+            <a href="notifVendeur.php">Notifications</a>
+        </li>
 
 
+        <li class="menu-deroulant">
+            <a href="#">Mon compte</a>
+            <ul class="sous-menu">
 
+               <li><a href="profil_vendeur.php">Mon profil</a></li>
+               <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+           </ul>	
+       </li>
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="profil_vendeur.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-					</ul>	
-				</li>
+   </ul>
 
-			</ul>
-
-		</div>
+</div>
 
 
 		<?php 
@@ -85,7 +78,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 		?>
 
-		<div class="container rounded bg-black mt-8 mb-8">
+		<div class="container rounded bg-black mt-8 mb-8" style="z-index: 0">
 			<form action="modifArticle.php" method="post">
 				<div class="row">
 					<div class="col-md-5 ">
