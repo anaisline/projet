@@ -583,7 +583,7 @@ $mysqli -> set_charset("utf8");
     <h2>Articles négociables</h2>
     <div align="center">
 
-        <a href=""><input type="submit" name="Vider3" value="Annuler les negociations " ></a>
+        <a href="viderNegos.php"><input type="submit" name="Vider3" value="Annuler les negos" ></a>
         <br><br>
     </div>
 
