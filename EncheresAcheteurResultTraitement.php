@@ -29,6 +29,7 @@ if($db_found){
 				$recupArt = $ligne['id_article'];
 				$recupAch = $ligne['id_acheteur'];
 				$sql = "DELETE FROM panier where id_article = $recupArt";
+				$resultat = mysqli_query($db_handle, $sql);
 				$sql = "DELETE FROM enchere where id_article = $recupArt";
 				$resultat = mysqli_query($db_handle, $sql);
 
