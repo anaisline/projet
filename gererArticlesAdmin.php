@@ -36,7 +36,10 @@ $id_admin=$_SESSION['id_admin'];
  			</ul>
  			</li>
 
- 			
+            <li >
+            <a href="notifAdmin.php">Notifications</a>
+            </li>
+
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
