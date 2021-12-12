@@ -127,25 +127,37 @@ if (isset($_POST["acheter"])) {
             $result = mysqli_query($db_handle,$sql);
         }
 
-		do
+		$sql = "SELECT * from panier where id_acheteur='$id_acheteur' ";
+	$resultArticle = mysqli_query($db_handle, $sql);
+	while($data=mysqli_fetch_assoc($resultArticle))
+	{
+		$idart=$data['id_article'];
+		$sql2 = "SELECT * from article_vendeur where (id_article='$idart' and categorie_achat='immediat')";
+		$resultArticle2 = mysqli_query($db_handle, $sql2);
+		
+		while($data2=mysqli_fetch_assoc($resultArticle2))
 		{
-			$sql = "SELECT * FROM panier";
-        	if ($id_acheteur != " ") {
-				$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";					
-			}
-			$resultPanier = mysqli_query($db_handle, $sql);
-			if(mysqli_num_rows($resultPanier) != 0)
-			{
-				$sql= "DELETE FROM panier";
-				if ($id_acheteur != " ") {
-					$sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'";	
+			$articleSupp = $data2['id_article'];
+			$sql3 = "DELETE FROM panier WHERE (id_acheteur='$id_acheteur' and id_article='$articleSupp' ) ";
+			$resultArticle3 = mysqli_query($db_handle, $sql3);
+		}
+	}
 
-				}
-				$result =mysqli_query($db_handle, $sql);
-				echo "<p>Suppression des articles du panier successfull.</p>";
-			}
-				
-		}while(mysqli_num_rows($resultPanier) != 0);
+	$sql = "SELECT * from panier where id_acheteur='$id_acheteur' ";
+	$resultArticle = mysqli_query($db_handle, $sql);
+	while($data=mysqli_fetch_assoc($resultArticle))
+	{
+		$idart=$data['id_article'];
+		$sql2 = "SELECT * from article_admin where (id_article='$idart' and categorie_achat='immediat')";
+		$resultArticle2 = mysqli_query($db_handle, $sql2);
+		$data2=mysqli_fetch_assoc($resultArticle2);
+		if($data2!="")
+		{
+			$articleSupp = $data2['id_article'];
+			$sql3 = "DELETE FROM panier WHERE (id_acheteur='$id_acheteur' and id_article='$articleSupp' ) ";
+			$resultArticle3 = mysqli_query($db_handle, $sql3);
+		}
+	};
 
 		
         header('Location: Panier_Acheteur.php?');/*verifier que ce soit le bon lien*/
