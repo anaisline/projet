@@ -159,6 +159,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 							<tr>
 								<td><label>Offre article <span class="required"></span></label></td>
 								<td><input type="int" name="offre" class="field-long" placeholder="<?php echo $data['offre']; ?>" />
+									<br><br>
 								</td>
 							</tr>
 
