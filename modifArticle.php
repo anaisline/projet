@@ -57,7 +57,7 @@ if ($db_found) {
 				$sql2="DELETE FROM photo WHERE (adresse_photo='$adresse2' and id_article='$id_articleAModif')";
 				$result = mysqli_query($db_handle,$sql2);
 			}
-		}else
+		}else if($photo2!="")
 		{
 
 			$nb1=1;
