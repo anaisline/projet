@@ -44,7 +44,7 @@ $prix_final = $_GET['prix_final'];
                 <li class="menu-deroulant">
                     <a href="#">Mon compte</a>
                     <ul class="sous-menu">
-                    <li><a href="profil_acheteur.php">Ma page</a></li>
+                    <li><a href="profil_acheteur.php">Mon profil</a></li>
                     <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
                     
                 </li>
@@ -53,9 +53,9 @@ $prix_final = $_GET['prix_final'];
 
         <div id="section" align=center>
 
-        	<h1>Vous avez remporté les enchères !!</h1>
+        	<h2>Vous avez remporté les enchères !!</h2>
             <br><br>
-            <h2>Le prix de votre article est de <?php echo $prix_final ?></h2>
+            <h1>Le prix de votre article est de <?php echo $prix_final ?> euros</h1>
             
         </div>
 
