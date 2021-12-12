@@ -33,7 +33,7 @@
  			</li>
 
  			
- 			<li><a href="messagerieSansConnexion.html">Messagerie</a></li>
+ 			<li><a href="messagerieSansConnexion.html">Notifications</a></li>
 
  			<li><a href="panierSansConnexion.html">Panier</a></li>
 

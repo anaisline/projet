@@ -31,29 +31,31 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</p>
 		</div>
 		<br>
-		<div id="nav">
-			<ul>
-				<li><a href="accueilVendeur.php">Accueil</a></li>
+		 <div id="nav">
+     <ul>
+        
+        <li><a href="accueilVendeur.php">Accueil</a></li>
+        <li >
+            <a href="gererArticlesVendeur.php">Gerer mes articles</a>
+        </li>
 
-				<li >
-					<a href="gererArticlesVendeur.php">Gerer mes articles</a>
-				</li>
+        <li >
+            <a href="notifVendeur.php">Notifications</a>
+        </li>
 
 
-	
+        <li class="menu-deroulant">
+            <a href="#">Mon compte</a>
+            <ul class="sous-menu">
 
+               <li><a href="profil_vendeur.php">Mon profil</a></li>
+               <li><a href="connexionAcheteur.php">Se deconnecter</a></li>
+           </ul>	
+       </li>
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="profil_vendeur.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se deconnecter</a></li>
-					</ul>	
-				</li>
+   </ul>
 
-			</ul>
-
-		</div>
+</div>
 		<br><br>
 
 
