@@ -30,7 +30,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 			</p>
 		</div>
 		<br>
-		<div id="nav">
+		<div id="nav" style="z-index: 200;">
 			<ul>
 				<li><a href="accueilAdmin.php">Accueil</a></li>
 				
@@ -85,7 +85,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 		?>
 
-		<div class="container rounded bg-black mt-8 mb-8">
+		<div class="container rounded bg-black mt-8 mb-8" style="z-index: 0">
 			<form action="modifArticleAdmin.php" method="post">
 				<div class="row">
 					<div class="col-md-5 ">
