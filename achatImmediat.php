@@ -148,7 +148,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 					<tr>
 					<td><label>Date d expiration <span class="required"></span></label></td>
-					<td><input type="text" name="dateExp" class="field-long" value="<?php echo $dataCB['dateExp']; ?>" />
+					<td><input type="date" name="dateExp" class="field-long" value="<?php echo $dataCB['dateExp']; ?>" />
 					</td>
 					</tr>
 
