@@ -149,16 +149,17 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 				</tr>
 
-				
-
-
 				<?php
 					}
 					$sql = "SELECT * from nego WHERE (id_acheteur = '$id_acheteur') AND (id_article='$id_article') AND (id_vendeur='$id_vendeur') AND (compteur='$compt1' || compteur='$compt3') AND (accepte='$accepte')";
 						$result = mysqli_query($db_handle, $sql);
 						if(mysqli_num_rows($result)!= 0)
 						{
-							echo "Cet article est dans l attente d une reponse du vendeur";
+							?>
+							<tr>
+							<td> <h3>Cet article est dans l attente d une reponse du vendeur.</h3></td>
+						</tr>
+							<?php
 						}
 						
 						
