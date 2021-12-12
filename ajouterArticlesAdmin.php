@@ -24,6 +24,7 @@ $id_admin=$_SESSION['id_admin'];
 			</font>
 		</p>
  	</div>
+ 	<br>
  
  	<div id="nav">
  		<ul>
@@ -37,8 +38,10 @@ $id_admin=$_SESSION['id_admin'];
  			</ul>
  			</li>
 
- 			
- 			<li><a href="#">Messagerie</a></li>
+            <li >
+            <a href="notifAdmin.php">Notifications</a>
+            </li>
+
 
  			<li class="menu-deroulant">
  			<a href="#">Mon compte</a>
