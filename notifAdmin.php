@@ -70,7 +70,6 @@ $mysqli -> set_charset("utf8");
 
 		if($db_found) {
 
-
 			$compt1=1;
 			$compt3=3;
 			$compt5=5;
@@ -79,8 +78,22 @@ $mysqli -> set_charset("utf8");
 			$sql="SELECT * FROM nego WHERE (id_vendeur='$id_admin') AND (compteur='$compt1' || compteur='$compt3'|| compteur='$compt5') AND (accepte='$accepte')";
 			$result = mysqli_query($db_handle, $sql);
 			$resultat = $mysqli -> query($sql);
+			$ligne = $resultat -> fetch_assoc();
 
-			while ($ligne = $resultat -> fetch_assoc()) {
+			if($ligne==0)
+			{
+				?>
+			<div id="section" align="center">
+				<h2>Vos offres</h2>
+				<?php
+					echo "Vous n'avez pas de nouvelle offre." ;
+					?>
+			</div>
+				
+				<?php
+			}
+
+			while ($ligne) {
 
 
 				if (mysqli_num_rows($result) != 0) {
@@ -180,6 +193,7 @@ $mysqli -> set_charset("utf8");
 							</div>
 							<?php
 						}
+						$ligne = $resultat -> fetch_assoc();
 					}
 				}
 				else
