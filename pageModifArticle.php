@@ -19,6 +19,16 @@ $db_found = mysqli_select_db($db_handle, $database);
 	<title>Fray Her</title>
 </head>
 <body>
+	<div id="wrapper">
+
+		<div id="header">
+			<p>
+				<font>
+					Fray Her
+				</font>
+			</p>
+		</div>
+		<br>
 
 	<!-- wrapper area -->
 	<div id="nav" style="z-index: 200;">
