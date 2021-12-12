@@ -13,7 +13,7 @@ $id_admin=$_SESSION['id_admin'];
 	<link href="modif.css" rel="stylesheet" type="text/css"/>
 	<title>Fray Her</title>
 </head>
-<br>
+
 <body>
 	<!-- wrapper area -->
 	<div id="wrapper">
@@ -25,33 +25,36 @@ $id_admin=$_SESSION['id_admin'];
 				</font>
 			</p>
 		</div>
+		<br>
 
 		<div id="nav">
-			<ul>
-				<li><a href="accueilAdmin.php">Accueil</a></li>
+ 		<ul>
+ 			<li><a href="accueilAdmin.php">Accueil</a></li>
+           
+ 			<li class="menu-deroulant">
+ 			<a href="parcourir.html">Gérer</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
+ 				<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
+ 			</ul>
+ 			</li>
 
-				<li class="menu-deroulant">
-					<a href="parcourir.html">Gérer</a>
-					<ul class="sous-menu">
-						<li><a href="GestionVendeurAdmin.php">Les vendeurs</a></li>
-						<li><a href="gererArticlesAdmin.php">Mes articles</a></li>
-					</ul>
-				</li>
+            <li >
+            <a href="notifAdmin.php">Notifications</a>
+            </li>
 
 
-				<li><a href="#">Messagerie</a></li>
+ 			<li class="menu-deroulant">
+ 			<a href="#">Mon compte</a>
+ 			<ul class="sous-menu">
+ 				<li><a href="profil_admin.php">Mon profil</a></li>
+ 				<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
+ 			</ul>	
+ 			</li>
+ 		
+ 		</ul>
 
-				<li class="menu-deroulant">
-					<a href="#">Mon compte</a>
-					<ul class="sous-menu">
-						<li><a href="profil_admin.php">Mon profil</a></li>
-						<li><a href="connexionAcheteur.php">Se déconnecter</a></li>
-					</ul>	
-				</li>
-
-			</ul>
-
-		</div>
+ 	</div>
 
 
 		<div class="container">] <div class=" text-center mt-5 ">

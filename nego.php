@@ -159,6 +159,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 							<tr>
 								<td><label>Offre article <span class="required"></span></label></td>
 								<td><input type="int" name="offre" class="field-long" placeholder="<?php echo $data['offre']; ?>" />
+									<br><br>
 								</td>
 							</tr>
 
@@ -197,7 +198,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 							<tr>
 								<td colspan="2" align="center">
-									<p align="center"> ou </p><br><a href="negoAccepteAcheteur.php">Accepter l offre</a>
+									<p align="center"> ou </p><br><a href="negoAccepteAcheteur.php">Accepter l'offre</a>
 								</td>
 
 							</tr>
