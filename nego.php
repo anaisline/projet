@@ -197,7 +197,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 							<tr>
 								<td colspan="2" align="center">
-									<p align="center"> ou </p><br><a href="negoAccepteAcheteur.php">Accepter l offre</a>
+									<p align="center"> ou </p><br><a href="negoAccepteAcheteur.php">Accepter l'offre</a>
 								</td>
 
 							</tr>
